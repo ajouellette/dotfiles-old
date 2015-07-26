@@ -1,0 +1,357 @@
+# ~/.i3/config
+#
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+#
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This configuration uses i3-gaps and dmenu2, not all options will work on 
+#   other systems. Any options that only work for i3-gaps are marked with *
+
+
+###############
+## Variables ##
+###############
+ # set mod key to super or windows key
+set $mod 			Mod4
+
+# window borders 
+set $borders 		2
+set $resize 		5
+
+# **gaps**
+set $gapso			12
+set $gapsi          8
+
+# colors
+set $black          #000000
+set $white          #FFFFFF
+set $red            #C64552
+set $green          #2E8B57
+set $yellow         #DE9E4E
+set $blue           #479EBB
+set $orange         #75314B
+set $cyan           #618485
+
+set $locker         ~/.bin/i3lock.sh
+set $locknofork     ~/.bin/i3lock.sh -n
+
+###################
+## Configuration ##
+###################
+focus_follows_mouse			false
+popup_during_fullscreen		smart
+workspace_layout			default
+
+
+################
+## Appearance ##
+################
+ # colors
+
+# Font for window titles. Will also be used by the bar unless a different font
+ # is used in the bar {} block below.
+font 					pango: Droid Sans Mono 10
+
+# window borders
+hide_edge_borders		none
+new_float 				pixel $borders
+new_window				pixel $borders
+
+# **gaps**
+gaps inner				$gapsi
+gaps outer				$gapso
+smart_borders			no_gaps
+
+
+#################
+## Keybindings ##
+#################
+## System ##
+ # restart i3
+bindsym $mod+Shift+r	restart
+ # reload conf file
+bindsym $mod+Shift+c	reload
+ # screenshot
+bindsym Print			exec xfce4-screenshooter
+ # **disable gaps**
+bindsym $mod+n			gaps inner all set 0; gaps outer all set 0
+ # **re-enable gaps**
+bindsym $mod+m			gaps inner all set $gapsi; gaps outer all set $gapso
+ # kill current window
+bindsym $mod+Shift+q	kill
+ # backlght controls
+bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 
+bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 
+ # screen locking
+bindsym $mod+Ctrl+L exec --no-startup-id $Locker
+ # caffeine mode (disables screen blanking and automatic suspend)
+bindsym F7 exec ~/.bin/caffeine.sh
+
+## Audio ##
+ # volume controls (use volumeicon)
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
+#bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+ # microphone
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+
+## Focus keybindings ##
+ # focus parent
+bindsym $mod+a 			focus parent
+ # focus child
+bindsym $mod+b 			focus child
+ # change focus
+bindsym $mod+j 			focus left
+bindsym $mod+k 			focus down
+bindsym $mod+l 			focus up
+bindsym $mod+semicolon 	focus right
+ # cursor keys
+bindsym $mod+Left 		focus left
+bindsym $mod+Down 		focus down
+bindsym $mod+Up 		focus up
+bindsym $mod+Right 		focus right
+ # focus last urgent window
+bindsym $mod+u          [urgent=latest] focus
+
+## Workspace keybindings ##
+ # workspaces
+set $ws1    "1 "
+set $ws2    "2 "
+set $ws3    "3 "
+set $ws4    "4 "
+set $ws5    "5 "
+set $ws6    "6 "
+set $ws7    "7 "
+set $ws8    "8 "
+set $ws9    "9 "
+
+ # switch to workspace
+bindsym $mod+Ctrl+Left      workspace prev
+bindsym $mod+Ctrl+Right     workspace next
+bindsym $mod+1 			workspace $ws1
+bindsym $mod+2 			workspace $ws2
+bindsym $mod+3 			workspace $ws3
+bindsym $mod+4 			workspace $ws4
+bindsym $mod+5 			workspace $ws5
+bindsym $mod+6 			workspace $ws6
+bindsym $mod+7 			workspace $ws7
+bindsym $mod+8 			workspace $ws8
+bindsym $mod+9 			workspace $ws9
+
+ # move focused container to workspace
+bindsym $mod+Shift+1 	move container to workspace $ws1
+bindsym $mod+Shift+2 	move container to workspace $ws2
+bindsym $mod+Shift+3 	move container to workspace $ws3
+bindsym $mod+Shift+4 	move container to workspace $ws4
+bindsym $mod+Shift+5	move container to workspace $ws5
+bindsym $mod+Shift+6	move container to workspace $ws6
+bindsym $mod+Shift+7 	move container to workspace $ws7
+bindsym $mod+Shift+8 	move container to workspace $ws8
+bindsym $mod+Shift+9 	move container to workspace $ws9
+
+
+## Movement ##
+ # move focused window
+bindsym $mod+Shift+j 			move left
+bindsym $mod+Shift+k 			move down
+bindsym $mod+Shift+l 			move up
+bindsym $mod+Shift+semicolon 	move right
+ # cursor keys
+bindsym $mod+Shift+Left 		move left
+bindsym $mod+Shift+Down 		move down
+bindsym $mod+Shift+Up 			move up
+bindsym $mod+Shift+Right 		move right
+
+## Layout ##
+ # layout mode
+#bindsym $mod+s 				layout stacking
+#bindsym $mod+w 				layout tabbed
+bindsym $mod+e 				layout toggle split
+bindsym $mod+f				fullscreen
+bindsym $mod+Shift+space	floating toggle
+ # splitting mode
+bindsym $mod+h 			split h
+bindsym $mod+v 			split v
+ # floating mode
+floating_modifier 		$mod
+bindsym $mod+space		focus mode_toggle
+
+## Scratchpad ##
+ # make current window scratchpad
+bindsym $mod+Shift+minus move scratchpad
+ # toggle show scratchpad
+bindsym $mod+minus scratchpad show
+
+## Applications ##
+ # start terminal
+bindsym $mod+Return			exec xfce4-terminal
+ # start dmenu (a program launcher)
+#bindsym $mod+d 			exec dmenu_run
+ # use dmenu2 + j4-dmenu-desktop for more features
+bindsym $mod+Shift+d 	exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 40 -x 20 -w 1335 -p '$' -fn 'Droid Sans Mono-11:normal'" 
+ # xfce app-finder
+#bindsym Ctrl+space          exec --no-startup-id xfce4-appfinder -c 
+ # rofi
+bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+w exec --no-startup-id rofi -show window
+
+for_window [title="^floating"] floating enable
+# start htop in a floating window
+bindsym $mod+Shift+h exec  xfce4-terminal -e "htop" -T "floating (htop)"
+ # start a floating terminal
+bindsym $mod+t exec xfce4-terminal -T "floating (terminal)"
+
+###################################
+## Specific windows / workspaces ##
+###################################
+ # configurations for specific windows
+for_window [class="^Spotify$"] 			floating enable
+for_window [class="^Ristretto$"] 		floating enable
+for_window [class="^Pavucontrol$"] 		floating enable
+for_window [class="^z80e-sdl$"] 		floating enable
+for_window [class="^Xfce4-appfinder$"] 	floating enable
+
+# "web" workspace
+assign [class="Firefox"] 	$ws4
+assign [class="Chromium"]	$ws4
+workspace $ws4				gaps outer 0
+workspace $ws4				gaps inner 0
+
+# "music" workspace
+assign [class="Spotify"]	$ws5
+
+# "mail" workspace
+assign [class="Claws-mail"] $ws9
+
+
+###########
+## Modes ##
+###########
+## **Gaps mode** ##
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+## Resize Mode ##
+mode "resize" {
+        # arrows keys
+        bindsym j resize shrink width $resize px or $resize ppt
+        bindsym k resize grow height $resize px or $resize ppt
+        bindsym l resize shrink height $resize px or $resize ppt
+        bindsym semicolon resize grow width $resize px or $resize ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width $resize px or $resize ppt
+        bindsym Down resize grow height $resize px or $resize ppt
+        bindsym Up resize shrink height $resize px or $resize ppt
+        bindsym Right resize grow width $rsize px or $resize ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+## Exit mode ##
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+#bindsym $mod+Shift+e mode "$mode_system"
+bindsym $mod+Shift+e exec --no-startup-id ~/.bin/logout-menu.sh
+
+## Ignore mode ##
+mode "Ignore" {
+    # all keypresses, except esc and return, ignored
+    bindsym Return mode default
+    bindsym Escape mode default
+}
+bindsym $mod+Shift+i mode Ignore
+
+
+#######################################
+##    Startup programs             ####
+#######################################
+# start pulseaudio, compositor, and set wallpaper in ~/.xinitrc
+# manage lock on suspend through systemd
+exec --no-startup-id dropbox
+exec --no-startup-id nm-applet
+exec --no-startup-id xss-lock -- $locknofork
+exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
+exec --no-startup-id sh -c "sleep 1; redshift-gtk"
+exec --no-startup-id sh -c "sleep 5; volumeicon"
+
+
+#########
+## Bar ##
+#########
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  position top
+    status_command i3status | ~/.config/i3status/wraper.py
+    tray_output eDP1
+	separator_symbol " "
+  font pango:Droid Sans Mono, Icons 10
+  colors {
+    background #282828
+    statusline #ebdbb2
+    separator #323232
+    focused_workspace #676d3d #676d3d #ebdbb2
+    active_workspace #323232 #5f676a #ebdbb2
+    inactive_workspace #323232 #323232 #888888
+    urgent_workspace #333333 #900000 #ffffff
+  }
+}
+
+
+# vim:filetype=i3
+client.focused #676d3d #676d3d #ebdbb2 #676d3d
+client.focused_inactive #323232 #333333 #ebdbb2 323232
+client.unfocused #323232 #323232 #ebdbb2 #323232
+client.urgent #383a3b #383a3b #ee0000 #383a3b

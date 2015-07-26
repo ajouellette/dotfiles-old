@@ -1,0 +1,65 @@
+! ----------------------------------------------------
+! --> Colors
+! ----------------------------------------------------
+*background: #002b36
+*foreground: #839496
+
+*color0: #073642
+*color8: #002b36
+*color1: #dc322f
+*color9: #cb4b16
+*color2: #859900
+*color10: #586e75
+*color3: #b58900
+*color11: #657b83
+*color4: #268bd2
+*color12: #839496
+*color5: #d33682
+*color13: #6c71c4
+*color6: #2aa198
+*color14: #93a1a1
+*color7: #eee8d5
+*color15: #fdf6e3
+
+! ----------------------------------------------------
+! --> fonts
+! ----------------------------------------------------
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! ---------------------------------------------------
+! --> Rofi
+! ---------------------------------------------------
+rofi.lines: 11
+!rofi.terminal: xfce4-terminal
+!rofi.levenshtein-sort: false
+
+! ----------------------------------------------------
+! --> Urxvt terminal
+! ----------------------------------------------------
+URxvt*geometry: 100x28
+URxvt*font: xft:Droid Sans Mono:pixelsize=10:antialias=true:hinting=true
+URxvt*boldFont: xft:Droid Sans Mono:bold:pixelsize=10:antialias=true:hinting=true
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*saveLines: 2000
+!URxvt.transparent: true
+!URxvt*.shading: 30
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+
+!! perl extensions
+URxvt.perl-ext-common: default,url-select,clipboard,matcher,keyboard-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.underlineURLs: true
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.url-select.autocopy: true
+URxvt.url-select.button: 2
+URxvt.url-select.underline: true
+
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+

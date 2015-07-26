@@ -1,0 +1,10 @@
+!
+! disable Caps Lock key
+!
+remove Lock = Caps_Lock
+!keysym Caps_Lock = 0x000
+
+! bind Caps Lock to Esc
+keysym Caps_Lock = Escape
+add Lock = Caps_Lock
+

@@ -1,0 +1,27 @@
+[submodule "vim/.vim/bundle/Colorizer"]
+	path = vim/.vim/bundle/Colorizer
+	url = https://github.com/vim-scripts/Colorizer.git
+[submodule "vim/.vim/bundle/delimitMate"]
+	path = vim/.vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/.vim/bundle/nerdtree"]
+	path = vim/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/bundle/nerdcommenter"]
+	path = vim/.vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "vim/.vim/bundle/vim-endwise"]
+	path = vim/.vim/bundle/vim-endwise
+	url = https://github.com/tpope/vim-endwise.git
+[submodule "vim/.vim/bundle/ScrollColors"]
+	path = vim/.vim/bundle/ScrollColors
+	url = https://github.com/vim-scripts/ScrollColors.git
+[submodule "vim/.vim/bundle/vim-colors-solarized"]
+	path = vim/.vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/.vim/bundle/papercolor-theme"]
+	path = vim/.vim/bundle/papercolor-theme
+	url = https://github.com/NLKN/papercolor-theme.git
