@@ -1,4 +1,8 @@
 # ignore these files
 
+vim/.vim/undo
+vim/.vim/.netrwhist
+vim/.vim/c
+
 *.pyc
 
