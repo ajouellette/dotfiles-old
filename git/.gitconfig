@@ -1,0 +1,24 @@
+[user]
+	name = aouelete 
+	email = aouellette2016@gmail.com
+
+[credential]
+	helper = cache --timeout=3600
+
+[push]
+	default = simple
+
+[color]
+    ui = auto
+
+[alias]
+    graph = log --graph --color
+    st = status
+    com = commit
+    chout = checkout
+
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = aouellette2016@gmail.com
+    smtpServerPort = 587

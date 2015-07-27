@@ -1,0 +1,61 @@
+# vim: filetype=yaml
+---
+meta:
+  description: base16 (test)
+colors:
+    bluegray: "#464b50"
+    darkseagreen: "#B2C48D"
+    darkkhaki: "#90A959"
+    white: "#ffffff"
+    darkkhaki1: "#90a959"
+    darkslategrey: "#303030"
+    darkgrey: "#b0b0b0"
+    dimgray: "#505050"
+    indianred: "#C86F70"
+    indianred1: "#AC4142"
+    black: "#151515"
+    thistle: "#c7a3c0"
+    plum: "#aa759f"
+    dimgrey: "#707070"
+    indianred2: "#c86f70"
+    indianred3: "#ac4142"
+window_colors:
+    focused:
+      border: bluegray
+      background: bluegray
+      text: bluegray
+      indicator: bluegray
+    focused_inactive:
+      border: bluegray
+      background: bluegray
+      text: bluegray
+      indicator: bluegray
+    unfocused:
+      border: bluegray
+      background: bluegray
+      text: bluegray
+      indicator: bluegray
+    urgent:
+      border: indianred
+      background: indianred1
+      text: white
+bar_colors:
+   background: "#1f1f1f"
+   statusline: "#c3c3c3"
+   separator: darkslategrey
+   focused_workspace:
+      border: "#323537"
+      background: "#323537"
+      text: "#c3c3c3"
+   active_workspace:
+      border: "#464b50"
+      background: "#464b50"
+      text: "#c3c3c3"
+   inactive_workspace:
+      border: "#1e1e1e"
+      background: "#1e1e1e"
+      text: "#c3c3c3"
+   urgent_workspace:
+       border: "#1e1e1e"
+       background: "#1e1e1e"
+       text: "#c3c3c3"

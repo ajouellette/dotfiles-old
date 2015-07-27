@@ -1,0 +1,11 @@
+X: ~
+bash: ~
+compton: ~/.config
+conky: ~
+git: ~
+i3: ~/.config/i3
+i3status: ~/.config/i3status
+redshift: ~/.config
+scripts: ~/.bin
+vim: ~
+zsh: ~

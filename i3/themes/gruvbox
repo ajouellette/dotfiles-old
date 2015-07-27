@@ -1,0 +1,49 @@
+# vim: filetype=yaml
+---
+meta:
+  description: gruvbox theme for i3
+colors:
+    olive: "#676d3d"
+    light_yellow: "#ebdbb2"
+    black: "#323232"
+window_colors:
+    focused:
+      border: olive
+      background: olive
+      text: light_yellow
+      indicator: olive
+    focused_inactive:
+      border: black
+      background: "#333333"
+      text: light_yellow
+      indicator: "323232"
+    unfocused:
+      border: black
+      background: black
+      text: light_yellow
+      indicator: black
+    urgent:
+      border: "#383a3b"
+      background: "#383a3b"
+      text: "#ee0000"
+      indicator: "#383a3b"
+bar_colors:
+   background: "#282828"
+   statusline: light_yellow
+   separator: black
+   focused_workspace:
+      border: olive
+      background: olive
+      text: light_yellow
+   active_workspace:
+      border: black
+      background: "#5f676a"
+      text: light_yellow
+   inactive_workspace:
+      border: black
+      background: black
+      text: "#888888"
+   urgent_workspace:
+       border: "#333333"
+       background: "#900000"
+       text: "#ffffff"

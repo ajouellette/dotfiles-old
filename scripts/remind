@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# this is a simple script that alerts the user when
+# a long running shell command finishes
+#
+
+show_usage() {
+    echo "usage: remind <command>"
+}
+
+get_current_window_id() {
+	i3-msg -t get_tree \
+		| grep -o '{[^{]*"focused":true[^}]*}' \
+		| sed 's/.*"id":\([^,]*\),.*/\1/'
+}
+
+remind() {
+	TARGET_WINDOW="${1}"
+	shift
+	eval "${@}"
+	i3-nagbar -m "[${?}] ${*}" -b "Go" "i3-msg [con_id=\"${TARGET_WINDOW}\"] focus" >/dev/null 2>&1 &
+	echo -e "\a"
+}
+
+if [ "${BASH_SOURCE}" = "${0}" ]; then
+	if [ "$#" -eq 0 ]; then
+		show_usage >&2
+		exit 1
+	fi
+	remind "$(get_current_window_id)" "${@}"
+fi
