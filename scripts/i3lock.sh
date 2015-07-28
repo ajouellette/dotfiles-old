@@ -1,7 +1,7 @@
 #!/bin/bash
 # i3 lock script: pixelates screen and adds lock icon
 
-icon="$HOME/Pictures/icons/lock-icon.png"
+icon="$HOME/Pictures/icons/lock-icon2.png"
 tmpbg="/tmp/lockscreen.png"
 text="/tmp/locktext.png"
 

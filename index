@@ -5,7 +5,12 @@ conky: ~
 git: ~
 i3: ~/.config/i3
 i3status: ~/.config/i3status
+irssi: ~/.irssi
+nano: ~
+pacaur: ~/.config/pacaur
+pacman: ~/.config/pacman
 redshift: ~/.config
 scripts: ~/.bin
 vim: ~
+vimperator: ~
 zsh: ~

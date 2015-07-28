@@ -21,8 +21,8 @@ else
     xmodmap ~/.Xmodmap &
 
     # enable screen blanking
-    xset +dpms
-    xset dpms 0 0 240
+    xset +dpms &
+    xset dpms 0 0 240 &
 
     # start pulseaudio
     start-pulseaudio-x11 &
@@ -31,8 +31,8 @@ else
     /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
     # compositor and wallpaper
-    compton --config ~/.config/i3/compton.conf &
-    nitrogen --restore
+    compton &
+    nitrogen --restore &
 
     exec i3
 fi

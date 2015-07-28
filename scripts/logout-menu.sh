@@ -1,5 +1,5 @@
 #!/bin/bash
-CMD=`echo -e "Lock\nSuspend\nLogout\nReboot\nShutdown" | rofi -dmenu -p "Logout Menu: "`
+CMD=`echo -e "Lock\nSuspend\nLogout\nReboot\nShutdown" | rofi -dmenu -p "Logout Menu:"`
 if [ ! $CMD ]; then
     exit
 fi

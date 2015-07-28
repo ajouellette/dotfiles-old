@@ -61,7 +61,15 @@ extract () {       # function to extract many types of archives
    else
        echo "'$1' is not a valid file!"
    fi
- }
+}
+
+# stow commands
+alias stow='stow --verbose=1'
+alias unstow='stow --delete'
+alias restow='stow --restow'
+
+# github shortcut
+alias -g github='https://github.com'
 
 #####################################
 ##        Arch aliases             ##

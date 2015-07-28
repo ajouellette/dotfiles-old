@@ -36,8 +36,8 @@ set $blue           #479EBB
 set $orange         #75314B
 set $cyan           #618485
 
-set $locker         ~/.bin/i3lock.sh
-set $locknofork     ~/.bin/i3lock.sh -n
+set $locker         "~/.bin/i3lock.sh"
+set $locknofork     "~/.bin/i3lock.sh -n"
 
 ###################
 ## Configuration ##
@@ -87,7 +87,7 @@ bindsym $mod+Shift+q	kill
 bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 
 bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 
  # screen locking
-bindsym $mod+Ctrl+L exec --no-startup-id $Locker
+bindsym $mod+Ctrl+L exec --no-startup-id $locker
  # caffeine mode (disables screen blanking and automatic suspend)
 bindsym F7 exec ~/.bin/caffeine.sh
 
@@ -98,6 +98,10 @@ bindsym F7 exec ~/.bin/caffeine.sh
 #bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
  # microphone
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+ # music
+bindsym $mod+bracketleft exec --no-startup-id playerctl previous
+bindsym $mod+bracketright exec --no-startup-id playerctl next
+bindsym $mod+backslash exec --no-startup-id playerctl play-pause
 
 ## Focus keybindings ##
  # focus parent
@@ -192,7 +196,7 @@ bindsym $mod+Return			exec xfce4-terminal
  # start dmenu (a program launcher)
 #bindsym $mod+d 			exec dmenu_run
  # use dmenu2 + j4-dmenu-desktop for more features
-bindsym $mod+Shift+d 	exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 40 -x 20 -w 1335 -p '$' -fn 'Droid Sans Mono-11:normal'" 
+bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 40 -x 20 -w 1335 -p '$' -fn 'Droid Sans Mono-11:normal'" 
  # xfce app-finder
 #bindsym Ctrl+space          exec --no-startup-id xfce4-appfinder -c 
  # rofi

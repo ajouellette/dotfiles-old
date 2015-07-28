@@ -14,46 +14,32 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-unimpaired'
 " Source code completion
 Plugin 'Valloric/YouCompleteMe'
-
 " YCM config generator
 Plugin 'rdnetto/YCM-Generator'
-
 " vim-fugitive: git support
 Plugin 'tpope/vim-fugitive'
-
 " auto end certain code structures
 Plugin 'tpope/vim-endwise'
-
 " automatic closing of quotes, braces, ...
-"Plugin 'Raimondi/delimitMate'
-
+Plugin 'Raimondi/delimitMate'
 " un/comment code
 Plugin 'scrooloose/nerdcommenter'
-
 " file browser
 Plugin 'scrooloose/nerdtree'
-
 " highlight color codes with proper colors
 Plugin 'Colorizer'
-
 " fancy status line
 Plugin 'bling/vim-airline'
-
 " Colorscheme previewer
 Plugin 'ScrollColors'
-
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
-
-" gruvbox colorscheme
+" Colorschemes
 Plugin 'morhetz/gruvbox'
-
-" Solarized colorscheme
 Plugin 'altercation/vim-colors-solarized'
-
-" material design color scheme
 Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()

@@ -33,8 +33,13 @@ Xft.lcdfilter: lcddefault
 ! ---------------------------------------------------
 ! --> Rofi
 ! ---------------------------------------------------
-rofi.lines: 11
-!rofi.terminal: xfce4-terminal
+rofi.opacity: 95
+rofi.lines: 5
+rofi.terminal: xfce4-terminal
+rofi.font: Fira Mono Medium 14
+rofi.padding: 500
+rofi.bw: 0
+rofi.width: 100
 !rofi.levenshtein-sort: false
 
 ! ----------------------------------------------------
