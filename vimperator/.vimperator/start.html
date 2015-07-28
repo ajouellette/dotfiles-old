@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>start</title>
+        
+        <style type="text/css">
+        body,h1,html,li,ul {   
+            margin:0;
+            padding:0 }
+        body {
+            font-family: "Droid Serif";
+            color: #ebdbb2;
+            background:#181818;
+            height:100vh;
+            width:100vw }
+        main {   
+            display:block;
+            position:relative;
+            top:50%;
+            -webkit-transform:translateY(-50%);
+            transform:translateY(-50%) }
+        h1 {
+            color:#383838;
+            font-size:5em;
+            text-align:center }
+        .search {   
+            background:#383838;
+            border:1px solid #383838;
+            color:#fff;
+            display:block;
+            height:25px;
+            margin:27px auto;
+            max-width:35pc;
+            padding:0 5px;
+            transition:.2s;
+            width:80% }
+        .search:focus,.search:hover {
+            border-color:#8f9d6a }
+        .list {
+            -webkit-justify-content:center;
+            -ms-flex-pack:center;
+            justify-content:center }
+        .list,ul {
+            display:-webkit-flex;
+            display:-ms-flexbox;
+            display:flex }
+        ul {
+            -webkit-flex-direction:column;
+            -ms-flex-direction:column;
+            flex-direction:column;
+            margin:0 30px }
+        li {
+            display:inline-block;
+            font-size:1.5em;
+            line-height:1.5;
+            list-style:none }
+        li:first-child {
+            color:#383838;
+            font-size:3em;
+            font-weight:700;
+            text-align:center }
+        a {
+            color:#8f9d6a;
+            text-decoration:none;
+            transition:.2s }
+        a:hover {
+            color:#383838 }
+        @media screen and (max-width:1100px) {
+            li {
+                font-size:1.3em }
+            li:first-child {
+                font-size:2.5em } }
+        @media screen and (max-width:1000px) {
+            h1 {
+                font-size:5em } }
+        </style>
+    </head>
+
+    <body onload="updateClock()"><main>
+        <center><font size=76><div id="time"></div></font></center>
+        
+        <form method="get" action="https://www.duckduckgo.com/?q=">
+            <input class="search" type="text" name="q" placeholder="Duck Duck Go"/>
+        </form>
+        
+        <section class=list>
+            <ul><li>My stuff</li>
+                <li><a href="https://github.com">Github</a></li>
+                <li><a href="https://reddit.com">Reddit</a></li>
+                <li><a href="http://archlinux.org">Arch Linux</a></li>
+            </ul>
+
+            <ul><li>School</li>
+                <li><a href="mhs.rsu1.org">Morse High School</a></li>
+                <li><a href="">Infinite Campus</a></li>
+            </ul>
+
+            <ul><li>etc</li>
+                <li><a href="http://forecast.weather.gov/MapClick.php?textField1=43.96071672389877&textField2=-69.76708973490253#.Vav6vDLci00">Weather</a></li>
+
+            </ul>
+
+        </section>
+        </main></body>
+
+    <script>
+        function updateClock()
+        {
+            Date.getMinutesTwoDigits = function()
+            {
+                var retval = now.getMinutes();
+                if (retval < 10) return ("0" + retval.toString());
+                else return retval.toString();
+            }
+            Date.getHoursModTwelve = function()
+            {
+                var retval = now.getHours();
+                retval = retval%24;
+                if (retval == 0) retval = 00;
+                return retval;
+            }
+            var now = new Date(),
+            time = Date.getHoursModTwelve() + ':' + Date.getMinutesTwoDigits();
+            document.getElementById('time').innerHTML = ["", time].join('');
+            setTimeout(updateClock, 1000);
+        }
+    </script> 
+</html>
+

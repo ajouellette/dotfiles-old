@@ -1,0 +1,34 @@
+"3.9 (created: 2015/02/15 15:49:05)
+" config file for vimperator firefox addon
+
+set history=50
+
+" search completions: search engines and keywords, search engine suggestions, firefox location bar entries, and local files
+set complete=slSf
+
+" use DuckDuckGo instead of Google
+set defsearch=duckduckgo
+set suggestengines=duckduckgo
+
+" make j/k scroll more
+noremap j 5j
+noremap k 5k
+
+" use J/K to switch tabs left/right
+noremap J gT
+noremap K gt
+
+" follow links with these chars instead of numbers
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" C-a selects everything
+inoremap <C-a> <Insert><C-a><Insert>
+
+" set home page for new tabs
+set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
+
+set gui=tabs,navigation
+
+source! /home/aaron/.vimperatorrc.local
+
+" vim: set ft=vimperator:

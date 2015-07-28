@@ -24,7 +24,7 @@ main() {
         
     for package in $@; do
         if [ -d "$package" ]; then
-            array=( `look "$package" index` )
+            array=( `grep "^$package:" index` )
         
             if [ -z "$array" ]; then
                 echo "Error: \"$package\" not found in index"
