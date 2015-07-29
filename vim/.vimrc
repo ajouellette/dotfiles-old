@@ -251,7 +251,7 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERD Tree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
+map <C-f> :NERDTreeToggle<CR>
 
 " close vim if only nerdtree is left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

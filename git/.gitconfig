@@ -11,14 +11,22 @@
 [color]
     ui = auto
 
+[help]
+    autocorrect = 10
+
 [alias]
     graph = log --graph --color
     st = status
     com = commit
     chout = checkout
+    unstage = reset HEAD --
+    last = log -1 HEAD
 
 [sendemail]
     smtpEncryption = tls
     smtpServer = smtp.gmail.com
     smtpUser = aouellette2016@gmail.com
     smtpServerPort = 587
+
+[merge]
+    tool = vimdiff2

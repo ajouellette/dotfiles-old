@@ -68,3 +68,20 @@ URxvt.url-select.underline: true
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 
+!---------------------------------------------------------
+! --> Xterm
+!---------------------------------------------------------
+xterm*termName:         xterm-256color
+xterm*borderWidth:      1
+xterm*utf8:             true
+xterm*faceName:         Fira Mono:  style=Medium: size=7:  antialias=true
+xterm*dynamicColors:    true
+xterm*locale:           true
+xterm*scrollTtyOutput:  true
+xterm*scrollBar:        false
+xterm*rightScrollBar:   true
+xterm*jumpScroll:       true
+xterm*multiScroll:      true
+xterm*toolBar:          false
+xterm*saveLines:        2000
+

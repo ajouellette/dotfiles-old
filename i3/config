@@ -196,7 +196,7 @@ bindsym $mod+Return			exec xfce4-terminal
  # start dmenu (a program launcher)
 #bindsym $mod+d 			exec dmenu_run
  # use dmenu2 + j4-dmenu-desktop for more features
-bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -y 40 -x 20 -w 1335 -p '$' -fn 'Droid Sans Mono-11:normal'" 
+bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p 'run:'"
  # xfce app-finder
 #bindsym Ctrl+space          exec --no-startup-id xfce4-appfinder -c 
  # rofi
