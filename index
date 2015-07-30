@@ -2,6 +2,7 @@ X: ~
 bash: ~
 compton: ~/.config
 conky: ~
+dunst: ~/.config/dunst
 git: ~
 i3: ~/.config/i3
 i3status: ~/.config/i3status
