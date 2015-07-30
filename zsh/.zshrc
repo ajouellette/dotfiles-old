@@ -61,6 +61,7 @@ setopt hist_allow_clobber
 
 zstyle :compinstall filename '~/.zshrc'
 zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true
 
 ################
 # prompts
@@ -83,7 +84,9 @@ precmd() { __git_ps1 "%B%(?..[%?] )%{$fg[yellow]%}%n%b%{$reset_color%} (%{$fg[gr
 #export PS1='%B%(?..[%?] )%{$fg[yellow]%}%n%b%{$reset_color%} (%{$fg[green]%}%~%{$reset_color%})${vcs_info_msg_0_}> '
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (ynae) "
 
+##########################
 # syntax highlighting
+##########################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # command not found hook (install pkgfile)

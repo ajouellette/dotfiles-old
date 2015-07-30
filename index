@@ -1,5 +1,6 @@
 X: ~
 bash: ~
+cava: ~/.config/cava
 compton: ~/.config
 conky: ~
 dunst: ~/.config/dunst
