@@ -6,6 +6,7 @@ conky: ~
 dunst: ~/.config/dunst
 git: ~
 i3: ~/.config/i3
+i3blocks: ~/.config/i3blocks
 i3status: ~/.config/i3status
 irssi: ~/.irssi
 nano: ~
