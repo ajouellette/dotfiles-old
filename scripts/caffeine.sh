@@ -13,7 +13,7 @@ if [ "$DPMS" == "" ]; then
     xautolock -disable
     echo "Caffeine mode enabled"
     # send notification
-	notify-send -a "Caffeine" -i "caffeine" "Caffeine Mode Enabled"
+	notify-send -u low -a "Caffeine" -i "caffeine" "Caffeine Mode Enabled"
 else
     # dpms disabled, turn it on
 	xset s 0 300
@@ -21,6 +21,6 @@ else
 	xset +dpms
     xautolock -enable
     echo "Caffeine mode disabled"
-	notify-send -a "Caffeine" -i "caffeine" "Caffeine Mode Disabled"
+	notify-send -u low -a "Caffeine" -i "caffeine" "Caffeine Mode Disabled"
 fi;
 

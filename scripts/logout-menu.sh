@@ -1,5 +1,8 @@
 #!/bin/bash
+# a logout menu using rofi
+
 CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6 -width 100 -padding 500`
+
 if [ ! $CMD ]; then
     exit
 fi

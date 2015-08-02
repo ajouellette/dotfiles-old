@@ -1,5 +1,6 @@
 #!/bin/bash
 # i3 lock script: pixelates screen and adds lock icon
+# requires imagemagick and scrot
 
 icon="$HOME/Pictures/icons/lock-icon.png"
 tmpbg="/tmp/lockscreen.png"
