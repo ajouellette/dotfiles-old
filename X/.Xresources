@@ -37,7 +37,7 @@ rofi.opacity: 95
 rofi.lines: 5
 rofi.terminal: xfce4-terminal
 rofi.font: Fira Mono Medium 14
-rofi.padding: 500
+rofi.padding: 400
 rofi.bw: 0
 rofi.width: 100
 !rofi.levenshtein-sort: false
@@ -74,7 +74,7 @@ URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 xterm*termName:         xterm-256color
 xterm*borderWidth:      1
 xterm*utf8:             true
-xterm*faceName:         Fira Mono:  style=Medium: size=7:  antialias=true
+xterm*faceName:         Fira Mono: style=Medium: size=5: antialias=true
 xterm*dynamicColors:    true
 xterm*locale:           true
 xterm*scrollTtyOutput:  true

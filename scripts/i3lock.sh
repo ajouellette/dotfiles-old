@@ -17,7 +17,7 @@ fi
     convert $text -alpha set -channel A -evaluate set 50% $text;
 }
 convert $tmpbg $text -gravity center -geometry +0+200 -composite $tmpbg
-i3lock "$@" -e -i "$tmpbg"
+i3lock -n -e -i "$tmpbg"
 
 # blur command (slower)
 #i3lock -d "$@" -i <(import -window root - | convert -blur -2x5 - png:-)

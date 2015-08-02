@@ -36,8 +36,6 @@ set $blue           #479EBB
 set $orange         #75314B
 set $cyan           #618485
 
-set $locker         "~/.bin/i3lock.sh"
-set $locknofork     "~/.bin/i3lock.sh -n"
 
 ###################
 ## Configuration ##
@@ -71,13 +69,16 @@ smart_borders			no_gaps
 ## Keybindings ##
 #################
 ## System ##
- # restart i3
+# logout
+bindsym $mod+Shift+e exec --no-startup-id ~/.bin/logout-menu.sh
+# restart i3
 bindsym $mod+Shift+r	restart
  # reload conf file
 bindsym $mod+Shift+c	reload
  # screenshot
 bindsym Print			exec xfce4-screenshooter
- # **disable gaps**
+bindsym Shift+Print     exec --no-startup-id ~/.bin/screenshot.sh
+# **disable gaps**
 bindsym $mod+n			gaps inner all set 0; gaps outer all set 0
  # **re-enable gaps**
 bindsym $mod+m			gaps inner all set $gapsi; gaps outer all set $gapso
@@ -87,15 +88,15 @@ bindsym $mod+Shift+q	kill
 bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 
 bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 
  # screen locking
-bindsym $mod+Ctrl+L exec --no-startup-id $locker
+bindsym $mod+Ctrl+L exec --no-startup-id ~/.bin/i3lock.sh
  # caffeine mode (disables screen blanking and automatic suspend)
 bindsym F7 exec ~/.bin/caffeine.sh
 
 ## Audio ##
- # volume controls (use volumeicon)
-#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
-#bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
-#bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+ # volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
  # microphone
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
  # music
@@ -193,21 +194,18 @@ bindsym $mod+minus scratchpad show
 ## Applications ##
  # start terminal
 bindsym $mod+Return			exec xfce4-terminal
- # start dmenu (a program launcher)
-#bindsym $mod+d 			exec dmenu_run
- # use dmenu2 + j4-dmenu-desktop for more features
-bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p 'run:'"
- # xfce app-finder
-#bindsym Ctrl+space          exec --no-startup-id xfce4-appfinder -c 
- # rofi
-bindsym $mod+d exec --no-startup-id rofi -show run
+ # dmenu
+bindsym $mod+Shift+d 	exec --no-startup-id dmenu_run
+ # rofi (more features than dmenu)
+bindsym $mod+d exec --no-startup-id rofi -show run -padding 500
+bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500"
 bindsym $mod+w exec --no-startup-id rofi -show window
 
 for_window [title="^floating"] floating enable
 # start htop in a floating window
 bindsym $mod+Shift+h exec  xfce4-terminal -e "htop" -T "floating (htop)"
  # start a floating terminal
-bindsym $mod+t exec xfce4-terminal -T "floating (terminal)"
+bindsym $mod+t exec ~/.bin/term.sh
 
 ###################################
 ## Specific windows / workspaces ##
@@ -292,23 +290,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-## Exit mode ##
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $Locker, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-#bindsym $mod+Shift+e mode "$mode_system"
-bindsym $mod+Shift+e exec --no-startup-id ~/.bin/logout-menu.sh
-
 ## Ignore mode ##
 mode "Ignore" {
     # all keypresses, except esc and return, ignored
@@ -322,13 +303,11 @@ bindsym $mod+Shift+i mode Ignore
 ##    Startup programs             ####
 #######################################
 # start pulseaudio, compositor, and set wallpaper in ~/.xinitrc
-# manage lock on suspend through systemd
 exec --no-startup-id dropbox
 exec --no-startup-id nm-applet
-exec --no-startup-id xss-lock -- $locknofork
+exec --no-startup-id xss-lock -- ~/.bin/i3lock.sh
 exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
 exec --no-startup-id sh -c "sleep 1; redshift-gtk"
-exec --no-startup-id sh -c "sleep 5; volumeicon"
 
 
 #########
@@ -339,6 +318,7 @@ exec --no-startup-id sh -c "sleep 5; volumeicon"
 bar {
   position top
     status_command i3status | ~/.config/i3status/wraper.py
+    #status_command i3blocks
     tray_output eDP1
 	separator_symbol " "
   font pango:Droid Sans Mono, Icons 10
