@@ -129,7 +129,7 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 # system info and logo
-screenfetch
+screenfetch -t
 
 # clock in top-right corner
 #while sleep 1;do tput sc;tput cup 0 $(($(tput cols)-29));date;tput rc;done &  

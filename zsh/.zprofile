@@ -14,11 +14,13 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
     echo "  3) console"
 
     read session
+
     if [ "$session" -eq 2 ]; then
-         startxfce4
+        startxfce4
     elif [ "$session" -eq 1 ]; then
-        [[ -z $DISPLAY && $XDG_VTNR -le 3 ]] && startx
+        startx
     else
+
     fi
 fi
 

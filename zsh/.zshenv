@@ -37,3 +37,6 @@ fi
 
 # use gtk style for qt5
 export QT_STYLE_OVERRIDE=GTK+
+
+# pacmatic config
+export pacman_program=/usr/bin/pacaur

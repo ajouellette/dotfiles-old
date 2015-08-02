@@ -25,9 +25,9 @@ alias mv='mv -i'
 alias path='echo -e ${PATH//:/\\n}'
 
 # go back
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+alias -g ..='..'
+alias -g ...='../..'
+alias -g ....='../../..'
 
 # runs vim as user instead of as root (safer)
 alias svim='sudoedit'
@@ -68,8 +68,7 @@ alias stow='stow --verbose=1'
 alias unstow='stow --delete'
 alias restow='stow --restow'
 
-# github shortcut
-alias -g github='https://github.com'
+alias getip='curl icanhazip.com'
 
 #####################################
 ##        Arch aliases             ##
@@ -78,11 +77,11 @@ alias -g github='https://github.com'
 # enable etckeeper when installing/upgrading
 Pacman() { sudo etckeeper pre-install && sudo pacman "$@" && sudo etckeeper post-install; }
 Pacaur() { sudo etckeeper pre-install && pacaur "$@" && sudo etckeeper post-install; }
-Pacmatic() { sudo etckeeper pre-install && sudo pacmatic "$@" && sudo etckeeper post-install; }
+Pacmatic() { sudo etckeeper pre-install && pacmatic "$@" && sudo etckeeper post-install; }
 
 alias install='Pacaur -S --needed'
-alias update='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && sudo reflector -l 30 -c "United States" -c Canada -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && Pacmatic -Syyu && Pacaur -u'
-alias upgrade='Pacmatic -Syu; Pacaur -u'
+alias update='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && sudo reflector -l 30 -c "United States" -c Canada -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && Pacmatic -Syyu'
+alias upgrade='Pacmatic -Syu'
 alias search="pacman -Ss"
 alias searchaur="pacaur -s"
 pacinfo() {
