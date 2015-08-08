@@ -14,25 +14,25 @@ fi
 # merge in Xresources
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-if [ "$1" = "xfce" ]; then
-    startxfce4
-else
-    # disable caps lock key
-    xmodmap ~/.Xmodmap &
+# disable caps lock key
+xmodmap ~/.Xmodmap &
 
-    # enable screen blanking
-    xset +dpms &
-    xset dpms 0 0 240 &
+# enable screen blanking
+xset +dpms &
+xset dpms 0 0 240 &
 
-    # start pulseaudio
-    start-pulseaudio-x11 &
+# i3 is default
+session=${1:-i3}
 
-    # start authentication agent
-    /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+case $session in 
+    bspwm) 
+        source ~/.xbspwm.sh;;
+    i3)
+        source ~/.xi3.sh;;
+    xfce)
+        startxfce4;;
+    # no known session, try to run command
+    *)
+        exec $1;;
+esac
 
-    # compositor and wallpaper
-    compton &
-    nitrogen --restore &
-
-    exec i3
-fi

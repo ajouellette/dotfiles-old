@@ -9,19 +9,23 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
     echo "          Choose Session:"
     echo "===================================="
     echo 
-    echo "  1) i3"
-    echo "  2) XFCE"
-    echo "  3) console"
+    echo "  1) bspwm"
+    echo "  2) i3"
+    echo "  3) XFCE"
+    echo "  4) console"
 
     read session
 
-    if [ "$session" -eq 2 ]; then
-        startxfce4
-    elif [ "$session" -eq 1 ]; then
-        startx
-    else
-
-    fi
+    case $session in 
+        1)
+            startx ~/.xinitrc bspwm;;
+        2)
+            startx ~/.xinitrc i3;;
+        3)
+            startx ~/.xinitrc xfce;;
+        *)
+            exit 0;;
+    esac
 fi
 
 
