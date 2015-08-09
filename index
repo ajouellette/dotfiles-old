@@ -1,5 +1,6 @@
 X: ~
 bash: ~
+bspwm: ~/.config/bspwm
 cava: ~/.config/cava
 compton: ~/.config
 conky: ~
@@ -13,7 +14,9 @@ nano: ~
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
 redshift: ~/.config
+root: /root
 scripts: ~/.bin
+sxhkd: ~/.config/sxhkd
 vim: ~
 vimperator: ~
 zsh: ~
