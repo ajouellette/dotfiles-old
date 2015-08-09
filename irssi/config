@@ -371,12 +371,21 @@ statusbar = {
     };
   };
 };
+
 settings = {
   core = {
-    real_name = "Aaron";
-    user_name = "aaron";
-    nick = "arn-oue";
+    real_name = "arnoue";
+    user_name = "arnoue";
+    nick = "arnoue";
     timestamp_format = "%H:%M:%S";
   };
+
   "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
+
+  "perl/core/scripts" = {
+    nickcolor_colors = "2 3 4 5 6 7 9 10 11 12 13";
+  };
+
+  "fe-common/core" = { theme = "pastie"; };
 };
+
