@@ -24,7 +24,6 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
         3)
             startx ~/.xinitrc xfce;;
         *)
-            exit 0;;
     esac
 fi
 
