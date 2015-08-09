@@ -8,5 +8,8 @@ start-pulseaudio-x11 &
 compton &
 nitrogen --restore &
 
+# fix cursor
+xsetroot -cursor_name left_ptr
+
 sxhkd &
 exec bspwm
