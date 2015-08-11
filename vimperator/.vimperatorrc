@@ -29,6 +29,8 @@ set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
 
 set gui=tabs,navigation
 
+colorscheme base16-eighties
+
 source! /home/aaron/.vimperatorrc.local
 
 " vim: set ft=vimperator:
