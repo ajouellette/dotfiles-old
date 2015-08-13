@@ -1,1 +1,1 @@
-.irssi/scripts/splitlong.pl
+../splitlong.pl

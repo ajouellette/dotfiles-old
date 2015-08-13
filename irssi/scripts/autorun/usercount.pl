@@ -1,1 +1,1 @@
-.irssi/scripts/usercount.pl
+../usercount.pl
