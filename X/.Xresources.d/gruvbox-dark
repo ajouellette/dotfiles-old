@@ -34,3 +34,7 @@
 ! LightGrey + White
 *color7:  #a89984
 *color15: #ebdbb2
+
+! rofi
+rofi.hlbg:  #282828
+rofi.hlfg:  #cc241d

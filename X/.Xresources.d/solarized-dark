@@ -46,3 +46,6 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
+! rofi highlighted colors
+rofi.hlbg:  S_base03
+rofi.hlfg:  S_yellow
