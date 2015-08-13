@@ -22,7 +22,7 @@ rofi.font: Fira Mono Medium 14
 rofi.padding: 400
 rofi.bw: 0
 rofi.width: 100
-!rofi.levenshtein-sort: false
+rofi.levenshtein-sort: false
 
 ! ----------------------------------------------------
 ! --> Urxvt terminal
@@ -54,16 +54,17 @@ URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 ! --> Xterm
 !---------------------------------------------------------
 xterm*termName:         xterm-256color
-xterm*borderWidth:      1
-xterm*utf8:             true
-xterm*faceName:         Fira Mono: style=Medium: size=5: antialias=true
-xterm*dynamicColors:    true
 xterm*locale:           true
+xterm*utf8:             true
+xterm*borderWidth:      0
+xterm*VT100.geometry:   110x28
+xterm*faceName:         Droid Sans Mono:style=Regular:size=10:antialias=false
+xterm*dynamicColors:    true
 xterm*scrollTtyOutput:  true
 xterm*scrollBar:        false
-xterm*rightScrollBar:   true
+xterm*ScrollKey:        true
 xterm*jumpScroll:       true
 xterm*multiScroll:      true
-xterm*toolBar:          false
-xterm*saveLines:        2000
+xterm*saveLines:        2500
+xterm*selectToClipboard: true
 
