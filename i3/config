@@ -205,7 +205,7 @@ for_window [title="^floating"] floating enable
 # start htop in a floating window
 bindsym $mod+Shift+h exec  xfce4-terminal -e "htop" -T "floating (htop)"
  # start a floating terminal
-bindsym $mod+t exec ~/.bin/term.sh
+bindsym $mod+t exec ~/.bin/drawterm.sh
 
 ###################################
 ## Specific windows / workspaces ##
