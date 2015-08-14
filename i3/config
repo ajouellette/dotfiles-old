@@ -94,15 +94,15 @@ bindsym F7 exec ~/.bin/caffeine.sh
 
 ## Audio ##
  # volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 3%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 3%-
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume.sh +
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume.sh -
+bindsym XF86AudioMute exec --no-startup-id        ~/.bin/volume.sh !
  # microphone
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
  # music
-bindsym $mod+bracketleft exec --no-startup-id playerctl previous
-bindsym $mod+bracketright exec --no-startup-id playerctl next
-bindsym $mod+backslash exec --no-startup-id playerctl play-pause
+bindsym $mod+bracketleft exec --no-startup-id   playerctl previous
+bindsym $mod+bracketright exec --no-startup-id  playerctl next
+bindsym $mod+backslash exec --no-startup-id     playerctl play-pause
 
 ## Focus keybindings ##
  # focus parent
