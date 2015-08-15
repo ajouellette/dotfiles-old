@@ -6,6 +6,10 @@ icon="$HOME/Pictures/icons/lock-icon.png"
 tmpbg="/tmp/lockscreen.png"
 text="/tmp/locktext.png"
 
+# pause notifications
+killall -SIGUSR1 dunst
+
+# get image
 scrot "$tmpbg"
 convert "$tmpbg" -scale 10% -scale 1000% -fill black -colorize 25% "$tmpbg"
 
@@ -18,7 +22,13 @@ fi
     convert $text -alpha set -channel A -evaluate set 50% $text;
 }
 convert $tmpbg $text -gravity center -geometry +0+200 -composite $tmpbg
+
+# lock, don't fork (to work with xss-lock)
 i3lock -n -e -i "$tmpbg"
+
+# resume notifications
+killall -SIGUSR2 dunst
+
 
 # blur command (slower)
 #i3lock -d "$@" -i <(import -window root - | convert -blur -2x5 - png:-)
