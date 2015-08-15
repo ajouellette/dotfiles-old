@@ -26,8 +26,8 @@ abstracts = {
   line_start = " ";
 
   # timestamp styling, nothing by default
-  #timestamp = "%K$0-%n";
-  timestamp = " ";
+  timestamp = "%K$0-%n";
+  #timestamp = " ";
 
   # any kind of text that needs hilighting, default is to bold
   hilight = "%_$*%_";
@@ -76,11 +76,11 @@ abstracts = {
   ########### messages #################################
 
   # the basic styling of how to print message, $0 = nick mode, $1 = nick
-   msgnick = "  %b%c$1%k %K  %W%|%N";
-   ##msgnick = "    %b$1%N %K  %W%|%N";
-   #msgnick = "   %K$0%b$1%N %K  %W%|%N";
-   #msgnick = "%K$0%b$1%N %K| %W%|%N";
-   #msgnick = "%K$0%b$1%N %K| %|%N";
+  msgnick = "  %b%c$1%k %K  %W%|%N";
+  ##msgnick = "    %b$1%N %K  %W%|%N";
+  #msgnick = "   %K$0%b$1%N %K  %W%|%N";
+  #msgnick = "%K$0%b$1%N %K| %W%|%N";
+  #msgnick = "%K$0%b$1%N %K| %|%N";
 
   # $0 = nick mode, $1 = nick
   ownmsgnick = "{msgnick $0 $1}";
@@ -212,26 +212,26 @@ abstracts = {
   # default backround for "default" statusbar group
   #sb_default_bg = "%4";
 
-# background for prompt / input line / default is %n
+  # background for prompt / input line / default is %n
   sb_prompt_bg = "%n";
- 
- # background for info statusbar
+
+  # background for info statusbar
   #sb_info_bg = "%8";
 
-# background for topicbar (same default)
+  # background for topicbar (same default)
   #sb_topic_bg = "%4";
 
   # text at the beginning of statusbars. sb-item already puts
   # space there,so we don't use anything by default.
   sbstart = "";
 
-# text at the end of statusbars. Use space so that it's never
+  # text at the end of statusbars. Use space so that it's never
   # used for anything.
   sbend = "";
 
   topicsbstart = "";
 
-#topicsbstart = "%BChannel: %b\"$*";
+  #topicsbstart = "%BChannel: %b\"$*";
   topicsbend = "";
 
   prompt = "    %w>%Y   ";
@@ -251,17 +251,17 @@ abstracts = {
   sb_uc_normal = "%w$*%n";
   sb_uc_space = " ";
 
-# activity in statusbar
+  # activity in statusbar
 
   # ',' separator
   sb_act_sep = " ";
- 
- # normal text
+
+  # normal text
   sb_act_text = "";
-  
+
   # public message
   sb_act_msg = "";
-  
+
   # hilight
   sb_act_hilight = "%R%9$*%n";
   # hilight with specified color, $0 = color, $1 = text
@@ -285,7 +285,7 @@ formats = {
     #nick_changed = "%K{channick $[-13]0} %G->%n {channick $1}";
     your_nick_changed = "       %Kyou%G >   %n{channick $1}";
 
-    pubmsg = "{pubmsgnick $2 {pubnick \00304$[-11]0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick \00313$0}}$1";
 
     own_msg = "{ownmsgnick $2 {ownnick $[-11]0}}$1";
     own_msg_channel = "{ownmsgnick $3 {ownnick $[-11]0}{msgchannel $1}}$2";

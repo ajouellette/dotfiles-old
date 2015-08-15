@@ -2,10 +2,14 @@ servers = (
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
   { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
   { address = "irc.esper.net"; chatnet = "EsperNet"; port = "6667"; },
-  { 
+  {
     address = "chat.freenode.net";
     chatnet = "Freenode";
-    port = "6667";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
+    autoconnect = "yes";
   },
   {
     address = "irc.gamesurge.net";
@@ -115,7 +119,13 @@ channels = (
   { name = "#ircsource"; chatnet = "IRCSource"; autojoin = "No"; },
   { name = "#netfuze"; chatnet = "NetFuze"; autojoin = "No"; },
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
-  { name = "silc"; chatnet = "SILC"; autojoin = "No"; }
+  { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
+  { name = "#archlinux"; chatnet = "freenode"; autojoin = "yes"; },
+  {
+    name = "#archlinux-offtopic";
+    chatnet = "freenode";
+    autojoin = "yes";
+  }
 );
 
 aliases = {
@@ -377,15 +387,21 @@ settings = {
     real_name = "arnoue";
     user_name = "arnoue";
     nick = "arnoue";
-    timestamp_format = "%H:%M:%S";
+    timestamp_format = "%H:%M";
   };
 
   "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
 
   "perl/core/scripts" = {
     nickcolor_colors = "2 3 4 5 6 7 9 10 11 12 13";
+    trackbar_string = "_";
+    trackbar_style = "%r";
   };
 
-  "fe-common/core" = { theme = "pastie"; };
+  "fe-common/core" = {
+    theme = "pastie";
+    timestamps = "yes";
+    term_charset = "utf-8";
+  };
 };
 
