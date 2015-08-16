@@ -1,5 +1,5 @@
 #!/bin/bash
 # launches cava (music visualizer) in a xterm window
 
-xterm -title "cava" -e cava &
+urxvt -fn 'xft:Droid Sans Mono:size=3' -title "cava" -e "cava" &
 
