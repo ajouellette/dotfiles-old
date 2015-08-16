@@ -1,7 +1,7 @@
 ! ----------------------------------------------------
 ! --> Colors
 ! ----------------------------------------------------
-#include ".Xresources.d/solarized-dark"
+#include ".colors/solarized-dark"
 
 ! ----------------------------------------------------
 ! --> fonts
@@ -28,27 +28,45 @@ rofi.levenshtein-sort: false
 ! --> Urxvt terminal
 ! ----------------------------------------------------
 URxvt*geometry: 100x28
-URxvt*font: xft:Droid Sans Mono:pixelsize=10:antialias=true:hinting=true
-URxvt*boldFont: xft:Droid Sans Mono:bold:pixelsize=10:antialias=true:hinting=true
 URxvt*borderless: 1
+URxvt*fadding: 5
+
+URxvt*font:       xft:Droid Sans Mono:size=9,xft:Droid Sans Mono for Powerline:size=9
+URxvt*boldFont:   xft:Droid Sans Mono:bold:size=9,Droid Sans Mono for Powerline:size=9
+URxvt*italicFont: xft:Droid Sans Mono:italic:size=9,Droid Sans Mono for Powerline:size=9
+URxvt*letterSpace: -1
+
 URxvt*scrollBar: false
 URxvt*saveLines: 2000
-!URxvt.transparent: true
-!URxvt*.shading: 30
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! Scrolling on alternate screens
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+URxvt*urgentOnBell: true
 
 !! perl extensions
 URxvt.perl-ext-common: default,url-select,clipboard,matcher,keyboard-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.underlineURLs: true
-URxvt.url-launcher: /usr/bin/firefox
+
+URxvt.keysym.M-u:       perl:url-select:select_next
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.M-s:       perl:keyboard-select:search
+
+URxvt.url-select.underline: true
+URxvt.url-select.launcher: firefox
 URxvt.url-select.autocopy: true
 URxvt.url-select.button: 2
-URxvt.url-select.underline: true
 
+URxvt.iso14755: False
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.clipboard.copycmd:  xclip -i
+URxvt.clipboard.pastecmd: xclip -o
 
 !---------------------------------------------------------
 ! --> Xterm
@@ -58,8 +76,7 @@ xterm*locale:           true
 xterm*utf8:             true
 xterm*borderWidth:      0
 xterm*VT100.geometry:   110x28
-xterm*faceName:         Droid Sans Mono:style=Regular:size=10:antialias=false
-xterm*dynamicColors:    true
+xterm*faceName:         Droid Sans Mono:style=Regular:size=9
 xterm*scrollTtyOutput:  true
 xterm*scrollBar:        false
 xterm*ScrollKey:        true
@@ -67,4 +84,5 @@ xterm*jumpScroll:       true
 xterm*multiScroll:      true
 xterm*saveLines:        2500
 xterm*selectToClipboard: true
+
 
