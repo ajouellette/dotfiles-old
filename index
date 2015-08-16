@@ -5,6 +5,8 @@ cava: ~/.config/cava
 compton: ~/.config
 conky: ~
 dunst: ~/.config/dunst
+fontconfig: ~/.config/fontconfig
+fonts: ~/.local/share/fonts
 git: ~
 i3: ~/.config/i3
 i3blocks: ~/.config/i3blocks
