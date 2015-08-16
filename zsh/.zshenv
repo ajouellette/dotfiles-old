@@ -6,6 +6,9 @@ typeset -U path
 path=(~/.bin $path)
 # ruby gems
 path=(~/.gem/ruby/2.2.0/bin $path)
+# go path
+export GOPATH="$HOME/.go"
+path=(~/.go/bin $path)
 
 # make Java fonts better
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
@@ -40,3 +43,4 @@ export QT_STYLE_OVERRIDE=GTK+
 
 # pacmatic config
 export pacman_program=/usr/bin/pacaur
+
