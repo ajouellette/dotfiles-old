@@ -70,6 +70,8 @@ alias restow='stow --restow'
 
 alias getip='curl icanhazip.com'
 
+alias rfortune='fortune | cowsay -f $(find /usr/share/cows -type f | shuf -n 1)'
+
 #####################################
 ##        Arch aliases             ##
 #####################################
