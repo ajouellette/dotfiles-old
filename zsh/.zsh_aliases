@@ -72,6 +72,9 @@ alias getip='curl icanhazip.com'
 
 alias rfortune='fortune | cowsay -f $(find /usr/share/cows -type f | shuf -n 1)'
 
+# print top 10 most used commands
+alias top10="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+
 #####################################
 ##        Arch aliases             ##
 #####################################
