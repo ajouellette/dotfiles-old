@@ -29,11 +29,16 @@ rofi.levenshtein-sort: false
 ! ----------------------------------------------------
 URxvt*geometry: 100x28
 URxvt*borderless: 1
-URxvt*fadding: 5
+URxvt*fadding: 0
+URxvt*transparent: false
 
-URxvt*font:       xft:Droid Sans Mono:size=9,xft:Droid Sans Mono for Powerline:size=9
-URxvt*boldFont:   xft:Droid Sans Mono:bold:size=9,Droid Sans Mono for Powerline:size=9
-URxvt*italicFont: xft:Droid Sans Mono:italic:size=9,Droid Sans Mono for Powerline:size=9
+#define font1   xft:Droid Sans Mono:size=9:antialias=true
+#define font2   xft:Droid Sans Mono for Powerline:size=9:antialias=true
+
+URxvt*font:           font1,font2
+URxvt*boldFont:       font1:bold,font2
+URxvt*italicFont:     font1:italic,font2
+URxvt*bolditalicFont: font1:bold:italic,font2
 URxvt*letterSpace: -1
 
 URxvt*scrollBar: false
