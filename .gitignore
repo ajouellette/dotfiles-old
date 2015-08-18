@@ -3,7 +3,10 @@
 vim/.vim/undo
 vim/.vim/.netrwhist
 vim/.vim/c
+
 vimperator/.vimperator/info
+
+irssi/sasl.auth
 
 *.pyc
 
