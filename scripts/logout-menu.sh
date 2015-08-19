@@ -7,6 +7,8 @@ case $wm in
         logout="i3-msg exit";;
     bspwm)
         logout="bspc quit";;
+    sway)
+        logout="sway-msg exit";;
     *)
         logout="";;
 esac
