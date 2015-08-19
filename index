@@ -19,6 +19,7 @@ pacman: ~/.config/pacman
 redshift: ~/.config
 root: /root
 scripts: ~/.bin
+sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
 vim: ~
 vimperator: ~
