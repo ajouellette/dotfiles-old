@@ -8,5 +8,10 @@ vimperator/.vimperator/info
 
 irssi/sasl.auth
 
+mutt/secrets.gpg
+mutt/aliases
+mutt/cache
+mutt/certificates
+
 *.pyc
 
