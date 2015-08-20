@@ -18,11 +18,18 @@ noremap k 5k
 noremap J gT
 noremap K gt
 
+" show downloads
+nmap <S-d> :tab downloads<CR>
+
+nmap <C-j> <nop>
+nmap <C-k> <nop>
+
 " follow links with these chars instead of numbers
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 
-" C-a selects everything
-inoremap <C-a> <Insert><C-a><Insert>
+set hlsearch
+set autocomplete
+set focuscontent=true
 
 " set home page for new tabs
 set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
@@ -31,6 +38,9 @@ set gui=tabs,navigation
 
 colorscheme base16-eighties
 
-source! /home/aaron/.vimperatorrc.local
+" disable on certain sites
+"autocmd LocationChange .*  js modes.passAllKeys = false
+"autocmd LocationChange mail\\.google\\.com   js modes.passAllKeys = true
+
 
 " vim: set ft=vimperator:
