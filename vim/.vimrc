@@ -60,10 +60,14 @@ set ttimeoutlen=100
 
 let mapleader=','
 let g:mapleader=','
+" faster commands
+noremap ; :
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ttyfast
+
 " Set 5 lines to the cursor 
 set so=5
 
@@ -72,6 +76,7 @@ set wildmenu
 
 " Show line numbers
 set number
+set cursorline
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -216,6 +221,9 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " .md is markdown
 autocmd BufNewFile,BufRead *.md :set filetype=markdown
+
+" use spell checking for mail
+autocmd FileType mail :setlocal spell spelllang=en_us
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-airline
