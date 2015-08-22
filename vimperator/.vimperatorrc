@@ -21,8 +21,11 @@ noremap K gt
 " show downloads
 nmap <S-d> :tab downloads<CR>
 
+" disable some keys
 nmap <C-j> <nop>
 nmap <C-k> <nop>
+nmap <C-p> <nop>  " usually used to switch tabs
+nmap <C-n> <nop>
 
 " follow links with these chars instead of numbers
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
@@ -33,6 +36,8 @@ set focuscontent=true
 
 " set home page for new tabs
 set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
+" disable scroll zoom
+set! mousewheel.with_control.action=0
 
 set gui=tabs,navigation
 
