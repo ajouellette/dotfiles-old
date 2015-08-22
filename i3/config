@@ -1,41 +1,31 @@
+# vim:filetype=i3
 # ~/.i3/config
 #
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-# This configuration uses i3-gaps and dmenu2, not all options will work on 
-#   other systems. Any options that only work for i3-gaps are marked with *
-
+# This config is for the i3-gaps fork of i3 (gihub.com/airblader/i3),
+# so some settings will not work on regular i3
+#
 
 ###############
 ## Variables ##
 ###############
- # set mod key to super or windows key
-set $mod 			Mod4
+# set mod key to super or windows key
+set $mod 	Mod4
 
 # window borders 
-set $borders 		2
-set $resize 		5
+set $borders 	2
+# number of pixels to resize windows by
+set $resize 	5
 
-# **gaps**
-set $gapso			12
-set $gapsi          8
+# gaps (outer and inner)
+set $gapso		12
+set $gapsi       8
 
-# colors
-set $black          #000000
-set $white          #FFFFFF
-set $red            #C64552
-set $green          #2E8B57
-set $yellow         #DE9E4E
-set $blue           #479EBB
-set $orange         #75314B
-set $cyan           #618485
-
+# terminal
+set $term urxvt
 
 ###################
 ## Configuration ##
@@ -43,26 +33,25 @@ set $cyan           #618485
 focus_follows_mouse			false
 popup_during_fullscreen		smart
 workspace_layout			default
-
+# go back to prev workspace if key pressed twice
+workspace_auto_back_and_forth true
 
 ################
 ## Appearance ##
 ################
- # colors
-
-# Font for window titles. Will also be used by the bar unless a different font
- # is used in the bar {} block below.
-font 					pango: Droid Sans Mono 10
+# Font for window titles and bar
+# (unless a different font is specified in bar{} )
+font 	pango: Droid Sans Mono, Icons 10
 
 # window borders
-hide_edge_borders		none
-new_float 				pixel $borders
-new_window				pixel $borders
+hide_edge_borders	none
+new_float 			pixel $borders
+new_window			pixel $borders
+smart_borders		no_gaps
 
-# **gaps**
-gaps inner				$gapsi
-gaps outer				$gapso
-smart_borders			no_gaps
+# gaps
+gaps inner	$gapsi
+gaps outer	$gapso
 
 
 #################
@@ -73,57 +62,58 @@ smart_borders			no_gaps
 bindsym $mod+Shift+e exec --no-startup-id ~/.bin/logout-menu.sh
 # restart i3
 bindsym $mod+Shift+r	restart
- # reload conf file
+# reload config file
 bindsym $mod+Shift+c	reload
- # screenshot
+# screenshot
 bindsym Print			exec xfce4-screenshooter
 bindsym Shift+Print     exec --no-startup-id ~/.bin/screenshot.sh
-# **disable gaps**
+# disable gaps
 bindsym $mod+n			gaps inner all set 0; gaps outer all set 0
- # **re-enable gaps**
+# re-enable gaps
 bindsym $mod+m			gaps inner all set $gapsi; gaps outer all set $gapso
- # kill current window
+# close current window
 bindsym $mod+Shift+q	kill
- # backlght controls
+# backlght controls
 bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 
 bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 
- # screen locking
+# screen locking
 bindsym $mod+Ctrl+L exec --no-startup-id ~/.bin/i3lock.sh
- # caffeine mode (disables screen blanking and automatic suspend)
+# caffeine mode (disables screen blanking and automatic suspend)
 bindsym F7 exec ~/.bin/caffeine.sh
 
 ## Audio ##
- # volume controls
+# volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume.sh +
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume.sh -
 bindsym XF86AudioMute exec --no-startup-id        ~/.bin/volume.sh !
- # microphone
+# microphone
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
- # music
+# music
 bindsym $mod+bracketleft exec --no-startup-id   playerctl previous
 bindsym $mod+bracketright exec --no-startup-id  playerctl next
 bindsym $mod+backslash exec --no-startup-id     playerctl play-pause
 
 ## Focus keybindings ##
- # focus parent
+# focus parent
 bindsym $mod+a 			focus parent
- # focus child
+# focus child
 bindsym $mod+b 			focus child
- # change focus
-bindsym $mod+j 			focus left
-bindsym $mod+k 			focus down
-bindsym $mod+l 			focus up
-bindsym $mod+semicolon 	focus right
- # cursor keys
+# change focus
+# use standard vim keys
+bindsym $mod+h 			focus left
+bindsym $mod+j 			focus down
+bindsym $mod+k 			focus up
+bindsym $mod+l 	        focus right
+# cursor keys
 bindsym $mod+Left 		focus left
 bindsym $mod+Down 		focus down
 bindsym $mod+Up 		focus up
 bindsym $mod+Right 		focus right
- # focus last urgent window
+# focus last urgent window
 bindsym $mod+u          [urgent=latest] focus
 
 ## Workspace keybindings ##
- # workspaces
+# workspace names
 set $ws1    "1 "
 set $ws2    "2 "
 set $ws3    "3 "
@@ -134,9 +124,11 @@ set $ws7    "7 "
 set $ws8    "8 "
 set $ws9    "9 "
 
- # switch to workspace
-bindsym $mod+Ctrl+Left      workspace prev
-bindsym $mod+Ctrl+Right     workspace next
+# switch to workspace
+bindsym $mod+Ctrl+Left  workspace prev
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+j     workspace prev
+bindsym $mod+Ctrl+k     workspace next
 bindsym $mod+1 			workspace $ws1
 bindsym $mod+2 			workspace $ws2
 bindsym $mod+3 			workspace $ws3
@@ -147,7 +139,7 @@ bindsym $mod+7 			workspace $ws7
 bindsym $mod+8 			workspace $ws8
 bindsym $mod+9 			workspace $ws9
 
- # move focused container to workspace
+# move focused container to workspace
 bindsym $mod+Shift+1 	move container to workspace $ws1
 bindsym $mod+Shift+2 	move container to workspace $ws2
 bindsym $mod+Shift+3 	move container to workspace $ws3
@@ -160,52 +152,52 @@ bindsym $mod+Shift+9 	move container to workspace $ws9
 
 
 ## Movement ##
- # move focused window
-bindsym $mod+Shift+j 			move left
-bindsym $mod+Shift+k 			move down
-bindsym $mod+Shift+l 			move up
-bindsym $mod+Shift+semicolon 	move right
- # cursor keys
+# move focused window
+bindsym $mod+Shift+h 			move left
+bindsym $mod+Shift+j 			move down
+bindsym $mod+Shift+k 			move up
+bindsym $mod+Shift+l         	move right
+# cursor keys
 bindsym $mod+Shift+Left 		move left
 bindsym $mod+Shift+Down 		move down
 bindsym $mod+Shift+Up 			move up
 bindsym $mod+Shift+Right 		move right
 
 ## Layout ##
- # layout mode
-#bindsym $mod+s 				layout stacking
-#bindsym $mod+w 				layout tabbed
-bindsym $mod+e 				layout toggle split
-bindsym $mod+f				fullscreen
-bindsym $mod+Shift+space	floating toggle
- # splitting mode
-bindsym $mod+h 			split h
-bindsym $mod+v 			split v
- # floating mode
-floating_modifier 		$mod
-bindsym $mod+space		focus mode_toggle
+# layout mode
+#bindsym $mod+s 		 layout stacking
+#bindsym $mod+w 		 layout tabbed
+bindsym $mod+e 			 layout toggle split
+bindsym $mod+f			 fullscreen
+bindsym $mod+Shift+space floating toggle
+# splitting mode
+bindsym $mod+g 		split h
+bindsym $mod+v 		split v
+# floating mode
+floating_modifier 	$mod
+bindsym $mod+space	focus mode_toggle
 
 ## Scratchpad ##
- # make current window scratchpad
+# make current window scratchpad
 bindsym $mod+Shift+minus move scratchpad
- # toggle show scratchpad
+# toggle show scratchpad
 bindsym $mod+minus scratchpad show
 
 ## Applications ##
- # start terminal
-bindsym $mod+Return			exec xfce4-terminal
- # dmenu
-bindsym $mod+Shift+d 	exec --no-startup-id dmenu_run
- # rofi (more features than dmenu)
+# start terminal
+bindsym $mod+Return	exec $term
+# dmenu
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run -fn "Droid Sans Mono-11" -q -p $ -i -y 45 -x 100 -w 1166 
+# rofi (more features than dmenu)
 bindsym $mod+d exec --no-startup-id rofi -show run -padding 500
-bindsym $mod+p 	exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500"
+bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500"
 bindsym $mod+w exec --no-startup-id rofi -show window
 
 for_window [title="^floating"] floating enable
 # start htop in a floating window
-bindsym $mod+Shift+h exec  xfce4-terminal -e "htop" -T "floating (htop)"
+bindsym $mod+Ctrl+h exec  $term -e "htop" -T "floating (htop)"
  # start a floating terminal
-bindsym $mod+t exec ~/.bin/drawterm.sh
+bindsym $mod+t exec ~/.bin/drawterm.sh $term
 
 ###################################
 ## Specific windows / workspaces ##
@@ -233,7 +225,7 @@ assign [class="Claws-mail"] $ws9
 ###########
 ## Modes ##
 ###########
-## **Gaps mode** ##
+## Gaps mode ##
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -271,18 +263,29 @@ mode "$mode_gaps_outer" {
 }
 
 ## Resize Mode ##
+# normal - grow, shift+opposite - shrink
 mode "resize" {
-        # arrows keys
-        bindsym j resize shrink width $resize px or $resize ppt
-        bindsym k resize grow height $resize px or $resize ppt
-        bindsym l resize shrink height $resize px or $resize ppt
-        bindsym semicolon resize grow width $resize px or $resize ppt
+        # vim keys
+        bindsym h resize grow left $resize px or $resize ppt
+        bindsym k resize grow up $resize px or $resize ppt
+        bindsym j resize shrink down $resize px or $resize ppt
+        bindsym l resize grow right $resize px or $resize ppt
+
+        bindsym Shift+l resize shrink left $resize px or $resize ppt
+        bindsym Shift+j resize shrink up $resize px or $resize ppt
+        bindsym Shift+k resize shrink down $resize px or $resize ppt
+        bindsym Shift+h resize shrink right $resize px or $resize ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width $resize px or $resize ppt
-        bindsym Down resize grow height $resize px or $resize ppt
-        bindsym Up resize shrink height $resize px or $resize ppt
-        bindsym Right resize grow width $rsize px or $resize ppt
+        bindsym Left resize grow left $resize px or $resize ppt
+        bindsym Up resize grow up $resize px or $resize ppt
+        bindsym Down resize grow down $resize px or $resize ppt
+        bindsym Right resize grow right $rsize px or $resize ppt
+
+        bindsym Shift+Right resize shrink left $resize px or $resize ppt
+        bindsym Shift+Down resize shrink up $resize px or $resize ppt
+        bindsym Shift+Up resize shrink down $resize px or $resize ppt
+        bindsym Shift+Left resize shrink right $resize px or $resize ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -333,8 +336,6 @@ bar {
   }
 }
 
-
-# vim:filetype=i3
 client.focused #676d3d #676d3d #ebdbb2 #676d3d
 client.focused_inactive #323232 #333333 #ebdbb2 323232
 client.unfocused #323232 #323232 #ebdbb2 #323232
