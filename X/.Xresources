@@ -8,6 +8,7 @@
 ! ----------------------------------------------------
 Xft.antialias: true
 Xft.rgba: rgb
+Xft.autohint: false
 Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
@@ -32,13 +33,21 @@ URxvt*borderless: 1
 URxvt*fadding: 0
 URxvt*transparent: false
 
-#define font1   xft:Droid Sans Mono:size=9:antialias=true
-#define font2   xft:Droid Sans Mono for Powerline:size=9:antialias=true
+! font configuration
+#define fontsize 10
+#define antial true
 
-URxvt*font:           font1,font2
-URxvt*boldFont:       font1:bold,font2
-URxvt*italicFont:     font1:italic,font2
-URxvt*bolditalicFont: font1:bold:italic,font2
+#define dejavu    xft:DejaVu Sans Mono:size=10:antialias=true
+#define dejaPower xft:DejaVu Sans Mono for Powerline:size=10:antialias=true
+
+#define droid xft:Droid Sans Mono:size=fontsize:antialias=antial
+#define drdPower xft:Droid Sans Mono for Powerline:size=fontsize:antialias=antial
+
+URxvt*font:           dejavu,dejaPower,droid
+URxvt*boldFont:       dejavu:bold,dejaPower:bold,droid:bold
+URxvt*italicFont:     dejavu:italic,dejaPower:italic,droid:italic
+URxvt*bolditalicFont: dejavu:bold:italic,dejaPower:bold:italic,droid:bold:italic
+! fix letter spacing issue
 URxvt*letterSpace: -1
 
 URxvt*scrollBar: false
