@@ -42,5 +42,6 @@ fi
 export QT_STYLE_OVERRIDE=GTK+
 
 # pacmatic config
-export pacman_program=/usr/bin/pacaur
+# add these variables to env_keep in /etc/sudoers
+export pacman_program="sudo -u aaron /usr/bin/pacaur"
 
