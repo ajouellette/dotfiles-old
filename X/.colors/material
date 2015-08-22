@@ -1,0 +1,43 @@
+#define c0 #263238
+#define c15 #eceff1
+
+! special
+*.foreground:   c15
+*.background:   c0
+*.cursorColor:  c15
+
+! black
+*.color0:       #263238
+*.color8:       #37474f
+
+! red
+*.color1:       #ff9800
+*.color9:       #ffa74d
+
+! green
+*.color2:       #8bc34a
+*.color10:      #9ccc65
+
+! yellow
+*.color3:       #ffc107
+*.color11:      #ffa000
+
+! blue
+*.color4:       #03a9f4
+*.color12:      #81d4fa
+
+! magenta
+*.color5:       #e91e63
+*.color13:      #A56ECC
+
+! cyan
+*.color6:       #009688
+*.color14:      #26a69a
+
+! white
+*.color7:       #cfd8dc
+*.color15:      #eceff1
+
+! rofi
+rofi.hlbg: c0
+rofi.hlfg: #ff9800
