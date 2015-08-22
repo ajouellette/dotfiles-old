@@ -1,5 +1,5 @@
 [global]
-    font = Fira Mono Medium 10
+    font = Droid Sans Mono Regular 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -64,16 +64,16 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "350x5-30+35"
+    geometry = "300x10-30+35"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
-    shrink = no
+    shrink = yes
     
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 3
     
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -120,7 +120,7 @@
     padding = 8
     
     # Horizontal padding.
-    horizontal_padding = 10
+    horizontal_padding = 8
     
     # Define a color for the separator.
     # possible values are:
@@ -175,18 +175,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#285777"
-    foreground = "#ffffff"
+    background = "#323232"
+    foreground = "#ebdbb2"
     timeout = 3
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#323232"
+    foreground = "#ebdbb2"
     timeout = 6
 
 [urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
+    background = "#323232"
+    foreground = "#d79921"
     timeout = 0
 
 
