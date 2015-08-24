@@ -10,6 +10,9 @@ set complete=slSf
 set defsearch=duckduckgo
 set suggestengines=duckduckgo
 
+" use ; instead of :
+nmap ; :
+
 " make j/k scroll more
 noremap j 5j
 noremap k 5k
