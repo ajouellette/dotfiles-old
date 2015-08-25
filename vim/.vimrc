@@ -33,11 +33,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Colorizer'
 " fancy status line
 Plugin 'bling/vim-airline'
-" Colorscheme previewer
+" Color scheme previewer
 Plugin 'ScrollColors'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
-" Colorschemes
+" Color schemes
 Plugin 'morhetz/gruvbox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'NLKNguyen/papercolor-theme'
@@ -71,7 +71,7 @@ set ttyfast
 " Set 5 lines to the cursor 
 set so=5
 
-" Turn on the WiLd menu
+" Turn on the Wild menu
 set wildmenu
 
 " Show line numbers
@@ -86,6 +86,8 @@ set whichwrap+=<,>,h,l
 set ignorecase      " ignore case 
 set smartcase       " be smart
 set hlsearch        " highlight
+" clear highlight
+nmap \q :nohlsearch<CR>
 set incsearch       " incremental search
 set magic           " regular expression magic
 
@@ -166,13 +168,13 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " allow files to be open but not displayed
 set hidden
 
-" moving betweeen buffers
+" moving between buffers
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
 
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+nmap j gj
+nmap k gk
 
 " Specify the behavior when switching between buffers 
 try
@@ -222,8 +224,33 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " .md is markdown
 autocmd BufNewFile,BufRead *.md :set filetype=markdown
 
+" mutt files
+autocmd BufNewFile,BufRead *mutt-* :set filetype=mail
+
 " use spell checking for mail
 autocmd FileType mail :setlocal spell spelllang=en_us
+
+
+" command line mode more like a command line
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-g>  <C-c>
+
+" Switch between coding styles
+"
+" toggle wrapping
+nmap \w :setlocal wrap!<CR> :setlocal wrap?<CR>
+
+" toggle spell
+nmap \s :setlocal spell!<CR> :setlocal spell?<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-airline
@@ -267,3 +294,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " open nerdtree if no file is specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+

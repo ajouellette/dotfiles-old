@@ -8,8 +8,17 @@ bindkey -e
 # searching history
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
+# edit command in editor
 bindkey "^F" edit-command-line
 
+# resume vim with ^Z
+foreground-vim() {
+    if [ -n "$(jobs | grep vim)" ]; then
+        fg %vim
+    fi
+}
+zle -N foreground-vim
+bindkey '^Z' foreground-vim
 
 autoload -U compinit && compinit
 # use this for pre-made prompts
@@ -60,8 +69,11 @@ setopt noclobber
 setopt hist_allow_clobber
 
 zstyle :compinstall filename '~/.zshrc'
+# menu selection for completions
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
+# show ambiguous character in bold red
+zstyle ':completion:*' show-ambiguity "1;$color[fg-red]"
 
 ################
 # prompts
