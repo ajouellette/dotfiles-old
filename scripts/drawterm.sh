@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # select a rectangle and launch a floating terminal
 # needs slop
 

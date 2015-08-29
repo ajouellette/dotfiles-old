@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # a logout menu using rofi
 
 wm=${1:-i3}
+CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6 -width 100 -padding 500`
+
 case $wm in
     i3)
         logout="i3-msg exit";;
@@ -13,7 +15,6 @@ case $wm in
         logout="";;
 esac
 
-CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6 -width 100 -padding 500`
 
 if [ ! $CMD ]; then
     exit

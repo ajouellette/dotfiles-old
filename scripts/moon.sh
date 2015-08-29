@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # The Dark Side of The Moon by dcat (https://github.com/dcat)
 
 echo -e "

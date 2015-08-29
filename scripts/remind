@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # this is a simple script that alerts the user when
 # a long running shell command finishes

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # this script toggles automatic screen blanking and suspend
 # useful when watching videos, for example
 
