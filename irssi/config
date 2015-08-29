@@ -387,14 +387,18 @@ settings = {
     real_name = "arnoue";
     user_name = "arnoue";
     nick = "arnoue";
-    timestamp_format = "%H:%M";
+    timestamp_format = "%H:%M:%S";
   };
 
-  "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
+  "fe-text" = {
+    actlist_sort = "refnum";
+    term_force_colors = "yes";
+    indent = "28";
+  };
 
   "perl/core/scripts" = {
     nickcolor_colors = "2 3 4 5 6 7 9 10 11 12 13";
-    trackbar_string = "_";
+    trackbar_string = "-";
     trackbar_style = "%r";
   };
 
@@ -402,6 +406,8 @@ settings = {
     theme = "pastie";
     timestamps = "yes";
     term_charset = "utf-8";
+    show_nickmode_empty = "yes";
+    hide_server_tags = "yes";
   };
 };
 
