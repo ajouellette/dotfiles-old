@@ -12,13 +12,13 @@ bindkey "^S" history-incremental-pattern-search-forward
 bindkey "^F" edit-command-line
 
 # resume vim with ^Z
-foreground-vim() {
-    if [ -n "$(jobs | grep vim)" ]; then
-        fg %vim
+foreground-vi() {
+    if [ -n "$(jobs | grep vi)" ]; then
+        fg %?vi
     fi
 }
-zle -N foreground-vim
-bindkey '^Z' foreground-vim
+zle -N foreground-vi
+bindkey '^Z' foreground-vi
 
 autoload -U compinit && compinit
 # use this for pre-made prompts

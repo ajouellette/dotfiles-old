@@ -42,25 +42,26 @@ alias calc='python -qi -c "from math import *"'
 alias kernel='uname -rs'
 alias up='uptime -p'
 
-extract () {       # function to extract many types of archives
-   if [ -f $1 ] ; then
-       case $1 in
-           *.tar.bz2)   tar xvjf $1    ;;
-           *.tar.gz)    tar xvzf $1    ;;
-           *.bz2)       bunzip2 $1     ;;
-           *.rar)       unrar x $1       ;;
-           *.gz)        gunzip $1      ;;
-           *.tar)       tar xvf $1     ;;
-           *.tbz2)      tar xvjf $1    ;;
-           *.tgz)       tar xvzf $1    ;;
-           *.zip)       unzip $1       ;;
-           *.Z)         uncompress $1  ;;
-           *.7z)        7z x $1        ;;
-           *)           echo "don't know how to extract '$1'..." ;;
-       esac
-   else
-       echo "'$1' is not a valid file!"
-   fi
+# extract archives
+extract () {
+     if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1;;
+            *.tar.gz)    tar xvzf $1;;
+            *.bz2)       bunzip2 $1;;
+            *.rar)       unrar x $1;;
+            *.gz)        gunzip $1;;
+            *.tar)       tar xvf $1;;
+            *.tbz2)      tar xvjf $1;;
+            *.tgz)       tar xvzf $1;;
+            *.zip)       unzip $1;;
+            *.Z)         uncompress $1;;
+            *.7z)        7z x $1;;
+            *)           echo "don't know how to extract '$1'...";;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
 }
 
 # stow commands
@@ -98,11 +99,13 @@ pacinfo() {
         pacman -Qi "$1"
     fi
 }
-clean-cache() {                       # clean package cache
+# clean package cache
+clean-cache() {
     paccache -r
     paccache -ruk0
 }
-remove-orphans() {                    # function to remove orphaned packages
+# remove orphaned packages
+remove-orphans() {
     if [[ ! -n $(pacman -Qdt) ]]; then
         echo "No orphaned packages to remove."
     else
@@ -111,10 +114,12 @@ remove-orphans() {                    # function to remove orphaned packages
 }
 alias clean='remove-orphans; clean-cache; sudo pacman-optimize'
 alias remove='Pacman -Rns'
-pacsort() {         #sort installed packages by size
+# sort installed packages by size
+pacsort() {
     expac -s "%-30n %m" | sort -hk 2 | awk '{print $1, $2/1024/1024}' | column -t | less
 }
-lsinstalled() {     # list all explicitly installed packages not in base or base-devel
+# list all explicitely installed packages, not in base or base-devel
+lsinstalled() {
     expac -HM "%011m\t%-20n\t%10d" $( comm -23 <(pacman -Qqen|sort) <(pacman -Qqg base base-devel|sort) ) | sort -n | less
 }
 
@@ -126,6 +131,7 @@ alias reboot='systemctl reboot'
 alias shutdown='systemctl poweroff'
 alias hibernate='systemctl hibernate'
 alias journal='journalctl -r'
+# find broken links
 broken-links() {
 	 sudo find . -type l -! -exec test -e {} \; -print
 }
