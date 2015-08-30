@@ -16,7 +16,7 @@
 set $mod 	Mod4
 
 # window borders 
-set $borders 	2
+set $borders 	3
 # number of pixels to resize windows by
 set $resize 	5
 
@@ -187,15 +187,15 @@ bindsym $mod+minus scratchpad show
 # start terminal
 bindsym $mod+Return	exec $term
 # dmenu
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run -fn "Droid Sans Mono-11" -q -p $ -i -y 45 -x 100 -w 1166 
+bindsym $mod+Shift+d exec --no-startup-id ~/.bin/dmenu_run.sh
 # rofi (more features than dmenu)
 bindsym $mod+d exec --no-startup-id rofi -show run -padding 500
 bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500"
 bindsym $mod+w exec --no-startup-id rofi -show window
 
 for_window [title="^floating"] floating enable
-# start htop in a floating window
-bindsym $mod+Ctrl+h exec  $term -e "htop" -T "floating (htop)"
+# start htop
+bindsym $mod+Ctrl+h exec  $term -T floating -e htop
  # start a floating terminal
 bindsym $mod+t exec ~/.bin/drawterm.sh $term
 
@@ -320,8 +320,9 @@ exec --no-startup-id sh -c "sleep 1; redshift-gtk"
 # finds out, if available)
 bar {
   position top
-    status_command i3status | ~/.config/i3status/wraper.py
-    #status_command i3blocks
+    #status_command i3status | ~/.config/i3status/i3status.py
+    #status_command ~/.config/i3status/wraper.sh
+    status_command i3blocks
     tray_output eDP1
 	separator_symbol " "
   font pango:Droid Sans Mono, Icons 10
