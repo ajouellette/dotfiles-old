@@ -41,10 +41,10 @@ signal=11
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
-[memory]
-label=MEM
-separator=false
-interval=30
+#[memory]
+#label=MEM
+#separator=false
+#interval=30
 
 # Disk usage
 #
@@ -52,39 +52,25 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=HOME
-#instance=/mnt/data
+label=
 interval=30
-
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
-color=#00FF00
-interval=10
-separator=false
-
-[wifi]
-interval=10
-separator=false
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-#[cpu_usage]
-#label=CPU
-#interval=10
-#min_width=CPU: 100.00%
-#separator=false
+[cpu_usage]
+label=
+interval=5
+min_width=C 100.0%
+separator=false
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [battery]
-label=⚡
-interval=30
+interval=5
+min_width=B 100% (00:00)
 
 # Temperature
 #
@@ -92,9 +78,9 @@ interval=30
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [temperature]
-label=TEMP
-interval=10
-
+label=🌡
+min_width=T 100dC
+interval=5
 
 # Volume indicator
 #
@@ -102,19 +88,20 @@ interval=10
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=
+label=
+min_width=V MUTE
 instance=Master
 interval=once
 signal=10
 
 # Date and time
+# clock icon \uf017, calendar icon \uf073
 [date]
 label= 
 command=date '+%a %b %d'
 interval=3600
 
 [time]
-# clock icon \uf017, calendar icon \uf073
 label= 
 command=date '+%I:%M %p'
 interval=30
