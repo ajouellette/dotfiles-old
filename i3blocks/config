@@ -28,6 +28,8 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=8
 markup=pango
 
+# most icons used are from font-icons (AUR)
+
 # Key indicators
 #
 # Add the following bindings to i3 config file:
@@ -38,32 +40,32 @@ instance=CAPS
 interval=once
 signal=11
 
-# Memory usage
+# Email
 #
-# The type defaults to "mem" if the instance is not specified.
-#[memory]
-#label=MEM
-#separator=false
-#interval=30
+# Displays number of new emails
+# mail icon \uF3EB
+[email]
+interval=120
 
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
+# disk icon \uF0A0
 [disk]
-label=
+label=
 interval=30
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
+# gauge icon \uF38F
 [cpu_usage]
 label=
 interval=5
 min_width=C 100.0%
-separator=false
 
 # Battery indicator
 #
@@ -77,8 +79,9 @@ min_width=B 100% (00:00)
 # Support multiple chips, though lm-sensors.
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
+# thermometer icon \uF3B6
 [temperature]
-label=🌡
+label=
 min_width=T 100dC
 interval=5
 
@@ -87,6 +90,7 @@ interval=5
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
+# volume icon \uF027
 [volume]
 label=
 min_width=V MUTE
@@ -95,14 +99,14 @@ interval=once
 signal=10
 
 # Date and time
-# clock icon \uf017, calendar icon \uf073
+# clock icon \uF36E, calendar icon \uF073
 [date]
 label= 
 command=date '+%a %b %d'
 interval=3600
 
 [time]
-label= 
+label= 
 command=date '+%I:%M %p'
 interval=30
 

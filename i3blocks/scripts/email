@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+#
+
+new=$(~/.bin/check-email.sh)
+if [ $new -gt 0 ]; then
+    echo " $new"
+    echo 
+    echo "#FFF600"
+fi
