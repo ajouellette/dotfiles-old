@@ -13,12 +13,28 @@ state() {
     amixer get Master | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq
 }
 
+update_bar() {
+    if [ -n $(pgrep i3blocks) ]; then
+        pkill -SIGRTMIN+10 i3blocks
+    fi
+}
+
 test $# -eq 0 && echo "`level` `state`" && exit 0
 
 case $1 in
-    +)      amixer set Master 3%+ >/dev/null;;
-    -)      amixer set Master 3%- >/dev/null;;
-    !)      amixer set Master toggle >/dev/null;;
-    state|level) $1;;
-    *)    amixer set Master $1 >/dev/null;;
+    +)
+        amixer set Master 3%+ >/dev/null
+        update_bar;;
+    -)
+        amixer set Master 3%- >/dev/null
+        update_bar;;
+    !)
+        amixer set Master toggle >/dev/null
+        update_bar;;
+    state|level)
+        $1;;
+    *)
+        amixer set Master $1 >/dev/null
+        update_bar;;
 esac
+
