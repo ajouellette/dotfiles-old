@@ -1,14 +1,9 @@
 # zsh environment
 
-# make path entries unique
-typeset -U path
-# misc scripts
-path=(~/.bin $path)
-# ruby gems
-path=(~/.gem/ruby/2.2.0/bin $path)
+# path variable set in .zshrc
+
 # go path
 export GOPATH="$HOME/.go"
-path=(~/.go/bin $path)
 
 # make Java fonts better
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'

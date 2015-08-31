@@ -38,6 +38,8 @@ setopt auto_cd
 # correct and complete commands
 setopt correct
 setopt completealiases
+# easier than find
+setopt extendedglob
 
 # history
 export HISTFILE=~/.zsh_hist
@@ -68,19 +70,33 @@ setopt noclobber
 # the second time overrides
 setopt hist_allow_clobber
 
-zstyle :compinstall filename '~/.zshrc'
+zstyle :compinstall filename "$ZDOTDIR"/.zshrc
 # menu selection for completions
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu yes select
 zstyle ':completion:*' rehash true
 # show ambiguous character in bold red
 zstyle ':completion:*' show-ambiguity "1;$color[fg-red]"
+
+################
+## Set path   ##
+# this must be in .zshrc instead of .zshenv, due to the
+# way that Arch Linux sets the path in /etc/profile
+###################################################
+# make path entries unique
+typeset -U path
+# misc scripts
+path=(~/.bin $path)
+# ruby gems
+path=(~/.gem/ruby/2.2.0/bin $path)
+# go path
+path=(~/.go/bin $path)
 
 ################
 # prompts
 ################
 setopt prompt_subst
 # git prompt (using script provided with git)
-source ~/.git-prompt.sh
+source "$ZDOTDIR"/.git-prompt.sh
 # show * for unstaged changes, + for staged changes
 export GIT_PS1_SHOWDIRTYSTATE=1
 # show % for untracked files
@@ -107,39 +123,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ##############################
 ####  aliases    #############
 ##############################
-alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 
-if [ -f ~/.zsh_aliases ]; then 
-	. ~/.zsh_aliases
+if [ -f "$ZDOTDIR"/.zsh_aliases ]; then 
+	. "$ZDOTDIR"/.zsh_aliases
 fi
 
 ####################################### 
 # run startup programs
 #######################################
-# set colors for linux console
-if [ "$TERM" = "linux" ]; then
-    /bin/echo -e "
-    \e]P02d2d2d
-    \e]P1f2777a
-    \e]P299cc99
-    \e]P3ffcc66
-    \e]P46699cc
-    \e]P5cc99cc
-    \e]P666cccc
-    \e]P7d3d0c8
-    \e]P8747369
-    \e]P9f2777a
-    \e]PA99cc99
-    \e]PBffcc66
-    \e]PC6699cc
-    \e]PDcc99cc
-    \e]PE66cccc
-    \e]PFf2f0ec
-    "
-    # get rid of artifacts
-    clear
-fi
-
 # system info and logo
 #screenfetch -t
 

@@ -23,4 +23,4 @@ sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
 vim: ~
 vimperator: ~
-zsh: ~
+zsh: ~/.config/zsh
