@@ -8,7 +8,7 @@ export GOPATH="$HOME/.go"
 # make Java fonts better
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
-# variables
+# default programs
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export PAGER=/usr/bin/less
@@ -39,4 +39,12 @@ export QT_STYLE_OVERRIDE=GTK+
 # pacmatic config
 # add these variables to env_keep in /etc/sudoers
 export pacman_program="sudo -u aaron /usr/bin/pacaur"
+
+# make programs use proper config/cache dirs
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+
+export LESSHISTFILE=-
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
 

@@ -76,6 +76,15 @@ alias rfortune='fortune | cowsay -f $(find /usr/share/cows -type f | shuf -n 1)'
 # print top 10 most used commands
 alias top10="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 
+# if mutt is already running, launch read-only
+mut() {
+    if [ -n "$(pgrep mutt)" ]; then
+        mutt -R
+    else
+        mutt
+    fi
+}
+
 #####################################
 ##        Arch aliases             ##
 #####################################

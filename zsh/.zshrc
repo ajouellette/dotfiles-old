@@ -72,10 +72,18 @@ setopt hist_allow_clobber
 
 zstyle :compinstall filename "$ZDOTDIR"/.zshrc
 # menu selection for completions
-zstyle ':completion:*' menu yes select
+zstyle ':completion:*' menu select
+# rehash
 zstyle ':completion:*' rehash true
 # show ambiguous character in bold red
 zstyle ':completion:*' show-ambiguity "1;$color[fg-red]"
+# use completion cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.cache/zsh
+# fuzy matching
+#zstyle ':completion:*' completer _complete _match _approximate
+#zstyle ':completion:*:match:*' original only
+#zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 ################
 ## Set path   ##
@@ -140,3 +148,8 @@ fi
 
 # cow and quotes
 fortune | cowthink -f small -W 50
+
+# GPG agent
+GPG_TTY=$(tty)
+export GPG_TTY
+
