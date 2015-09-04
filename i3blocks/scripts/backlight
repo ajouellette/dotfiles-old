@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# increase/decrease backlight on scroll
+case $BLOCK_BUTTON in
+    4)
+        xbacklight -inc 10
+        pkill -SIGRTMIN+12 i3blocks;;
+    5)
+        xbacklight -dec 10
+        pkill -SIGRTMIN+12 i3blocks;;
+esac
+
+# print out percent backlight
+printf %.0f%% $(xbacklight -get)
+echo
+echo
+

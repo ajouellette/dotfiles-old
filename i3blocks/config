@@ -47,6 +47,14 @@ signal=11
 [email]
 interval=120
 
+# Backlight
+#
+# Display percent backlight use
+[backlight]
+label=
+interval=once
+signal=12
+
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
@@ -92,7 +100,7 @@ interval=5
 # See the script for details.
 # volume icon \uF027
 [volume]
-label=
+label=
 min_width=V MUTE
 instance=Master
 interval=once

@@ -5,7 +5,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 #
-# This config is for the i3-gaps fork of i3 (gihub.com/airblader/i3),
+# This config is for the i3-gaps fork of i3 (github.com/airblader/i3),
 # so some settings will not work on regular i3
 #
 
@@ -25,7 +25,7 @@ set $gapso		12
 set $gapsi       8
 
 # terminal
-set $term urxvt
+set $term termite
 
 ###################
 ## Configuration ##
@@ -74,8 +74,8 @@ bindsym $mod+m			gaps inner all set $gapsi; gaps outer all set $gapso
 # close current window
 bindsym $mod+Shift+q	kill
 # backlght controls
-bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 
-bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 
+bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 && pkill -SIGRTMIN+12 i3blocks
+bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 && pkill -SIGRTMIN+12 i3blocks
 # screen locking
 bindsym $mod+Ctrl+L exec --no-startup-id ~/.bin/i3lock.sh
 # caffeine mode (disables screen blanking and automatic suspend)
@@ -325,7 +325,7 @@ bar {
     status_command i3blocks
     tray_output eDP1
 	separator_symbol " "
-  font pango:Droid Sans Mono, Icons 10
+  font pango:Fira Mono 10
   colors {
     background #282828
     statusline #ebdbb2
