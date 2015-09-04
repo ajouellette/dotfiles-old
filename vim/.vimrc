@@ -41,6 +41,7 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'morhetz/gruvbox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -175,6 +176,8 @@ nnoremap <C-P> :bprev<CR>
 " Treat long lines as break lines (useful when moving around in them)
 nmap j gj
 nmap k gk
+map <Up> gk
+map <Down> gj
 
 " Specify the behavior when switching between buffers 
 try

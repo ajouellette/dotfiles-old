@@ -36,6 +36,7 @@ set ttimeoutlen=100
 
 let mapleader=','
 let g:mapleader=','
+nmap ; :
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
