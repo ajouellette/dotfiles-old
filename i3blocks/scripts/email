@@ -1,10 +1,18 @@
 #!/bin/bash
 #
-#
+# If new emails are present, displays icon with number
 
 new=$(~/.bin/check-email.sh)
+
 if [ $new -gt 0 ]; then
     echo " $new"
     echo 
     echo "#FFF600"
+    
+    # launch mutt if clicked
+    case $BLOCK_BUTTON in
+        1) urxvt -T "floating (mail)" -e mutt;;
+    esac
 fi
+
+
