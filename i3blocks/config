@@ -40,6 +40,13 @@ instance=CAPS
 interval=once
 signal=11
 
+# Updates
+#
+# number of packages that have available updates
+[updates]
+command=echo " $(checkupdates | wc -l)"
+interval=36000
+
 # Email
 #
 # Displays number of new emails
