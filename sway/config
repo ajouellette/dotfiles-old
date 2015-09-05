@@ -106,9 +106,6 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+Ctrl+Left workspace prev
 bindsym $mod+Ctrl+Right workspace next
 
-bindsym $mod+$left workspace prev
-bindsym $mod+$right workspace next
-
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -136,6 +133,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit sway (logs you out of your wayland session)
 bindsym $mod+Shift+e exit
+#bindsym $mod+Shift+e exec ~/.bin/logout-menu.sh sway
 
 
 ####################

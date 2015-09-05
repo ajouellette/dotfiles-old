@@ -22,9 +22,6 @@
 [submodule "vim/.vim/bundle/vim-colors-solarized"]
 	path = vim/.vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/.vim/bundle/papercolor-theme"]
-	path = vim/.vim/bundle/papercolor-theme
-	url = https://github.com/NLKN/papercolor-theme.git
 [submodule "vim/.vim/bundle/Vundle.vim"]
 	path = vim/.vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
@@ -49,3 +46,6 @@
 [submodule "vim/.vim/bundle/base16-vim"]
 	path = vim/.vim/bundle/base16-vim
 	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/.vim/bundle/papercolor-theme"]
+	path = vim/.vim/bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
