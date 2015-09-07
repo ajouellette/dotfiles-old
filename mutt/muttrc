@@ -1,45 +1,42 @@
+# Mutt configuration -----------------------------
+##################################################
 # source encrypted file defining secret variables
 # decrypt using gpg
 source "gpg2 -dq $HOME/.mutt/secrets.gpg |"
 
+# set encoding (use utf8)
 set charset      = "utf-8"
 set send_charset = "utf-8"
 
-# imap (to view mail)
+# IMAP setup (to view mail) ---------------------
+#################################################
 set folder      = imaps://imap.gmail.com/
 set imap_user   = $my_gmail
 set imap_pass   = $my_gmail_pass
 set spoolfile   = +INBOX
 mailboxes       = +INBOX
 set imap_check_subscribed
-
-# Store message headers locally to speed things up.
-# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
-set header_cache     = "~/.mutt/cache/headers"
-# Store messages locally to speed things up, like searching message bodies.
-set message_cachedir = "~/.mutt/cache/bodies"
-set certificate_file = "~/.mutt/certificates"
-
-# Specify where to save and/or look for postponed messages.
+# postponed messages (drafts)
 set postponed = +[Gmail]/Drafts
-# edit postponed messages
-bind index p recall-message
-# postpone a message
-bind compose p postpone-message
-
 # Allow Mutt to open new imap connection automatically.
 unset imap_passive
-
 # Keep IMAP connection alive by polling intermittently (time in seconds).
 set imap_keepalive = 300
-
 # How often to check for new mail (time in seconds).
 set mail_check = 120
 
-# smtp (to send mail)
-#set record = +Sent
+# Paths -----------------------------------------
+#################################################
+set header_cache     = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+set mailcap_path     = "~/.mutt/mailcap"
+set alias_file       = "~/.mutt/aliases"
+
+# SMTP setup (to send mail) ---------------------
+#################################################
+# don't record sent mail, Gmail does this
 unset record
-set move = no
 
 set realname = 'Aaron Ouellette'
 set from     = $my_gmail
@@ -49,20 +46,18 @@ set smtp_url      = smtps://$imap_user:$imap_pass@smtp.gmail.com
 set ssl_force_tls = yes
 set ssl_starttls  = yes
 
+
+# Writing messages ------------------------------
+#################################################
+# editing
+set editor=vim
+set abort_unmodified = no
+
 set forward_format = "Fwd: %s"
 set attribution = "On %d, %n wrote:"
 set forward_quote = yes
 set include = yes
 set fast_reply = yes
-
-# editing
-set editor=vim
-set abort_unmodified = no
-
-# searching (/) and limiting (l)
-bind index N search-opposite
-bind pager N search-opposite
-macro index A "<limit>all\n" "show all messages (undo limit)"
 
 # header options
 set edit_hdrs = yes
@@ -71,24 +66,59 @@ unignore from: to: cc: bcc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: bcc: date: subject:  # and in this order
 
-# pager
+# Pager -----------------------------------------
+#################################################
 set pager_context=5
 set prompt_after = no
 set tilde
+# don't scroll onto next message
 set pager_stop
+# show index lines above pager
 set pager_index_lines = 10
 set menu_scroll = yes
 set smart_wrap = yes
+# don't show wrap markers
 set markers = no
+
+# Keybindings -----------------------------------
+#################################################
+# index keybindings
+bind index gg       first-entry
+bind index G        last-entry
+bind index R        group-reply
+bind index \Cs      sync-mailbox
+bind index <space>  collapse-thread
+# edit postponed messages
+bind index p recall-message
+# Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+# searching (/) and limiting (l)
+bind index N search-opposite
+bind pager N search-opposite
+macro index A "<limit>all\n" "show all messages (undo limit)"
+
+bind index "^" imap-fetch-mail
+
 # pager keybindings
-bind pager <up> previous-line
-bind pager <down> next-line
 bind pager j next-line
 bind pager k previous-line
 bind pager [ previous-unread
 bind pager ] next-unread
 bind pager gg top
 bind pager G bottom
+
+# viewing urls
+macro pager \Cu "|urlview<enter>" "call urlview to open links in browser"
+
+# sidebar keybindings
+# scrolling
+bind index,pager <down>     sidebar-next
+bind index,pager <up>       sidebar-prev
+# open folder
+bind index,pager <right>    sidebar-open
+# toggle sidebar
+macro index <Tab> "<enter-command>toggle sidebar_visible<enter><refresh>"
+macro pager <Tab> "<enter-command>toggle sidebar_visible<enter><redraw-screen>"
 
 # gmail style key bindings
 bind editor <space> noop
@@ -98,52 +128,67 @@ macro index,pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to Drafts"
 
 # index key bindings
-bind index gg       first-entry
-bind index G        last-entry
+macro index,pager D "<save-message>+[Gmail]/Trash<enter>" "move message to trash"
+macro index,pager S "<save-message>+[Gmail]/Spam<enter>" "mark message as spam"
 
-bind index R        group-reply
-bind index <tab>    sync-mailbox
-bind index <space>  collapse-thread
+# postpone a message
+bind compose p postpone-message
 
-# Ctrl-R to mark all as read
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+# view attachments
+bind attach <return> view-mailcap
 
-
-# colors
-source ~/.mutt/colors/solarized-dark256.theme
-#source ~/.mutt/colors/vombatidae.theme
-
-# format
-set date_format = "%b %d %R"
-set index_format = "%4C [%Z] %D %-15.15L  %s"
-# sort by threads
-set sort = threads
-set strict_threads = yes
-set sort_aux = reverse-last-date-received
-set uncollapse_jump
-# status bar
-set status_on_top
-set status_chars = " *%A"
-#set status_format="Mutt: %f [Msgs: %M/%m %l]--[%n new %u unread]%>-%P--"
-set status_format = "───[ Mutt: %f ]───[%r%M messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───%P───"
-
-# aliases
-set alias_file = "~/.mutt/aliases"
+# Aliases ---------------------------------------
+#################################################
 set sort_alias = alias
 source $alias_file
 # use aliases in index view
 set reverse_alias = yes
 
-# signature
+# Signature -------------------------------------
+#################################################
 #set signature = "~/.mutt/signature"
 #set sig_dashes = yes
 
-set wait_key = no
+
+# Setup interface -------------------------------
+#################################################
+set date_format = "%b %d %R"  # (Jun 12 10:23 PM)
+set index_format = "%4C [%Z] %D %-15.15L  %s"
+set status_format = "───[ Mutt: %f ]───[%r%M messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───%P───"
+set status_on_top
+set status_chars = " *%A"
+# sorting by threads, newest on top
+set sort = threads
+set strict_threads = yes
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+
 unset mark_old
-set beep_new
+
+# colors
+#source ~/.mutt/colors/solarized-dark256.theme
+
+# Sidebar patch ---------------------------------
+#################################################
+set sidebar_delim = ' |'
+# closed by default
+set sidebar_visible = no
+set sidebar_width = 24
+color sidebar_new yellow default
+
+# Miscellaneous ---------------------------------
+#################################################
+# don't beep on error, but beep on new
 unset beep
+set beep_new
+# gmail does this
+unset move
+# do what you are told
+set delete
+unset confirmappend
+set quit
+# strip headers and mime stuff before piping
+set pipe_decode
 
-# viewing urls
-set pipe_decode = yes
-macro pager \Cu "|urlview<enter>" "call urlview to open links"
-
+set wait_key = no
+set sleep_time = 0

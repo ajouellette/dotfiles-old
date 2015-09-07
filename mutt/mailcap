@@ -1,0 +1,5 @@
+# use xdg-open
+image; xdg-open %s
+application; xdg-open %s
+text; xdg-open %s
+
