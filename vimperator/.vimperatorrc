@@ -24,6 +24,9 @@ noremap K gt
 " show downloads
 nmap <S-d> :tab downloads<CR>
 
+" select everything
+nnoremap <C-a> <Insert><C-a><Insert>
+
 " disable some keys
 nmap <C-j> <nop>
 nmap <C-k> <nop>
