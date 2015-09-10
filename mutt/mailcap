@@ -1,5 +1,5 @@
-# use xdg-open
-image; xdg-open %s
-application; xdg-open %s
-text; xdg-open %s
+# openning attachments
+image; ristretto %s
+application; exo-open %s
+text; exo-open %s
 
