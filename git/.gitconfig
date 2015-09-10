@@ -1,5 +1,8 @@
+[github]
+    user = aouelete
+
 [user]
-	name = aouelete 
+	name = Aaron Ouellette
 	email = aouellette2016@gmail.com
 
 [credential]
@@ -15,12 +18,13 @@
     autocorrect = 10
 
 [alias]
-    graph = log --graph --color
-    st = status
+    lg = log --graph --color --oneline
+    st = status -sb
     com = commit
     chout = checkout
     unstage = reset HEAD --
-    last = log -1 HEAD
+    last = show -1
+    cached = diff --cached
 
 [sendemail]
     smtpEncryption = tls
@@ -30,3 +34,4 @@
 
 [merge]
     tool = vimdiff2
+
