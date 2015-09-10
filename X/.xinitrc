@@ -21,6 +21,10 @@ xmodmap ~/.Xmodmap &
 xset +dpms &
 xset dpms 0 0 240 &
 
+# set some environment variables
+export PATH="${PATH}:~/.bin"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+
 # i3 is default
 session=${1:-i3}
 
