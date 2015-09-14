@@ -177,6 +177,9 @@ bindsym $mod+v 		split v
 floating_modifier 	$mod
 bindsym $mod+space	focus mode_toggle
 
+# sticky window (newest version of i3)
+bindsym $mod+Shift+s sticky toggle
+
 ## Scratchpad ##
 # make current window scratchpad
 bindsym $mod+Shift+minus move scratchpad
