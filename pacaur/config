@@ -13,6 +13,6 @@
 #clean=true                            # clean up after package install
 #cleandevel=true                       # clean up devel package
 #silent=false                          # disable makepkg output
-#sortby=popularity                     # sort search results by popularity
+sortby=votes                           # sort search results by votes
 sudoloop=true                          # prevent sudo timeout
 
