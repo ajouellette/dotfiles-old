@@ -1,11 +1,16 @@
 ## Configuration file for CAVA. Default values are commented out.  Use either ; or # for commenting.
+# Pulse Audio Setup:
+#   add snd-aloop to /etc/modules-load.d/sound.conf
+#   add options snd-aloop index=2 to /etc/modprobe.d/sound.conf
+#   add load-module combine-sink to /etc/pulse/default.pa
+#   make sure that sound is being outputted to both loopback and output device
 
 [general]
 ; mode = normal # defines smoothing mode, can be normal, scientific or waves.
 ; framerate = 60 # Default: 60. Accepts only non-negative values.
 ; sensitivity = 100 #  is sensitivity %. Accepts only non-negative values.
 ; bars = 0 # defines the amount of bars. 0 sets it to auto (25 + fill up leftover space). 
-sensitivity = 200
+sensitivity = 150
 
 [input]
 ; method = alsa # supported input methods are 'alsa' or 'fifo'.
