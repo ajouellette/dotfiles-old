@@ -43,9 +43,9 @@ signal=11
 # Updates
 #
 # number of packages that have available updates
-[updates]
-command=echo " $(checkupdates | wc -l)"
-interval=36000
+#[updates]
+#command=echo " $(checkupdates | wc -l)"
+#interval=36000
 
 # Email
 #
@@ -53,14 +53,15 @@ interval=36000
 # mail icon \uF3EB
 [email]
 interval=120
+min_width=M 10
 
 # Backlight
 #
 # Display percent backlight use
-[backlight]
-label=
-interval=once
-signal=12
+#[backlight]
+#label=
+#interval=once
+#signal=12
 
 # Disk usage
 #
@@ -68,26 +69,26 @@ signal=12
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 # disk icon \uF0A0
-[disk]
-label=
-interval=30
+#[disk]
+#label=
+#interval=30
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 # gauge icon \uF38F
-[cpu_usage]
-label=
-interval=5
-min_width=C 100.0%
+#[cpu_usage]
+#label=
+#interval=5
+#min_width=C 100.0%
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [battery]
 interval=5
-min_width=B 100% (00:00)
+min_width=BAT 100% (00:00)
 
 # Temperature
 #
@@ -95,10 +96,10 @@ min_width=B 100% (00:00)
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 # thermometer icon \uF3B6
-[temperature]
-label=
-min_width=T 100dC
-interval=5
+#[temperature]
+#label=
+#min_width=T 100dC
+#interval=5
 
 # Volume indicator
 #
@@ -108,7 +109,7 @@ interval=5
 # volume icon \uF027
 [volume]
 label=
-min_width=V MUTE
+min_width=VOL MUTE
 instance=Master
 interval=once
 signal=10

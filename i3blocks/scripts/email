@@ -2,7 +2,7 @@
 #
 # If new emails are present, displays icon with number
 
-new=$(~/.bin/check-email.sh)
+new=$(~/.bin/check-email.sh -q)
 
 if [ $new -gt 0 ]; then
     echo " $new"
