@@ -4,6 +4,9 @@
 # start X on tty1, tty2, or tty3
 # choose session type (simple display manager)
 
+# cow quotes
+fortune | cowthink -W 50
+
 if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
     echo 
     echo "          Choose Session:"
