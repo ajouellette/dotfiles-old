@@ -17,6 +17,9 @@ fi
 # disable caps lock key
 xmodmap ~/.Xmodmap &
 
+# disable clicks and scrolling while typing
+syndaemon -t -k -i 1 &
+
 # enable screen blanking
 xset +dpms &
 xset dpms 0 0 240 &
