@@ -30,6 +30,11 @@ markup=pango
 
 # most icons used are from font-icons (AUR)
 
+# window title
+[window]
+command=xtitle -s
+interval=persist
+
 # Key indicators
 #
 # Add the following bindings to i3 config file:
