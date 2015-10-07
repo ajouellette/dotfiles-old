@@ -21,8 +21,8 @@ set $borders 	3
 set $resize 	5
 
 # gaps (outer and inner)
-set $gapso		12
-set $gapsi       8
+set $gapso		5
+set $gapsi      15
 
 # terminal
 set $term termite
@@ -68,9 +68,9 @@ bindsym $mod+Shift+c	reload
 bindsym Print			exec xfce4-screenshooter
 bindsym Shift+Print     exec --no-startup-id ~/.bin/screenshot.sh
 # disable gaps
-bindsym $mod+n			gaps inner all set 0; gaps outer all set 0
+bindsym $mod+n			gaps inner current set 0; gaps outer current set 0
 # re-enable gaps
-bindsym $mod+m			gaps inner all set $gapsi; gaps outer all set $gapso
+bindsym $mod+m			gaps inner current set $gapsi; gaps outer current set $gapso
 # close current window
 bindsym $mod+Shift+q	kill
 # backlght controls
@@ -114,21 +114,19 @@ bindsym $mod+u          [urgent=latest] focus
 
 ## Workspace keybindings ##
 # workspace names
-set $ws1    "1 "
-set $ws2    "2 "
-set $ws3    "3 "
+set $ws1    "1 "
+set $ws2    "2 "
+set $ws3    "3 "
 set $ws4    "4 "
 set $ws5    "5 "
-set $ws6    "6 "
+set $ws6    "6 "
 set $ws7    "7 "
 set $ws8    "8 "
-set $ws9    "9 "
+set $ws9    "9 "
 
 # switch to workspace
-bindsym $mod+Ctrl+Left  workspace prev
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+j     workspace prev
-bindsym $mod+Ctrl+k     workspace next
+bindsym $mod+comma      workspace prev
+bindsym $mod+period     workspace next
 bindsym $mod+1 			workspace $ws1
 bindsym $mod+2 			workspace $ws2
 bindsym $mod+3 			workspace $ws3
@@ -140,6 +138,8 @@ bindsym $mod+8 			workspace $ws8
 bindsym $mod+9 			workspace $ws9
 
 # move focused container to workspace
+bindsym $mod+Shift+comma  move container to workspace prev
+bindsym $mod+Shift+period move container to workspace next
 bindsym $mod+Shift+1 	move container to workspace $ws1
 bindsym $mod+Shift+2 	move container to workspace $ws2
 bindsym $mod+Shift+3 	move container to workspace $ws3
@@ -193,14 +193,15 @@ bindsym $mod+Return	exec $term
 bindsym $mod+Shift+d exec --no-startup-id ~/.bin/dmenu_run.sh
 # rofi (more features than dmenu)
 bindsym $mod+d exec --no-startup-id rofi -show run -padding 500
-bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500"
+bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500 -i"
 bindsym $mod+w exec --no-startup-id rofi -show window
 
 for_window [title="^floating"] floating enable
 # start htop
 bindsym $mod+Ctrl+h exec  $term -T floating -e htop
  # start a floating terminal
-bindsym $mod+t exec ~/.bin/drawterm.sh xfce4-terminal
+#bindsym $mod+t exec ~/.bin/drawterm.sh xfce4-terminal
+bindsym $mod+t exec xfce4-terminal -T "floating terminal"
 
 ###################################
 ## Specific windows / workspaces ##
@@ -208,11 +209,13 @@ bindsym $mod+t exec ~/.bin/drawterm.sh xfce4-terminal
  # configurations for specific windows
 for_window [class="^Spotify$"] 			floating enable
 for_window [class="^Ristretto$"] 		floating enable
+for_window [class="Gimp"]               floating enable
 for_window [class="^Pavucontrol$"] 		floating enable
 for_window [class="^z80e-sdl$"] 		floating enable
 for_window [class="^Xfce4-appfinder$"] 	floating enable
 for_window [instance="DTA" class="Firefox"]     floating enable
 for_window [title="Add Downloads"]              floating enable
+for_window [title="VirtualBox"]         floating enable
 
 # "web" workspace
 assign [class="Firefox"] 	$ws4
@@ -311,11 +314,11 @@ bindsym $mod+Shift+i mode Ignore
 ##    Startup programs             ####
 #######################################
 # start pulseaudio, compositor, and set wallpaper in ~/.xinitrc
-exec --no-startup-id dropbox
+#exec --no-startup-id dropbox
 exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock -- ~/.bin/i3lock.sh
 exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
-exec --no-startup-id sh -c "sleep 1; redshift-gtk"
+exec --no-startup-id redshift-gtk
 
 
 #########
@@ -324,13 +327,14 @@ exec --no-startup-id sh -c "sleep 1; redshift-gtk"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    strip_workspace_numbers no
   position top
     #status_command i3status | ~/.config/i3status/i3status.py
     #status_command ~/.config/i3status/wraper.sh
     status_command i3blocks
     tray_output eDP1
 	separator_symbol " "
-  font pango:Fira Mono 10
+  font pango:Fira Mono 10.5
   colors {
     background #282828
     statusline #ebdbb2
