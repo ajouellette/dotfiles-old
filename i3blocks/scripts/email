@@ -11,7 +11,7 @@ if [ $new -gt 0 ]; then
     
     # launch mutt if clicked
     case $BLOCK_BUTTON in
-        1) urxvt -T "floating (mail)" -e mutt;;
+        1) termite --title="floating (mail)" -e mutt;;
     esac
 fi
 
