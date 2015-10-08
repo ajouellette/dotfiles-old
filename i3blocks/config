@@ -25,7 +25,7 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=~/.config/i3blocks/scripts/$BLOCK_NAME
-separator_block_width=8
+separator_block_width=10
 markup=pango
 
 # most icons used are from font-icons (AUR)
@@ -93,7 +93,7 @@ min_width=M 10
 # The battery instance defaults to 0.
 [battery]
 interval=5
-min_width=BAT 100% (00:00)
+min_width=B 100%
 
 # Temperature
 #
@@ -114,7 +114,7 @@ min_width=BAT 100% (00:00)
 # volume icon \uF027
 [volume]
 label=
-min_width=VOL MUTE
+min_width=V MUTE
 instance=Master
 interval=once
 signal=10
