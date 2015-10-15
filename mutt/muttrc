@@ -166,7 +166,7 @@ set uncollapse_jump
 unset mark_old
 
 # colors
-#source ~/.mutt/colors/solarized-dark256.theme
+source ~/.mutt/colors/solarized.theme
 
 # Sidebar patch ---------------------------------
 #################################################
