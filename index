@@ -24,3 +24,4 @@ sxhkd: ~/.config/sxhkd
 vim: ~
 vimperator: ~
 zsh: ~/.config/zsh
+zathura: ~/.config/zathura
