@@ -1,13 +1,11 @@
-"
 " ~/.vimrc
 "    vim configuration file
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => Plugins {{{
+"""""""""""""""""""""""""""""
 " Using vundle to manage plugins
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,6 +43,7 @@ Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 filetype plugin indent on
+" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -68,6 +67,7 @@ noremap ; :
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ttyfast
+set lazyredraw
 
 " Set 5 lines to the cursor 
 set so=5
@@ -77,18 +77,22 @@ set wildmenu
 
 " Show line numbers
 set number
+" highlight current line
 set cursorline
+" highlight 80th and 120th column
+set colorcolumn=80
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
-" Searching:
+" Searching
 set ignorecase      " ignore case 
 set smartcase       " be smart
 set hlsearch        " highlight
 " clear highlight
-nmap \q :nohlsearch<CR>
+nmap <leader><space> :nohlsearch<CR>
+
 set incsearch       " incremental search
 set magic           " regular expression magic
 
@@ -102,12 +106,22 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+"""""""""""""""""""""""""""""
+" => Folding {{{
+"""""""""""""""""""""""""""""
+set foldenable
+set foldlevelstart=10  " open most folds by default
+set foldnestmax=10     " 10 nested folds max
+" open/close folds
+nnoremap <space> za
+set foldmethod=indent  " fold based on indent level
 " Add a bit extra margin to the left
 set foldcolumn=1
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => Colors and Fonts {{{
+"""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
 
@@ -117,10 +131,11 @@ colorscheme solarized
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => Backups and undo {{{
+"""""""""""""""""""""""""""""
 " Turn backup off
 set nobackup
 set nowritebackup
@@ -129,6 +144,7 @@ set noswapfile
 " separate undo dir
 set undofile
 set undodir=~/.vim/undo
+" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -155,13 +171,6 @@ set pastetoggle=<F2>
 
 " make vim use X11 clipboard (needs clipboard support)
 set clipboard=unnamedplus
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -191,12 +200,10 @@ autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
-" Remember info about open buffers on close
-set viminfo^=%
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => Status line {{{
+"""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
 
@@ -206,6 +213,7 @@ set noshowmode
 set ruler
 set showtabline=2
 set showcmd
+" }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -224,15 +232,15 @@ autocmd BufWrite *.py,*.coffee :call DeleteTrailingWS()
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
+" TECS files
+autocmd BufNewFile,BufRead *.jack :set filetype=jack
+autocmd BufNewFile,BufRead *.vm   :set filetype=vm
+
 " .md is markdown
 autocmd BufNewFile,BufRead *.md :set filetype=markdown
 
 " mutt files
 autocmd BufNewFile,BufRead *mutt-* :set filetype=mail
-
-" use spell checking for mail
-autocmd FileType mail :setlocal spell spelllang=en_us
-
 
 " command line mode more like a command line
 cnoremap <C-a>  <Home>
@@ -247,17 +255,25 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 cnoremap <C-g>  <C-c>
 
-" Switch between coding styles
-"
 " toggle wrapping
 nmap \w :setlocal wrap!<CR> :setlocal wrap?<CR>
 
+"""""""""""""""""""""""""""""
+" => Spellchecking {{{
+"""""""""""""""""""""""""""""
+set spellsuggest=best,10
+
+" use spell checking for mail and markdown
+autocmd FileType mail     :setlocal spell spelllang=en_us
+autocmd FileType markdown :setlocal spell spelllang=en_us
+
 " toggle spell
 nmap \s :setlocal spell!<CR> :setlocal spell?<CR>
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => Vim-airline {{{
+"""""""""""""""""""""""""""""
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
 
@@ -268,10 +284,11 @@ let g:airline_theme='jellybeans'
 
 " show buffers in tabline
 let g:airline#extensions#tabline#enabled=1
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => You Complete Me settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => You Complete Me {{{
+"""""""""""""""""""""""""""""
 " seed identifier database with keywords from vim syntax files
 let g:ycm_seed_identifiers_with_syntax=1
 
@@ -285,10 +302,11 @@ let g:ycm_confirm_extra_conf=0
 " autoclose preview window
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
+" }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERD Tree
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
+" => NerdTree {{{
+"""""""""""""""""""""""""""""
 map <C-f> :NERDTreeToggle<CR>
 
 " close vim if only nerdtree is left open
@@ -297,5 +315,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " open nerdtree if no file is specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" }}}
 
-
+" vim:foldmethod=marker:foldlevel=0
