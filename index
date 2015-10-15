@@ -12,8 +12,10 @@ i3: ~/.config/i3
 i3blocks: ~/.config/i3blocks
 i3status: ~/.config/i3status
 irssi: ~/.irssi
+mpd: ~/.config/mpd
 mutt: ~/.mutt
 nano: ~
+ncmpcpp: ~/.ncmpcpp
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
 redshift: ~/.config
@@ -21,6 +23,7 @@ root: /root
 scripts: ~/.bin
 sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
+termite: ~/.config/termite
 vim: ~
 vimperator: ~
 zsh: ~/.config/zsh
