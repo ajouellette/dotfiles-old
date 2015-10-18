@@ -282,9 +282,14 @@ aliases = {
   97 = "WINDOW GOTO 97";
   98 = "WINDOW GOTO 98";
   99 = "WINDOW GOTO 99";
+  usercount = "/sbar awl_0 add -before awl_0 -alignment left usercount";
 };
 
 statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $T} is printed only if $T isn't empty.
 
   items = {
 
@@ -294,21 +299,20 @@ statusbar = {
     topicbarstart = "{topicsbstart}";
     topicbarend = "{topicsbend}";
 
-    time = "{sb $Z}";
-    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+    time = "%K {sb %G$Z}%K {sbaway $A} %g$topic%K";
+    user = "{sb {sbnickmode $cumode}{sbmode $usermode}}";
 
-    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
-    window_empty = "{sb $winref{sbservertag $tag}}";
-
-    prompt = "{prompt $[.15]itemname}";
+    window = "";
+    window_empty = "{sb $winref/{sbservertag $tag}}";
+    prompt = "";
     prompt_empty = "{prompt $winname}";
 
     topic = " $topic";
     topic_empty = " Irssi v$J - http://www.irssi.org";
 
     lag = "{sb Lag: $0-}";
-    act = "{sb Act: $0-}";
-    more = "-- more --";
+    act = "{sb $0-}";
+    more = "-- %Ymore%n --";
   };
 
   default = {
@@ -317,7 +321,7 @@ statusbar = {
 
       disabled = "no";
       type = "window";
-      placement = "bottom";
+      placement = "top";
       position = "1";
       visible = "active";
 
@@ -328,10 +332,8 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
-        usercount = { };
       };
     };
 
@@ -349,27 +351,23 @@ statusbar = {
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
+      disabled = "yes";
     };
 
     prompt = {
 
       type = "root";
       placement = "bottom";
-      position = "100";
-      visible = "always";
-
-      items = {
-        prompt = { priority = "-1"; };
-        prompt_empty = { priority = "-1"; };
-        input = { priority = "10"; };
-      };
+      position = "1";
+      visible = "active";
+      items = { input = { }; };
     };
 
     topic = {
 
       type = "root";
       placement = "top";
-      position = "1";
+      position = "2";
       visible = "always";
 
       items = {
@@ -377,6 +375,51 @@ statusbar = {
         topic = { };
         topic_empty = { };
         topicbarend = { priority = "100"; alignment = "right"; };
+      };
+      disabled = "yes";
+    };
+    window_add = { items = { }; disabled = "yes"; };
+    add = { disabled = "yes"; };
+    delete = { disabled = "yes"; };
+    prompt_empty = { position = "0"; disabled = "yes"; };
+    #   rollestatus = { items = {  = { }; }; disabled = "yes"; };
+    #   status = { items = { }; disabled = "yes"; };
+    #   rollstatus = { disabled = "yes"; };
+    asd = {
+      position = "0";
+      placement = "bottom";
+      items = { };
+      disabled = "yes";
+    };
+    topic_empty = { disabled = "yes"; };
+    remove = { items = { }; disabled = "yes"; };
+    channels = { items = { chanact = { }; }; disabled = "yes"; };
+    statusbar = {
+
+      #rollen statusbar:
+
+      items = {
+        #           barstart = "--------------";
+        erotin = {
+          items = { barstart = "asdasd--------------"; };
+          priority = "100";
+          alignment = "left";
+          disabled = "no";
+          placement = "bottom";
+          position = "0";
+        };
+      };
+    };
+
+    "-before" = { disabled = "yes"; };
+    aw1_0 = { position = "0"; disabled = "yes"; };
+    empty = { placement = "bottom"; position = "0"; disabled = "yes"; };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        usercount = { };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
     };
   };
@@ -390,24 +433,37 @@ settings = {
     timestamp_format = "%H:%M:%S";
   };
 
-  "fe-text" = {
-    actlist_sort = "refnum";
-    term_force_colors = "yes";
-    indent = "28";
-  };
+  "fe-text" = { actlist_sort = "refnum"; };
 
   "perl/core/scripts" = {
     nickcolor_colors = "2 3 4 5 6 7 9 10 11 12 13";
-    trackbar_string = "-";
+    trackbar_string = "_";
     trackbar_style = "%r";
+    trackbar_use_status_window = "no";
+    awl_all_disable = "no";
+    awl_automode = "sbar";
+    awl_block = "20";
+    awl_columns = "1";
+    awl_display_key = "%K%0$H $N %N";
+    awl_display_key_active = "%1 %W$C %N";
+    awl_display_nokey = "%K%0$H $N %N";
+    awl_display_nokey_active = "%1 %W$C %N";
+    awl_height_adjust = "1";
+    awl_hide_data = "0";
+    awl_maxlines = "9";
+    awl_placement = "bottom";
+    awl_position = "0";
+    awl_prefer_name = "yes";
+    awl_sbar_maxlength = "yes";
+    awl_separator = "%N %N";
+    awl_sort = "refnum";
   };
 
   "fe-common/core" = {
-    theme = "pastie";
+    theme = "weed";
     timestamps = "yes";
     term_charset = "utf-8";
-    show_nickmode_empty = "yes";
-    hide_server_tags = "yes";
   };
 };
 
+keyboard = ( { key = "meta-t"; id = "command"; data = "trackbar"; } );
