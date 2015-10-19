@@ -25,14 +25,16 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=~/.config/i3blocks/scripts/$BLOCK_NAME
-separator_block_width=10
 markup=pango
+separator_block_width=15
+separator=false
+align=center
 
 # most icons used are from font-icons (AUR)
 
 # window title
 [window]
-command=xtitle -s
+command=xtitle -s | ~/.config/i3blocks/scripts/truncate.py
 interval=persist
 
 # Key indicators
@@ -40,10 +42,10 @@ interval=persist
 # Add the following bindings to i3 config file:
 #
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-[keyindicator]
-instance=CAPS
-interval=once
-signal=11
+#[keyindicator]
+#instance=CAPS
+#interval=once
+#signal=11
 
 # Updates
 #

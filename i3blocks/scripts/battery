@@ -57,15 +57,14 @@ if ($status eq 'Discharging') {
 	if ($percent < 20) {
 		print " $full_text\n";
         print " $short_text\n";
-        print "#FF0000\n";
+        print "#bf616a\n";
 	} elsif ($percent < 40) {
         print " $full_text\n";
         print " $short_text\n";
-		print "#FFAE00\n";
+		print "#ebcb8b\n";
 	} elsif ($percent < 60) {
         print " $full_text\n";
         print " $short_text\n";
-		print "#FFF600\n";
 	} else {
 		print " $full_text\n";
         print " $short_text\n";
