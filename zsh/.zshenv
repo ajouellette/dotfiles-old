@@ -6,7 +6,7 @@
 export GOPATH="$HOME/.go"
 
 # make Java fonts better
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 
 # default programs
 export EDITOR=/usr/bin/vim
@@ -17,6 +17,11 @@ if [ -n "$DISPLAY" ]; then
     export BROWSER=/usr/bin/firefox
 else
     export BROWSER=/usr/bin/elinks
+fi
+
+which exo-open > /dev/null
+if [ $? = 0 ]; then
+    export DE=xfce
 fi
 
 # Coloring less command

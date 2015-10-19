@@ -92,7 +92,7 @@ mut() {
 # enable etckeeper when installing/upgrading
 Pacman() { sudo etckeeper pre-install && sudo pacman "$@" && sudo etckeeper post-install; }
 Pacaur() { sudo etckeeper pre-install && pacaur "$@" && sudo etckeeper post-install; }
-Pacmatic() { sudo etckeeper pre-install && pacmatic "$@" && sudo etckeeper post-install; }
+Pacmatic() { sudo etckeeper pre-install && sudo pacmatic "$@" && sudo etckeeper post-install; }
 
 alias install='Pacaur -S --needed'
 alias update='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && sudo reflector -l 30 -c "United States" -c Canada -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && Pacmatic -Syyu'

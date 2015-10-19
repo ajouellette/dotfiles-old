@@ -113,11 +113,42 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 # color symbols
 export GIT_PS1_SHOWCOLORHINTS=1
 # using precmd to increase speed
-precmd() { __git_ps1 "%B%(?..[%?] )%{$fg[yellow]%}%n%b%{$reset_color%} (%{$fg[green]%}%~%{$reset_color%})" "> " " %s " }
+prompt() { __git_ps1 "%B%(?..[%?] )%{$fg[yellow]%}%n%b%{$reset_color%} (%{$fg[green]%}%~%{$reset_color%})" "> " " %s " }
 
 # wrap colors in %{ and %} to avoid text garbling
 #export PS1='%B%(?..[%?] )%{$fg[yellow]%}%n%b%{$reset_color%} (%{$fg[green]%}%~%{$reset_color%})${vcs_info_msg_0_}> '
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color (ynae) "
+
+# dynamic titles
+
+# Write some info to terminal title.
+# This is seen when the shell prompts for input.
+function title-precmd {
+    case $TERM in
+        *xterm* | rxvt*)
+            print -Pn "\e]0;zsh (%~)\a";;
+        *)
+            return;;
+    esac
+}
+# Write command and args to terminal title.
+# This is seen while the shell waits for a command to complete.
+function title-preexec {
+    case $TERM in
+        *xterm* | rxvt*)
+            printf "\033]0;%s\a" "zsh: $1";;
+        *)
+            return;;
+    esac
+}
+
+precmd() {
+    prompt
+    title-precmd
+}
+preexec() {
+    title-preexec "$1"
+}
 
 ##########################
 # syntax highlighting
@@ -142,8 +173,11 @@ fi
 # system info and logo
 #screenfetch -t
 
-# dircolors
+# dircolors (for termite)
 eval $(dircolors ~/.dircolors)
+# base16 256 terminal colors
+BASE16_SHELL=~/.config/base16-shell/base16-ocean.dark.sh
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # cow and quotes
 #fortune | cowthink -f small -W 50
