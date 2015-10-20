@@ -1,6 +1,16 @@
 # dotfiles
 Configuration files for my Arch Linux system
 
+### Screenshots
+Base16-ocean theme:
+
+#### i3
+![screenshot](screenshots/scrot-i3.png)
+#### vim
+![vim](screenshots/scrot-vim.png)
+#### irssi
+![irssi](screenshots/scrot-irssi.png)
+
 ### Installation
 
 ```
