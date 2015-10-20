@@ -25,23 +25,23 @@ set $gapso		5
 set $gapsi      15
 
 # terminal
-set $term termite
+set $term xfce4-terminal
 
 ###################
 ## Configuration ##
 ###################
-focus_follows_mouse			false
-popup_during_fullscreen		smart
-workspace_layout			default
+focus_follows_mouse			    false
+popup_during_fullscreen		    smart
+workspace_layout			    default
 # go back to prev workspace if key pressed twice
-workspace_auto_back_and_forth true
+workspace_auto_back_and_forth   true
 
 ################
 ## Appearance ##
 ################
 # Font for window titles and bar
 # (unless a different font is specified in bar{} )
-font 	pango: Droid Sans Mono, Icons 10
+font  pango: Fira Mono 10.5
 
 # window borders
 hide_edge_borders	none
@@ -59,14 +59,14 @@ gaps outer	$gapso
 #################
 ## System ##
 # logout
-bindsym $mod+Shift+e exec --no-startup-id ~/.bin/logout-menu.sh
+bindsym $mod+Shift+e exec --no-startup-id ~/.local/bin/logout-menu.sh
 # restart i3
 bindsym $mod+Shift+r	restart
 # reload config file
 bindsym $mod+Shift+c	reload
 # screenshot
 bindsym Print			exec xfce4-screenshooter
-bindsym Shift+Print     exec --no-startup-id ~/.bin/screenshot.sh
+#bindsym Shift+Print     exec --no-startup-id ~/.local/bin/screenshot.sh
 # disable gaps
 bindsym $mod+n			gaps inner current set 0; gaps outer current set 0
 # re-enable gaps
@@ -77,21 +77,21 @@ bindsym $mod+Shift+q	kill
 bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 && pkill -SIGRTMIN+12 i3blocks
 bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 && pkill -SIGRTMIN+12 i3blocks
 # screen locking
-bindsym $mod+Ctrl+L exec --no-startup-id ~/.bin/i3lock.sh
+bindsym $mod+Ctrl+L exec --no-startup-id ~/.local/bin/i3lock.sh
 # caffeine mode (disables screen blanking and automatic suspend)
-bindsym F7 exec ~/.bin/caffeine.sh
+bindsym F7 exec ~/.local/bin/caffeine.sh
 
 ## Audio ##
 # volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume.sh +
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume.sh -
-bindsym XF86AudioMute exec --no-startup-id        ~/.bin/volume.sh !
+bindsym XF86AudioRaiseVolume exec --no-startup-id   ~/.local/bin/volume.sh +
+bindsym XF86AudioLowerVolume exec --no-startup-id   ~/.local/bin/volume.sh -
+bindsym XF86AudioMute exec --no-startup-id          ~/.local/bin/volume.sh !
 # microphone
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+bindsym XF86AudioMicMute exec --no-startup-id       amixer set Capture toggle
 # music
-bindsym $mod+bracketleft exec --no-startup-id   playerctl previous
-bindsym $mod+bracketright exec --no-startup-id  playerctl next
-bindsym $mod+backslash exec --no-startup-id     playerctl play-pause
+bindsym $mod+bracketleft exec --no-startup-id       playerctl previous
+bindsym $mod+bracketright exec --no-startup-id      playerctl next
+bindsym $mod+backslash exec --no-startup-id         playerctl play-pause
 
 ## Focus keybindings ##
 # focus parent
@@ -120,7 +120,7 @@ set $ws3    "3 "
 set $ws4    "4 "
 set $ws5    "5 "
 set $ws6    "6 "
-set $ws7    "7 "
+set $ws7    "7 "
 set $ws8    "8 "
 set $ws9    "9 "
 
@@ -165,11 +165,11 @@ bindsym $mod+Shift+Right 		move right
 
 ## Layout ##
 # layout mode
-#bindsym $mod+s 		 layout stacking
-#bindsym $mod+w 		 layout tabbed
-bindsym $mod+e 			 layout toggle split
-bindsym $mod+f			 fullscreen
-bindsym $mod+Shift+space floating toggle
+#bindsym $mod+s             layout stacking
+bindsym $mod+Shift+t        layout tabbed
+bindsym $mod+e 			    layout toggle split
+bindsym $mod+f			    fullscreen
+bindsym $mod+Shift+space    floating toggle
 # splitting mode
 bindsym $mod+g 		split h
 bindsym $mod+v 		split v
@@ -190,7 +190,7 @@ bindsym $mod+minus scratchpad show
 # start terminal
 bindsym $mod+Return	exec $term
 # dmenu
-bindsym $mod+Shift+d exec --no-startup-id ~/.bin/dmenu_run.sh
+bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/dmenu_run.sh
 # rofi (more features than dmenu)
 bindsym $mod+d exec --no-startup-id rofi -show run -padding 500
 bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -padding 500 -i"
@@ -218,16 +218,24 @@ for_window [title="Add Downloads"]              floating enable
 for_window [title="VirtualBox"]         floating enable
 
 # "web" workspace
-assign [class="Firefox"] 	$ws4
-assign [class="Chromium"]	$ws4
-workspace $ws4				gaps outer 0
-workspace $ws4				gaps inner 0
+assign [class="Firefox"] 	    $ws4
+assign [class="Chromium"]	    $ws4
+workspace $ws4				    gaps outer 0
+workspace $ws4				    gaps inner 0
 
 # "music" workspace
-assign [class="Spotify"]	$ws5
+assign [class="Spotify"]	    $ws5
+assign [class="spotify"]        $ws5
+assign [class="Rhythmbox"]      $ws5
+
+# Documents workspace
+assign [class="Zathura"]        $ws3
+for_window [class="Zathura"]    layout tabbed
+workspace $ws3                  gaps outer 20
+workspace $ws3                  gaps inner 0
 
 # "mail" workspace
-assign [class="Claws-mail"] $ws9
+assign [class="Claws-mail"]     $ws6
 
 
 ###########
@@ -316,7 +324,7 @@ bindsym $mod+Shift+i mode Ignore
 # start pulseaudio, compositor, and set wallpaper in ~/.xinitrc
 #exec --no-startup-id dropbox
 exec --no-startup-id nm-applet
-exec --no-startup-id xss-lock -- ~/.bin/i3lock.sh
+exec --no-startup-id xss-lock -- ~/.local/bin/i3lock.sh
 exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
 exec --no-startup-id redshift-gtk
 
@@ -336,17 +344,19 @@ bar {
 	separator_symbol " "
   font pango:Fira Mono 10.5
   colors {
-    background #282828
-    statusline #ebdbb2
+    background #343d46
+    statusline #eff1f5
     separator #323232
-    focused_workspace #676d3d #676d3d #ebdbb2
-    active_workspace #323232 #5f676a #ebdbb2
-    inactive_workspace #323232 #323232 #888888
-    urgent_workspace #333333 #900000 #ffffff
+    focused_workspace #a3be8c #65737e #eff1f5
+    active_workspace #4f5b66 #5f676a #eff1f5
+    inactive_workspace #4f5b66 #4f5b66 #a7adba
+    urgent_workspace #bf616a #65737e #eff1f5
   }
 }
 
-client.focused #676d3d #676d3d #ebdbb2 #676d3d
-client.focused_inactive #323232 #333333 #ebdbb2 #323232
-client.unfocused #323232 #323232 #ebdbb2 #323232
-client.urgent #383a3b #383a3b #ee0000 #383a3b
+# window colors
+#                           border background text indicator
+client.focused              #96b5b4 #96b5b4 #ebdbb2 #96b5b4
+client.focused_inactive     #65737e #65737e #ebdbb2 #65737e
+client.unfocused            #65737e #65737e #ebdbb2 #65737e
+client.urgent               #bf616a #bf616a #ee0000 #bf616a
