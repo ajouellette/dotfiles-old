@@ -91,8 +91,7 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 ###################################################
 # make path entries unique
 typeset -U path
-# misc scripts
-path=(~/.bin $path)
+path=(~/.local/bin $path)
 # ruby gems
 path=(~/.gem/ruby/2.2.0/bin $path)
 # go path

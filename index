@@ -20,7 +20,7 @@ pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
 redshift: ~/.config
 root: /root
-scripts: ~/.bin
+scripts: ~/.local/bin
 sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
 termite: ~/.config/termite
