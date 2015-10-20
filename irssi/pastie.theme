@@ -285,7 +285,7 @@ formats = {
     #nick_changed = "%K{channick $[-13]0} %G->%n {channick $1}";
     your_nick_changed = "       %Kyou%G >   %n{channick $1}";
 
-    pubmsg = "{pubmsgnick $2 {pubnick \00313$0}}$1";
+    pubmsg = "{pubmsgnick $2 {pubnick \00306$0}}$1";
 
     own_msg = "{ownmsgnick $2 {ownnick $[-11]0}}$1";
     own_msg_channel = "{ownmsgnick $3 {ownnick $[-11]0}{msgchannel $1}}$2";

@@ -125,7 +125,9 @@ channels = (
     name = "#archlinux-offtopic";
     chatnet = "freenode";
     autojoin = "yes";
-  }
+  },
+  { name = "#knightos"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#sway"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -417,7 +419,6 @@ statusbar = {
     awl_0 = {
       items = {
         barstart = { priority = "100"; };
-        usercount = { };
         awl_0 = { };
         barend = { priority = "100"; alignment = "right"; };
       };
