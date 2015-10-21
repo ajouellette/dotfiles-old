@@ -14,23 +14,23 @@ help() {
 
 toggle() {
     playerctl play-pause &> /dev/null
-    status1="$?"
-    mpc toggle &> /dev/null
-    status2="$?"
-    if [[ $status1 != 0 && $status2 != 0 ]]; then
-        echo "Could not find any playing media players"
-        exit 1
+    if [[ "$?" != 0 ]]; then
+        mpc toggle &> /dev/null
+        if [[ "$?" != 0 ]]; then
+            echo "Could not find any playing media players"
+            exit 1
+        fi
     fi
 }
 
 next-prev() {
     playerctl $1 &> /dev/null
-    status1="$?"
-    mpc $1 &> /dev/null
-    status2="$?"
-    if [[ $status1 != 0 && $status2 != 0 ]]; then
-        echo "Could not find any playing media players"
-        exit 1
+    if [[ "$?" != 0 ]]; then
+        mpc $1 &> /dev/null
+        if [[ "$?" != 0 ]]; then
+            echo "Could not find any playing media players"
+            exit 1
+        fi
     fi
 }
 
