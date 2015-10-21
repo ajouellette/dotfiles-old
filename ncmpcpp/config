@@ -1,14 +1,13 @@
 ##### directories ######
 ncmpcpp_directory = ~/.ncmpcpp
 lyrics_directory = ~/.lyrics
+mpd_music_dir = ~/Music
 
 ##### connection settings #####
 #
 mpd_host = localhost
 mpd_port = 6600
 mpd_connection_timeout = 5
-#
-mpd_music_dir = ~/Music
 #
 #
 mpd_crossfade_time = 5
@@ -18,11 +17,7 @@ mpd_crossfade_time = 5
 visualizer_fifo_path = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
 visualizer_in_stereo = yes
-#
-## Multiply received samples by given value. Very
-## useful for proper visualization of quiet music.
-##
-#visualizer_sample_multiplier = 1
+visualizer_sample_multiplier = 1
 #
 ## Note: Below parameter defines how often ncmpcpp
 ## has to "synchronize" visualizer and audio outputs.
@@ -35,14 +30,10 @@ visualizer_sync_interval = 30
 ## Available values: spectrum, wave.
 visualizer_type = spectrum
 visualizer_look = ●▮
-#
+
 ##### system encoding #####
-##
-## ncmpcpp should detect your charset encoding
-## but if it failed to do so, you can specify
-## charset encoding you are using here.
 #
-#system_encoding = ""
+system_encoding = "utf-8"
 #
 ##### delays #####
 ## Time of inactivity (in seconds) after playlist
@@ -136,13 +127,13 @@ browser_sort_format = {%a - }{%t}|{%f} {(%l)}
 #
 ## Note: below variables also support text attributes listed above.
 #
-#now_playing_prefix = $b
-#now_playing_suffix = $/b
+now_playing_prefix = "$b$6$9 "
+now_playing_suffix = "$/b"
 #
-#browser_playlist_prefix = "$2playlist$9 "
+browser_playlist_prefix = "$2playlist$9 "
 #
-#selected_item_prefix = $6
-#selected_item_suffix = $9
+selected_item_prefix = $6
+selected_item_suffix = $9
 #
 #modified_item_prefix = $3> $9
 #
