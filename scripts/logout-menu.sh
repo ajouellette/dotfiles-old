@@ -2,7 +2,7 @@
 # a logout menu using rofi
 
 wm=${1:-i3}
-CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6 -width 100 -padding 500`
+CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6`
 
 case $wm in
     i3)
