@@ -1,7 +1,8 @@
 ! ----------------------------------------------------
 ! --> Colors
 ! ----------------------------------------------------
-#include ".colors/solarized-dark"
+!#include ".colors/solarized/solarized-dark"
+#include ".colors/base16/base16-ocean.dark.256.xresources"
 
 ! ----------------------------------------------------
 ! --> fonts
@@ -16,14 +17,16 @@ Xft.lcdfilter: lcddefault
 ! ---------------------------------------------------
 ! --> Rofi
 ! ---------------------------------------------------
-rofi.opacity: 95
+rofi.opacity: 90
 rofi.lines: 5
 rofi.terminal: xfce4-terminal
 rofi.font: Fira Mono Medium 14
-rofi.padding: 400
+rofi.padding: 10
 rofi.bw: 0
-rofi.width: 100
+rofi.width: 50
 rofi.levenshtein-sort: false
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
 
 ! ----------------------------------------------------
 ! --> Urxvt terminal
@@ -37,16 +40,16 @@ URxvt*transparent: false
 #define fontsize 10
 #define antial true
 
-#define dejavu    xft:DejaVu Sans Mono:size=10:antialias=true
-#define dejaPower xft:DejaVu Sans Mono for Powerline:size=10:antialias=true
+#define dejavu    xft:DejaVu Sans Mono:size=10:antialias=antial
+#define dejaPower xft:DejaVu Sans Mono for Powerline:size=10:antialias=antial
 
-#define droid xft:Droid Sans Mono:size=fontsize:antialias=antial
+#define droid    xft:Droid Sans Mono:size=fontsize:antialias=antial
 #define drdPower xft:Droid Sans Mono for Powerline:size=fontsize:antialias=antial
 
-URxvt*font:           dejavu,dejaPower,droid
-URxvt*boldFont:       dejavu:bold,dejaPower:bold,droid:bold
-URxvt*italicFont:     dejavu:italic,dejaPower:italic,droid:italic
-URxvt*bolditalicFont: dejavu:bold:italic,dejaPower:bold:italic,droid:bold:italic
+URxvt*font:           dejavu,devaPower
+URxvt*boldFont:       dejavu:Bold,dejaPower
+URxvt*italicFont:     dejavu:Italic,dejaPower
+URxvt*bolditalicFont: dejavu:Bold:Italic,dejaPower
 ! fix letter spacing issue
 URxvt*letterSpace: -1
 
