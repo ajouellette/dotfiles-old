@@ -69,7 +69,10 @@ noremap ; :
 set ttyfast
 set lazyredraw
 
-" Set 5 lines to the cursor 
+set listchars=tab:⋮\ ,eol:¬,trail:■,extends:»,precedes:«
+set list
+
+" Set 5 lines to the cursor
 set so=5
 
 " Turn on the Wild menu
@@ -97,7 +100,7 @@ set incsearch       " incremental search
 set magic           " regular expression magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -105,6 +108,7 @@ set mat=2
 set noerrorbells
 set novisualbell
 set t_vb=
+
 
 """""""""""""""""""""""""""""
 " => Folding {{{
@@ -116,7 +120,7 @@ set foldnestmax=10     " 10 nested folds max
 nnoremap <space> za
 set foldmethod=indent  " fold based on indent level
 " Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=0
 " }}}
 
 """""""""""""""""""""""""""""
@@ -125,9 +129,10 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
+let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme solarized
+colorscheme base16-ocean
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -236,6 +241,8 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 autocmd BufNewFile,BufRead *.jack :set filetype=jack
 autocmd BufNewFile,BufRead *.vm   :set filetype=vm
 
+autocmd BufNewFile,BufRead *.z80 :set filetype=z80
+
 " .md is markdown
 autocmd BufNewFile,BufRead *.md :set filetype=markdown
 
@@ -280,7 +287,7 @@ let g:airline_detect_paste=1
 " install powerline fonts to use special symbols
 let g:airline_powerline_fonts=1
 
-let g:airline_theme='jellybeans'
+"let g:airline_theme='jellybeans'
 
 " show buffers in tabline
 let g:airline#extensions#tabline#enabled=1
@@ -316,5 +323,17 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
+
+
+"""""""""""""""""""""""""""""
+" => GUI options {{{
+"""""""""""""""""""""""""""""
+if has("gui_running")
+    set guifont=FiraMono\ 10
+    set background=light
+    colorscheme PaperColor
+    set lines=43 columns=100
+endif
+"}}}
 
 " vim:foldmethod=marker:foldlevel=0
