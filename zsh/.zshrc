@@ -162,11 +162,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ##############################
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 
-if [ -f "$ZDOTDIR"/.zsh_aliases ]; then 
+if [ -f "$ZDOTDIR"/.zsh_aliases ]; then
 	. "$ZDOTDIR"/.zsh_aliases
 fi
 
-####################################### 
+#######################################
 # run startup programs
 #######################################
 # system info and logo

@@ -1,6 +1,6 @@
 #
 # ~/.zsh_aliases
-#	
+#
 ################################
 #### Alias definitions.   ######
 ################################
@@ -95,14 +95,29 @@ Pacaur() { sudo etckeeper pre-install && pacaur "$@" && sudo etckeeper post-inst
 Pacmatic() { sudo etckeeper pre-install && sudo pacmatic "$@" && sudo etckeeper post-install; }
 
 alias install='Pacaur -S --needed'
-alias update='sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && sudo reflector -l 30 -c "United States" -c Canada -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && Pacmatic -Syyu'
-alias upgrade='Pacmatic -Syu'
 alias search="pacman -Ss"
 alias searchaur="pacaur -s"
+
+update() {
+    sudo etckeeper pre-install && \
+    sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
+    sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
+    sudo pacmatic -Syuu && \
+    pacaur -u && \
+    sudo etckeeper post-install
+}
+
+upgrade() {
+    sudo etckeeper pre-install && \
+    sudo pacmatic -Syu && \
+    pacaur -u && \
+    sudo etckeeper post-install
+}
+
 pacinfo() {
     pacman -Qi "$1" &> /dev/null
     if [ "$?" -eq 1 ]
-    then 
+    then
         pacaur -Si "$1"
     else
         pacman -Qi "$1"
@@ -142,6 +157,6 @@ alias hibernate='systemctl hibernate'
 alias journal='journalctl -r'
 # find broken links
 broken-links() {
-	 sudo find . -type l -! -exec test -e {} \; -print
+    sudo find . -type l -! -exec test -e {} \; -print
 }
 

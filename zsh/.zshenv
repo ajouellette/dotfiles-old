@@ -43,7 +43,7 @@ export QT_STYLE_OVERRIDE=GTK+
 
 # pacmatic config
 # add these variables to env_keep in /etc/sudoers
-export pacman_program="sudo -u aaron /usr/bin/pacaur"
+#export pacman_program="sudo -u aaron /usr/bin/pacaur"
 
 # make programs use proper config/cache dirs
 export XDG_CONFIG_HOME="$HOME"/.config
