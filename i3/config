@@ -13,15 +13,15 @@
 ## Variables ##
 ###############
 # set mod key to super or windows key
-set $mod 	Mod4
+set $mod        Mod4
 
-# window borders 
-set $borders 	3
+# window borders
+set $borders    3
 # number of pixels to resize windows by
-set $resize 	5
+set $resize     5
 
 # gaps (outer and inner)
-set $gapso		5
+set $gapso      5
 set $gapsi      15
 
 # terminal
@@ -30,9 +30,9 @@ set $term xfce4-terminal
 ###################
 ## Configuration ##
 ###################
-focus_follows_mouse			    false
-popup_during_fullscreen		    smart
-workspace_layout			    default
+focus_follows_mouse             false
+popup_during_fullscreen         smart
+workspace_layout                default
 # go back to prev workspace if key pressed twice
 workspace_auto_back_and_forth   true
 
@@ -44,14 +44,14 @@ workspace_auto_back_and_forth   true
 font  pango: Fira Mono 10.5
 
 # window borders
-hide_edge_borders	none
-new_float 			pixel $borders
-new_window			pixel $borders
-smart_borders		no_gaps
+hide_edge_borders   none
+new_float           pixel $borders
+new_window          pixel $borders
+smart_borders       no_gaps
 
 # gaps
-gaps inner	$gapsi
-gaps outer	$gapso
+gaps inner   $gapsi
+gaps outer   $gapso
 
 
 #################
@@ -60,22 +60,22 @@ gaps outer	$gapso
 ## System ##
 # logout / restart / reload
 bindsym $mod+Shift+e    exec --no-startup-id ~/.local/bin/logout-menu.sh
-bindsym $mod+Shift+r	restart
-bindsym $mod+Shift+c	reload
+bindsym $mod+Shift+r    restart
+bindsym $mod+Shift+c    reload
 # screenshot
-bindsym Print			exec xfce4-screenshooter
+bindsym Print           exec xfce4-screenshooter
 # disable / enable gaps
-bindsym $mod+n			gaps inner current set 0; gaps outer current set 0
-bindsym $mod+m			gaps inner current set $gapsi; gaps outer current set $gapso
+bindsym $mod+n          gaps inner current set 0; gaps outer current set 0
+bindsym $mod+m          gaps inner current set $gapsi; gaps outer current set $gapso
 # close current window
-bindsym $mod+Shift+q	kill
+bindsym $mod+Shift+q    kill
 # backlght controls
-bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight -inc 10 && pkill -SIGRTMIN+12 i3blocks
-bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -dec 10 && pkill -SIGRTMIN+12 i3blocks
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10 && pkill -SIGRTMIN+12 i3blocks
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10 && pkill -SIGRTMIN+12 i3blocks
 # screen locking
 bindsym $mod+Ctrl+L exec --no-startup-id ~/.local/bin/i3lock.sh
 # caffeine mode (disables screen blanking and automatic suspend)
-bindsym F7 exec ~/.local/bin/caffeine.sh
+bindsym $mod+F7 exec ~/.local/bin/caffeine.sh
 
 ## Audio ##
 # volume controls
@@ -190,6 +190,7 @@ bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/dmenu_run.sh
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -i"
 bindsym $mod+w exec --no-startup-id rofi -show window
+bindsym $mod+F10 exec xfce4-appfinder
 
 for_window [title="^floating"] floating enable
 # start htop
@@ -329,8 +330,7 @@ exec --no-startup-id redshift-gtk
 #########
 ## Bar ##
 #########
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar
 bar {
     strip_workspace_numbers no
   position top
@@ -338,7 +338,7 @@ bar {
     #status_command ~/.config/i3status/wraper.sh
     status_command i3blocks
     tray_output eDP1
-	separator_symbol " "
+    separator_symbol " "
   font pango:Fira Mono 10.5
   colors {
     background #343d46
