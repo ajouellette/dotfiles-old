@@ -49,3 +49,6 @@
 [submodule "vim/.vim/bundle/papercolor-theme"]
 	path = vim/.vim/bundle/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "vim/.vim/bundle/goyo.vim"]
+	path = vim/.vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git

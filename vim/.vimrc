@@ -27,6 +27,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 " file browser
 Plugin 'scrooloose/nerdtree'
+" distraction free writing
+Plugin 'junegunn/goyo.vim'
 " highlight color codes with proper colors
 Plugin 'Colorizer'
 " fancy status line
@@ -79,7 +81,8 @@ set so=5
 set wildmenu
 
 " Show line numbers
-set number
+set relativenumber
+
 " highlight current line
 set cursorline
 " highlight 80th and 120th column
@@ -90,11 +93,14 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Searching
-set ignorecase      " ignore case 
+set ignorecase      " ignore case
 set smartcase       " be smart
 set hlsearch        " highlight
 " clear highlight
 nmap <leader><space> :nohlsearch<CR>
+
+" use global substitutions by default
+set gdefault
 
 set incsearch       " incremental search
 set magic           " regular expression magic
@@ -127,7 +133,7 @@ set foldcolumn=0
 " => Colors and Fonts {{{
 """""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 let base16colorspace=256
 set t_Co=256
@@ -162,20 +168,13 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" not for kernel patches!
-autocmd BufNewFile,BufRead *.patch set noexpandtab
-autocmd BufNewFile,BufRead *.patch set shiftwidth=8
-autocmd BufNewFile,BufRead *.patch set tabstop=8
+" indenting
+set autoindent
+set smartindent
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+" wrap lines
+set wrap
 
-" use pastetoggle to fix indenting when pasting
-set pastetoggle=<F2>
-
-" make vim use X11 clipboard (needs clipboard support)
-set clipboard=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -193,12 +192,11 @@ nmap k gk
 map <Up> gk
 map <Down> gj
 
-" Specify the behavior when switching between buffers 
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
+" show tabline only if there are at least two tabs
+set showtabline=1
+
+" Specify the behavior when switching between buffers
+set switchbuf=useopen,usetab,newtab
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -237,23 +235,11 @@ autocmd BufWrite *.py,*.coffee :call DeleteTrailingWS()
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" TECS files
-autocmd BufNewFile,BufRead *.jack :set filetype=jack
-autocmd BufNewFile,BufRead *.vm   :set filetype=vm
-
-autocmd BufNewFile,BufRead *.z80 :set filetype=z80
-
-" .md is markdown
-autocmd BufNewFile,BufRead *.md :set filetype=markdown
-
-" mutt files
-autocmd BufNewFile,BufRead *mutt-* :set filetype=mail
+" make vim use X11 clipboard (needs clipboard support)
+set clipboard=unnamedplus
 
 " command line mode more like a command line
 cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Delete>
 cnoremap <M-b>  <S-Left>
 cnoremap <M-f>  <S-Right>
 cnoremap <M-d>  <S-right><Delete>
@@ -264,6 +250,27 @@ cnoremap <C-g>  <C-c>
 
 " toggle wrapping
 nmap \w :setlocal wrap!<CR> :setlocal wrap?<CR>
+
+"""""""""""""""""""""""""""""
+" => Filetypes {{{
+"""""""""""""""""""""""""""""
+" TECS files
+autocmd BufNewFile,BufRead *.jack :set filetype=jack
+autocmd BufNewFile,BufRead *.vm   :set filetype=vm
+
+" z80 assembly
+autocmd BufNewFile,BufRead *.z80 :set filetype=z80
+
+" markdown
+autocmd BufNewFile,BufRead *.md :setlocal filetype=markdown nolist
+
+" text files
+autocmd BufNewFile,BufRead *.txt :setlocal nolist colorcolumn=
+
+" mutt files
+autocmd BufNewFile,BufRead *mutt-* :setlocal filetype=mail nonumber norelativenumber nolist colorcolumn=
+
+"}}}
 
 """""""""""""""""""""""""""""
 " => Spellchecking {{{
@@ -291,6 +298,11 @@ let g:airline_powerline_fonts=1
 
 " show buffers in tabline
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_min_count=2
+
+" word count
+let g:airline#extension#wordcount#enabled=1
+let g:airline#extension#wordcount#filetypes="\vhelp|markdown|rst|org|text|mail"
 " }}}
 
 """""""""""""""""""""""""""""
@@ -324,6 +336,13 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " }}}
 
+"""""""""""""""""""""""""""""
+" => Goyo {{{
+"""""""""""""""""""""""""""""
+let g:goyo_width=82
+let g:goyo_height=90
+
+"}}}
 
 """""""""""""""""""""""""""""
 " => GUI options {{{
@@ -333,6 +352,8 @@ if has("gui_running")
     set background=light
     colorscheme PaperColor
     set lines=43 columns=100
+    " no blinking cursor
+    set gcr=n:blinkon0
 endif
 "}}}
 
