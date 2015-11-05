@@ -137,6 +137,11 @@ bind compose p postpone-message
 # view attachments
 bind attach <return> view-mailcap
 
+# gmail contacts
+set query_command = "goobook query %s"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
 # Aliases ---------------------------------------
 #################################################
 set sort_alias = alias
