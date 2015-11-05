@@ -15,14 +15,18 @@ fi
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # disable caps lock key
-xmodmap ~/.Xmodmap &
+#xmodmap ~/.Xmodmap &
+
+# make Caps Lock be control when held and Esc when tapped
+setxkbmap -option 'caps:ctrl_modifier'
+xcape -e 'Caps_Lock=Escape'
 
 # disable clicks and scrolling while typing
 syndaemon -t -k -i 1 &
 
 # enable screen blanking
 xset +dpms &
-xset dpms 0 0 240 &
+xset dpms 0 0 180 &
 
 # set some environment variables
 export PATH="${PATH}:~/.bin"
@@ -31,8 +35,8 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 # i3 is default
 session=${1:-i3}
 
-case $session in 
-    bspwm) 
+case $session in
+    bspwm)
         source ~/.xbspwm.sh;;
     i3)
         source ~/.xi3.sh;;
