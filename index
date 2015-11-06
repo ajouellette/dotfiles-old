@@ -6,6 +6,7 @@ compton: ~/.config
 conky: ~
 dircolors: ~/.config/dircolors
 dunst: ~/.config/dunst
+environment: ~
 fontconfig: ~/.config/fontconfig
 fonts: ~/.local/share/fonts
 git: ~

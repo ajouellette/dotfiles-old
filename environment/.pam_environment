@@ -1,0 +1,8 @@
+# ~/.pam_environment
+
+BROWSER=firefox
+EDITOR=vim
+VISUAL=vim
+PAGER=less
+LESS=-R
+TERMINAL=xfce4-terminal
