@@ -3,6 +3,9 @@
 
 set history=50
 
+" set window title
+set titlestring=Firefox
+
 " search completions: search engines and keywords, search engine suggestions, firefox location bar entries, and local files
 set complete=slSf
 
@@ -37,15 +40,18 @@ nmap <C-n> <nop>
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
 
 set hlsearch
+set incsearch
 set autocomplete
 set focuscontent=true
 
-" set home page for new tabs
-set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
+" set home page for new tabs (disabled in latest FF version)
+"set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
+
 " disable scroll zoom
 set! mousewheel.with_control.action=0
 
 set gui=tabs,navigation
+set noscrollbars
 
 colorscheme base16-eighties
 
