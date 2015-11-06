@@ -2,7 +2,7 @@
 ##################################################
 # source encrypted file defining secret variables
 # decrypt using gpg
-source "gpg2 -dq $HOME/.mutt/secrets.gpg |"
+source "gpg2 -dq $HOME/.config/mutt/secrets.gpg |"
 
 # set encoding (use utf8)
 set charset      = "utf-8"
@@ -27,11 +27,11 @@ set mail_check = 120
 
 # Paths -----------------------------------------
 #################################################
-set header_cache     = "~/.mutt/cache/headers"
-set message_cachedir = "~/.mutt/cache/bodies"
-set certificate_file = "~/.mutt/certificates"
-set mailcap_path     = "~/.mutt/mailcap"
-set alias_file       = "~/.mutt/aliases"
+set header_cache     = "~/.cache/mutt/headers"
+set message_cachedir = "~/.cache/mutt/bodies"
+set certificate_file = "~/.cache/mutt/certificates"
+set mailcap_path     = "~/.config/mutt/mailcap"
+set alias_file       = "~/.config/mutt/aliases"
 
 # SMTP setup (to send mail) ---------------------
 #################################################
@@ -50,7 +50,7 @@ set ssl_starttls  = yes
 # Writing messages ------------------------------
 #################################################
 # editing
-set editor=vim
+set editor = "vim +:sil+?^$ +:sil:nohl"
 set abort_unmodified = no
 
 set forward_format = "Fwd: %s"
@@ -58,9 +58,10 @@ set attribution = "On %d, %n wrote:"
 set forward_quote = yes
 set include = yes
 set fast_reply = yes
+set reply_to
 
 # header options
-set edit_hdrs = yes
+set edit_headers = yes
 ignore *                                # ignore all headers
 unignore from: to: cc: bcc: date: subject:   # show only these
 unhdr_order *
@@ -139,7 +140,7 @@ bind attach <return> view-mailcap
 
 # gmail contacts
 set query_command = "goobook query %s"
-macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to Google contacts"
 bind editor <Tab> complete-query
 
 # Aliases ---------------------------------------
@@ -151,7 +152,7 @@ set reverse_alias = yes
 
 # Signature -------------------------------------
 #################################################
-#set signature = "~/.mutt/signature"
+#set signature = "~/.config/mutt/signature"
 #set sig_dashes = yes
 
 
@@ -171,7 +172,7 @@ set uncollapse_jump
 unset mark_old
 
 # colors
-source ~/.mutt/colors/solarized.theme
+source ~/.config/mutt/colors/solarized.theme
 
 # Sidebar patch ---------------------------------
 #################################################
@@ -194,6 +195,7 @@ unset confirmappend
 set quit
 # strip headers and mime stuff before piping
 set pipe_decode
+set thorough_search
 
 set wait_key = no
 set sleep_time = 0

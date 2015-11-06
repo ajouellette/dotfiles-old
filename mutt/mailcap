@@ -1,5 +1,10 @@
 # openning attachments
-image; ristretto %s
-application; exo-open %s
-text; exo-open %s
 
+text/html; elinks -dump-charset %{charset} -dump %s; copiousoutput;
+text/plain; vim %s;
+
+image; ristretto %s;
+audio; mpv %s;
+video; mpv %s;
+
+application/pdf; zathura %s;
