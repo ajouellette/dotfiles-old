@@ -1,15 +1,6 @@
 # .zshrc
 #  zsh configuration file
 
-# keybinds
-# vi in the shell is too confusing
-bindkey -e
-# searching history
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-pattern-search-forward
-# edit command in editor
-bindkey "^F" edit-command-line
-
 # resume vim with ^Z
 foreground-vi() {
     if [ -n "$(jobs | grep vi)" ]; then
@@ -17,41 +8,32 @@ foreground-vi() {
     fi
 }
 zle -N foreground-vi
-bindkey '^Z' foreground-vi
 
-autoload -U compinit && compinit
+autoload -U compinit && compinit -d "$HOME/.cache/zsh/zcompdump"
 # use this for pre-made prompts
 #autoload -U promptinit && promptinit
 autoload -U colors && colors
 # whitespace is not the only word delimeter
-autoload -U select-word-style
-select-word-style bash
+autoload -U select-word-style && select-word-style bash
 # edit command line in $EDITOR
-autoload -U edit-command-line
-zle -N edit-command-line
-# vcs info
-#autoload -Uz vcs_info
+autoload -U edit-command-line && zle -N edit-command-line
 
 # 'cd dir' = 'dir'
 setopt auto_cd
 # correct and complete commands
-setopt correct
-setopt completealiases
+setopt correct completealiases
 # easier than find
 setopt extendedglob
 
 # history
-export HISTFILE=~/.zsh_hist
+export HISTFILE="$HOME/.cache/zsh/zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
-setopt append_history
+setopt append_history share_history
 # ignore duplicates and commands starting with space
-setopt hist_ignore_dups
-setopt hist_expire_dups_first
+setopt hist_ignore_dups hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_ignore_space
-# share history
-setopt share_history
 # ignore unnecessary whitespace
 setopt hist_reduce_blanks
 # expand before executing commands from history
@@ -65,24 +47,11 @@ setopt no_hist_beep
 
 # dont erase files when using redirects
 # use >| to override
-setopt noclobber
-# the second time overrides
-setopt hist_allow_clobber
+setopt noclobber hist_allow_clobber
 
-zstyle :compinstall filename "$ZDOTDIR"/.zshrc
-# menu selection for completions
-zstyle ':completion:*' menu select
-# rehash
-zstyle ':completion:*' rehash true
-# show ambiguous character in bold red
-zstyle ':completion:*' show-ambiguity "1;$color[fg-red]"
-# use completion cache
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.cache/zsh
-# fuzy matching
-#zstyle ':completion:*' completer _complete _match _approximate
-#zstyle ':completion:*:match:*' original only
-#zstyle ':completion:*:approximate:*' max-errors 1 numeric
+# extra files
+source "$ZDOTDIR/style.zsh"
+source "$ZDOTDIR/keybinds.zsh"
 
 ################
 ## Set path   ##
@@ -91,18 +60,13 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 ###################################################
 # make path entries unique
 typeset -U path
-path=(~/.local/bin $path)
-# ruby gems
-path=(~/.gem/ruby/2.2.0/bin $path)
-# go path
-path=(~/.go/bin $path)
 
 ################
 # prompts
 ################
 setopt prompt_subst
 # git prompt (using script provided with git)
-source "$ZDOTDIR"/.git-prompt.sh
+source "$ZDOTDIR"/git.zsh
 # show * for unstaged changes, + for staged changes
 export GIT_PS1_SHOWDIRTYSTATE=1
 # show % for untracked files
@@ -162,8 +126,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ##############################
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc && source $ZDOTDIR/.zshrc"
 
-if [ -f "$ZDOTDIR"/.zsh_aliases ]; then
-	. "$ZDOTDIR"/.zsh_aliases
+if [ -f "$ZDOTDIR"/aliases.zsh ]; then
+	. "$ZDOTDIR"/aliases.zsh
 fi
 
 #######################################
@@ -172,8 +136,6 @@ fi
 # system info and logo
 #screenfetch -t
 
-# dircolors (for termite)
-eval $(dircolors ~/.dircolors)
 # base16 256 terminal colors
 BASE16_SHELL=~/.config/base16-shell/base16-ocean.dark.sh
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

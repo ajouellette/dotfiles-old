@@ -1,25 +1,26 @@
-#
-# ~/.zsh_aliases
-#
-################################
-#### Alias definitions.   ######
-################################
+# zsh aliases
+
 alias c='clear'
 alias x='exit'
 
 # ls aliases
-alias ls='ls -h --color=auto'
+alias ls='ls -h --color=auto --group-directories-first'
 alias la='ls -A'
 alias ll='ls -lAF'
 
 alias grep='grep --color=auto'
+alias gdb='gdb -q'
 
 # make rm safer
 alias rm='rm -Iv --one-file-system'
 
 # confirm when overwriting files
-alias cp='cp -i'
-alias mv='mv -i'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias ln='ln -iv'
+
+alias du='du -h'
+alias df='df -h'
 
 # pretty print path
 alias path='echo -e ${PATH//:/\\n}'
@@ -41,6 +42,9 @@ alias calc='python -qi -c "from math import *"'
 
 alias kernel='uname -rs'
 alias up='uptime -p'
+
+#alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
+alias mutt='mutt -F ~/.config/mutt/muttrc'
 
 # extract archives
 extract () {
