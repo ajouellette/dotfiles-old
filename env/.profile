@@ -6,8 +6,12 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 # dircolors
 source <(dircolors -b <(cat "$HOME/.config/dircolors"/*.conf))
 
-export ELINKS_CONFDIR="~/.config/elinks"
-export LESSHISTFILE="~/.cache/less/hist"
+# config and cache dirs
+export ELINKS_CONFDIR=~/.config/elinks
+export GIMP2_DIRECTORY=~/.config/gimp
+export INPUTRC=~/.config/readline/inputrc
+export DVDCSS_CACHE=~/.config/dvdcss
+export LESSHISTFILE=~/.cache/less/hist
 
 # colors for less
 export LESS_TERMCAP_me=$(printf '\e[0m')
