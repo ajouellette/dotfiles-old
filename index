@@ -4,6 +4,7 @@ bspwm: ~/.config/bspwm
 cava: ~/.config/cava
 compton: ~/.config
 conky: ~
+dircolors: ~/.config/dircolors
 dunst: ~/.config/dunst
 fontconfig: ~/.config/fontconfig
 fonts: ~/.local/share/fonts
@@ -13,7 +14,7 @@ i3blocks: ~/.config/i3blocks
 i3status: ~/.config/i3status
 irssi: ~/.irssi
 mpd: ~/.config/mpd
-mutt: ~/.mutt
+mutt: ~/.config/mutt
 nano: ~
 ncmpcpp: ~/.ncmpcpp
 pacaur: ~/.config/pacaur
@@ -23,6 +24,7 @@ root: /root
 scripts: ~/.local/bin
 sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
+systemd: ~/.config/systemd
 termite: ~/.config/termite
 vim: ~
 vimperator: ~
