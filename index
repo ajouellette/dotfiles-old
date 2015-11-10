@@ -1,4 +1,5 @@
 X: ~
+apps: ~/.local/share/applications
 bash: ~
 bspwm: ~/.config/bspwm
 cava: ~/.config/cava

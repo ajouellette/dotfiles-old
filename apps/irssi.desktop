@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Irssi
+Comment=Console-based IRC client
+Exec=irssi
+Terminal=true
+Categories=Network;
+StartupNotify=true

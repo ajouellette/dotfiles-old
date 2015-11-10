@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mutt
+Comment=Console-based mail reader
+Exec=mutt -F ~/.config/mutt/muttrc
+Terminal=true
+Categories=Network;
+StartupNotify=true
