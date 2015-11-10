@@ -6,7 +6,7 @@ compton: ~/.config
 conky: ~
 dircolors: ~/.config/dircolors
 dunst: ~/.config/dunst
-environment: ~
+env: ~
 fontconfig: ~/.config/fontconfig
 fonts: ~/.local/share/fonts
 git: ~
@@ -17,7 +17,7 @@ irssi: ~/.irssi
 mpd: ~/.config/mpd
 mutt: ~/.config/mutt
 nano: ~
-ncmpcpp: ~/.ncmpcpp
+ncmpcpp: ~/.config/ncmpcpp
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
 redshift: ~/.config

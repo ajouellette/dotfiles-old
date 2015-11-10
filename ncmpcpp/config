@@ -1,6 +1,6 @@
 ##### directories ######
-ncmpcpp_directory = ~/.ncmpcpp
-lyrics_directory = ~/.lyrics
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/Music/lyrics
 mpd_music_dir = ~/Music
 
 ##### connection settings #####
