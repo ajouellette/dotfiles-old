@@ -25,7 +25,7 @@ set $gapso      5
 set $gapsi      15
 
 # terminal
-set $term xfce4-terminal
+set $term $TERMINAL
 
 ###################
 ## Configuration ##
@@ -59,7 +59,7 @@ gaps outer   $gapso
 #################
 ## System ##
 # logout / restart / reload
-bindsym $mod+Shift+e    exec --no-startup-id ~/.local/bin/logout-menu.sh
+bindsym $mod+Shift+e    exec --no-startup-id logout-menu.sh
 bindsym $mod+Shift+r    restart
 bindsym $mod+Shift+c    reload
 # screenshot
@@ -73,37 +73,37 @@ bindsym $mod+Shift+q    kill
 bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 10 && pkill -SIGRTMIN+12 i3blocks
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 10 && pkill -SIGRTMIN+12 i3blocks
 # screen locking
-bindsym $mod+Ctrl+L exec --no-startup-id ~/.local/bin/i3lock.sh
+bindsym $mod+Ctrl+L exec --no-startup-id i3lock.sh
 # caffeine mode (disables screen blanking and automatic suspend)
 bindsym $mod+F7 exec ~/.local/bin/caffeine.sh
 
 ## Audio ##
 # volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id   ~/.local/bin/volume.sh +
-bindsym XF86AudioLowerVolume exec --no-startup-id   ~/.local/bin/volume.sh -
-bindsym XF86AudioMute exec --no-startup-id          ~/.local/bin/volume.sh !
+bindsym XF86AudioRaiseVolume exec --no-startup-id   volume.sh +
+bindsym XF86AudioLowerVolume exec --no-startup-id   volume.sh -
+bindsym XF86AudioMute exec --no-startup-id          volume.sh !
 # microphone
 bindsym XF86AudioMicMute exec --no-startup-id       amixer set Capture toggle
 # music
-bindsym $mod+bracketleft exec --no-startup-id    ~/.local/bin/music.sh prev
-bindsym $mod+bracketright exec --no-startup-id   ~/.local/bin/music.sh next
-bindsym $mod+backslash exec --no-startup-id      ~/.local/bin/music.sh toggle
+bindsym $mod+bracketleft exec --no-startup-id    music.sh prev
+bindsym $mod+bracketright exec --no-startup-id   music.sh next
+bindsym $mod+backslash exec --no-startup-id      music.sh toggle
 
 ## Focus keybindings ##
 # focus parent / child
-bindsym $mod+a 			focus parent
-bindsym $mod+b 			focus child
+bindsym $mod+a          focus parent
+bindsym $mod+b          focus child
 # change focus
 # use standard vim keys
-bindsym $mod+h 			focus left
-bindsym $mod+j 			focus down
-bindsym $mod+k 			focus up
-bindsym $mod+l 	        focus right
+bindsym $mod+h          focus left
+bindsym $mod+j          focus down
+bindsym $mod+k          focus up
+bindsym $mod+l          focus right
 # cursor keys
-bindsym $mod+Left 		focus left
-bindsym $mod+Down 		focus down
-bindsym $mod+Up 		focus up
-bindsym $mod+Right 		focus right
+bindsym $mod+Left       focus left
+bindsym $mod+Down       focus down
+bindsym $mod+Up         focus up
+bindsym $mod+Right      focus right
 # focus last urgent window
 bindsym $mod+u          [urgent=latest] focus
 
@@ -122,55 +122,55 @@ set $ws9    "9 "
 # switch to workspace
 bindsym $mod+comma      workspace prev
 bindsym $mod+period     workspace next
-bindsym $mod+1 			workspace $ws1
-bindsym $mod+2 			workspace $ws2
-bindsym $mod+3 			workspace $ws3
-bindsym $mod+4 			workspace $ws4
-bindsym $mod+5 			workspace $ws5
-bindsym $mod+6 			workspace $ws6
-bindsym $mod+7 			workspace $ws7
-bindsym $mod+8 			workspace $ws8
-bindsym $mod+9 			workspace $ws9
+bindsym $mod+1          workspace $ws1
+bindsym $mod+2          workspace $ws2
+bindsym $mod+3          workspace $ws3
+bindsym $mod+4          workspace $ws4
+bindsym $mod+5          workspace $ws5
+bindsym $mod+6          workspace $ws6
+bindsym $mod+7          workspace $ws7
+bindsym $mod+8          workspace $ws8
+bindsym $mod+9          workspace $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+comma  move container to workspace prev
 bindsym $mod+Shift+period move container to workspace next
-bindsym $mod+Shift+1 	move container to workspace $ws1
-bindsym $mod+Shift+2 	move container to workspace $ws2
-bindsym $mod+Shift+3 	move container to workspace $ws3
-bindsym $mod+Shift+4 	move container to workspace $ws4
-bindsym $mod+Shift+5	move container to workspace $ws5
-bindsym $mod+Shift+6	move container to workspace $ws6
-bindsym $mod+Shift+7 	move container to workspace $ws7
-bindsym $mod+Shift+8 	move container to workspace $ws8
-bindsym $mod+Shift+9 	move container to workspace $ws9
+bindsym $mod+Shift+1      move container to workspace $ws1
+bindsym $mod+Shift+2      move container to workspace $ws2
+bindsym $mod+Shift+3      move container to workspace $ws3
+bindsym $mod+Shift+4      move container to workspace $ws4
+bindsym $mod+Shift+5      move container to workspace $ws5
+bindsym $mod+Shift+6      move container to workspace $ws6
+bindsym $mod+Shift+7      move container to workspace $ws7
+bindsym $mod+Shift+8      move container to workspace $ws8
+bindsym $mod+Shift+9      move container to workspace $ws9
 
 
 ## Movement ##
 # move focused window
-bindsym $mod+Shift+h 			move left
-bindsym $mod+Shift+j 			move down
-bindsym $mod+Shift+k 			move up
-bindsym $mod+Shift+l         	move right
+bindsym $mod+Shift+h            move left
+bindsym $mod+Shift+j            move down
+bindsym $mod+Shift+k            move up
+bindsym $mod+Shift+l            move right
 # cursor keys
-bindsym $mod+Shift+Left 		move left
-bindsym $mod+Shift+Down 		move down
-bindsym $mod+Shift+Up 			move up
-bindsym $mod+Shift+Right 		move right
+bindsym $mod+Shift+Left         move left
+bindsym $mod+Shift+Down         move down
+bindsym $mod+Shift+Up           move up
+bindsym $mod+Shift+Right        move right
 
 ## Layout ##
 # layout mode
 #bindsym $mod+s             layout stacking
 bindsym $mod+Shift+t        layout tabbed
-bindsym $mod+e 			    layout toggle split
-bindsym $mod+f			    fullscreen
+bindsym $mod+e              layout toggle split
+bindsym $mod+f              fullscreen
 bindsym $mod+Shift+space    floating toggle
 # splitting mode
-bindsym $mod+g 		split h
-bindsym $mod+v 		split v
+bindsym $mod+g              split h
+bindsym $mod+v              split v
 # floating mode
-floating_modifier 	$mod
-bindsym $mod+space	focus mode_toggle
+floating_modifier           $mod
+bindsym $mod+space          focus mode_toggle
 
 # sticky window (newest version of i3)
 bindsym $mod+Shift+s sticky toggle
@@ -183,9 +183,9 @@ bindsym $mod+minus scratchpad show
 
 ## Applications ##
 # start terminal
-bindsym $mod+Return	exec $term
+bindsym $mod+Return  exec $term
 # dmenu
-bindsym $mod+Shift+d exec --no-startup-id ~/.local/bin/dmenu_run.sh
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run.sh
 # rofi (more features than dmenu)
 bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+p exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -p run: -i"
@@ -203,26 +203,25 @@ bindsym $mod+t exec xfce4-terminal -T "floating terminal"
 ## Specific windows / workspaces ##
 ###################################
  # configurations for specific windows
-for_window [class="^Spotify$"] 			floating enable
-for_window [class="^Ristretto$"] 		floating enable
-for_window [class="Gimp"]               floating enable
-for_window [class="^Pavucontrol$"] 		floating enable
-for_window [class="^z80e-sdl$"] 		floating enable
-for_window [class="Tilem2"]             floating enable
-for_window [class="^Xfce4-appfinder$"] 	floating enable
-for_window [title="VirtualBox"]         floating enable
-
-for_window [instance="DTA" class="Firefox"]     floating enable
-for_window [title="Add Downloads"]              floating enable
+for_window [class="^Spotify$"]                floating enable
+for_window [class="^Ristretto$"]              floating enable
+for_window [class="Gimp"]                     floating enable
+for_window [class="^Pavucontrol$"]            floating enable
+for_window [class="^z80e-sdl$"]               floating enable
+for_window [class="Tilem2"]                   floating enable
+for_window [class="^Xfce4-appfinder$"]        floating enable
+for_window [title="VirtualBox"]               floating enable
+for_window [instance="DTA" class="Firefox"]   floating enable
+for_window [title="Add Downloads"]            floating enable
 
 # "web" workspace
-assign [class="Firefox"] 	    $ws4
-assign [class="Chromium"]	    $ws4
-workspace $ws4				    gaps outer 0
-workspace $ws4				    gaps inner 0
+assign [class="Firefox"]        $ws4
+assign [class="Chromium"]       $ws4
+workspace $ws4                  gaps outer 0
+workspace $ws4                  gaps inner 0
 
 # "music" workspace
-assign [class="^Spotify$"]	    $ws5
+assign [class="^Spotify$"]      $ws5
 assign [class="spotify"]        $ws5
 assign [class="Rhythmbox"]      $ws5
 
@@ -233,8 +232,9 @@ workspace $ws3                  gaps outer 20
 workspace $ws3                  gaps inner 0
 
 # "mail" workspace
-assign [class="Claws-mail"]     $ws6
+assign [class="Mutt"]           $ws6
 
+assign [class="Irssi"]          $ws7
 
 ###########
 ## Modes ##
@@ -320,9 +320,7 @@ bindsym $mod+Shift+i mode Ignore
 ##    Startup programs             ####
 #######################################
 # start pulseaudio, compositor, and set wallpaper in ~/.xinitrc
-#exec --no-startup-id dropbox
 exec --no-startup-id nm-applet
-exec --no-startup-id xss-lock -- ~/.local/bin/i3lock.sh
 exec --no-startup-id xautolock -time 15 -locker "systemctl suspend"
 exec --no-startup-id redshift-gtk
 
