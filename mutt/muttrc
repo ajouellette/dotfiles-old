@@ -197,5 +197,9 @@ set quit
 set pipe_decode
 set thorough_search
 
+# view html emails
+auto_view text/html
+alternative_order text/plain text/html
+
 set wait_key = no
 set sleep_time = 0
