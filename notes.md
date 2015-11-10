@@ -30,6 +30,24 @@ in `/etc/systemd/sleep.conf`.
 
 ## General notes
 
+### Lock screen on suspend
+Put the following in `/etc/systemd/system/suspend@.service` and enable suspend@*user*.service.
+```
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=%I
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/home/aaron/.local/bin/i3lock.sh    # path to lock program
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
+```
+
 ### Power saving
 - tlp
 - powertop
@@ -70,6 +88,7 @@ Add `Defaults insults` to `/etc/sudoers`.
 Use zsh instead of bash. Enable completions and spell-corrections.
 
 ## Programs used
+- **vim** *(the one true text editor)*
 - **zsh** *(the shell that I use)*
     - zsh-completions
     - zsh-syntax-highlighting
@@ -81,11 +100,17 @@ Use zsh instead of bash. Enable completions and spell-corrections.
 - **i3-gaps** *(window manager)*
     - i3status
     - i3blocks *(more customizable than i3status)*
+        - acpi *(for battery monitoring)*
+        - xtitle *(to get title of active window)*
     - rofi *(more features than dmenu)*
     - j4-dmenu-desktop *(looks for .desktop files)*
-    - i3lock + xss-lock *(screen locker, automatically lock on suspend)*
+    - i3lock (xss-lock can be used to lock on suspend) *(screen locker)*
     - i3style *(easy theme switching)*
 - **mutt** *(best email client)*
     - urlview *(launch url's in browser)*
     - sidebar patch *(easy folder switching)*
-
+    - elinks *(for html emails and browsing in the terminal)*
+- **termite** *(great terminal emulator)*
+- **irssi** *(terminal IRC client)*
+- **mpd** + **ncmpcpp** *(music player)*
+    - playerctl *(music player controller, although not for mpd)*
