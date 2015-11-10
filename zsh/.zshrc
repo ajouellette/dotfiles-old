@@ -137,8 +137,8 @@ fi
 #screenfetch -t
 
 # base16 256 terminal colors
-BASE16_SHELL=~/.config/base16-shell/base16-ocean.dark.sh
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+#BASE16_SHELL=~/.config/base16-shell/base16-ocean.dark.sh
+#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # cow and quotes
 #fortune | cowthink -f small -W 50
