@@ -24,9 +24,9 @@ export LESS_TERMCAP_so=$(printf '\e[1;44;1m')
 
 # path
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.go/bin:$PATH"
+export PATH="$HOME/devel/go/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
 
 # go path
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/devel/go"
 
