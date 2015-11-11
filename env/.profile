@@ -12,7 +12,6 @@ export GIMP2_DIRECTORY=~/.config/gimp
 export INPUTRC=~/.config/readline/inputrc
 export DVDCSS_CACHE=~/.config/dvdcss
 export LESSHISTFILE=~/.cache/less/hist
-export VIMPERATOR_RUNTIME=~/.config/vimperator
 
 # colors for less
 export LESS_TERMCAP_me=$(printf '\e[0m')

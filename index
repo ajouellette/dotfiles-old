@@ -29,6 +29,6 @@ sxhkd: ~/.config/sxhkd
 systemd: ~/.config/systemd
 termite: ~/.config/termite
 vim: ~
-vimperator: ~/.config/vimperator
+vimperator: ~
 zsh: ~/.config/zsh
 zathura: ~/.config/zathura

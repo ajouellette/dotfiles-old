@@ -1,7 +1,6 @@
 "3.9 (created: 2015/02/15 15:49:05)
 " config file for vimperator firefox addon
 
-set runtimepath=~/.config/vimperator
 set history=50
 
 " set window title
@@ -44,6 +43,9 @@ set hlsearch
 set incsearch
 set autocomplete
 set focuscontent=true
+
+" set home page for new tabs (disabled in latest FF version)
+"set! browser.newtab.url=file:///home/aaron/.vimperator/start.html
 
 " disable scroll zoom
 set! mousewheel.with_control.action=0
