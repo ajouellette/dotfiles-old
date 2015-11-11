@@ -23,9 +23,9 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
 
     case $session in
         1)
-            startx ~/.xinitrc i3;;
+            startx ~/.config/x11/xinitrc i3;;
         2)
-            startx ~/.xinitrc xfce;;
+            startx ~/.config/x11/xinitrc xfce;;
         *) ;;
     esac
 fi

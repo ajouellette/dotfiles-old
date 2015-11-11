@@ -2,7 +2,7 @@
 ! --> Colors
 ! ----------------------------------------------------
 !#include ".colors/solarized/solarized-dark"
-#include ".colors/base16/base16-ocean.dark.256.xresources"
+#include ".config/x11/colors/base16/base16-ocean.dark.256.xresources"
 
 ! ----------------------------------------------------
 ! --> fonts
@@ -88,18 +88,18 @@ URxvt.clipboard.pastecmd: xclip -o
 !---------------------------------------------------------
 ! --> Xterm
 !---------------------------------------------------------
-xterm*termName:         xterm-256color
-xterm*locale:           true
-xterm*utf8:             true
-xterm*borderWidth:      0
-xterm*VT100.geometry:   110x28
-xterm*faceName:         Droid Sans Mono:style=Regular:size=9
-xterm*scrollTtyOutput:  true
-xterm*scrollBar:        false
-xterm*ScrollKey:        true
-xterm*jumpScroll:       true
-xterm*multiScroll:      true
-xterm*saveLines:        2500
-xterm*selectToClipboard: true
+Xterm*termName:         xterm-256color
+Xterm*locale:           true
+Xterm*utf8:             true
+Xterm*borderWidth:      0
+Xterm*VT100.geometry:   110x28
+XTerm*font: -*-terminus-medium-*-*-*-18-*-*-*-*-*-iso10646-*
+Xterm*scrollTtyOutput:  true
+Xterm*scrollBar:        false
+Xterm*ScrollKey:        true
+Xterm*jumpScroll:       true
+Xterm*multiScroll:      true
+Xterm*saveLines:        2500
+Xterm*selectToClipboard: true
 
 
