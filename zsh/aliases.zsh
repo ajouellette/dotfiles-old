@@ -4,7 +4,7 @@ alias c='clear'
 alias x='exit'
 
 # ls aliases
-alias ls='ls -h --color=auto --group-directories-first'
+alias ls='ls -h --color=auto'
 alias la='ls -A'
 alias ll='ls -lAF'
 
@@ -18,6 +18,12 @@ alias rm='rm -Iv --one-file-system'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias ln='ln -iv'
+
+# better ln
+# sln LINK_NAME TARGET: symlink from file TARGET to file LINK_NAME
+sln() {
+    ln -s $2 $1
+}
 
 alias du='du -h'
 alias df='df -h'
@@ -33,8 +39,8 @@ alias -g ....='../../..'
 # runs vim as user instead of as root (safer)
 alias svim='sudoedit'
 # a minimal vim configuration
-if [ -f ~/.vimrc.min ]; then
-    alias vi='vim -u ~/.vimrc.min'
+if [ -f ~/.vim/vimrc.min ]; then
+    alias vi='vim -u ~/.vim/vimrc.min'
 fi
 
 alias bc='bc -q -l'
@@ -43,8 +49,13 @@ alias calc='python -qi -c "from math import *"'
 alias kernel='uname -rs'
 alias up='uptime -p'
 
-#alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
+alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
+
+# cd into a new dir
+mkcd () {
+    mkdir "$1" && cd "$1"
+}
 
 # extract archives
 extract () {
