@@ -16,8 +16,9 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
     echo "===================================="
     echo
     echo "  1) i3"
-    echo "  2) XFCE"
-    echo "  3) console"
+    echo "  2) sway"
+    echo "  3) XFCE"
+    echo "  4) console"
 
     read session
 
@@ -25,6 +26,8 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
         1)
             startx ~/.config/x11/xinitrc i3;;
         2)
+            sway;;
+        3)
             startx ~/.config/x11/xinitrc xfce;;
         *) ;;
     esac
