@@ -17,7 +17,6 @@ i3status: ~/.config/i3status
 irssi: ~/.irssi
 mpd: ~/.config/mpd
 mutt: ~/.config/mutt
-nano: ~
 ncmpcpp: ~/.config/ncmpcpp
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
