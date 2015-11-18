@@ -1,4 +1,4 @@
-X: ~
+X11: ~/.config/x11
 apps: ~/.local/share/applications
 bash: ~
 bspwm: ~/.config/bspwm
