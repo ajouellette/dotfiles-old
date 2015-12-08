@@ -51,10 +51,16 @@ WantedBy=sleep.target
 ### Power saving
 - tlp
 - powertop
-- boot options
+- boot options:
+    - Intel graphics power saving options (might cause problems)
 
 ### Improve performance
 **Don't use swap:**
+
+Create file `/etc/sysctl.d/fs.conf` with the following contents:
+    
+    vm.swappiness=5
+    vm.vfs_cache_pressue=50
 
 **To measure boot time:**
     
@@ -69,7 +75,11 @@ lz4 is much better than gzip, cat is even faster.
 
 
 ### Security
+**Use full disk encryption**: dm-crypt
 
+**Set up a firewall**: ufw
+
+**SSH**
 
 ### Fancy login screen on tty
 See [this](https://wiki.archlinux.org/index.php/Configure_virtual_console_colors) wiki page and [this](https://bbs.archlinux.org/viewtopic.php?pid=386429#p386429) forum post.
