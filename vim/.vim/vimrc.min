@@ -17,6 +17,8 @@ Plugin 'gmarik/Vundle.vim'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
 
+Plugin 'Bling/vim-airline'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -41,7 +43,10 @@ nmap ; :
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 5 lines to the cursor 
+set ttyfast
+set lazyredraw
+
+" Set 5 lines to the cursor
 set so=5
 
 " Turn on the WiLd menu
@@ -49,12 +54,13 @@ set wildmenu
 
 " Show line numbers
 set number
+set relativenumber
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
 " Searching:
-set ignorecase      " ignore case 
+set ignorecase      " ignore case
 set smartcase       " be smart
 set hlsearch        " highlight
 set incsearch       " incremental search
@@ -135,7 +141,6 @@ autocmd BufReadPost *
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
-set showmode
 set ruler
 set showtabline=2
 set showcmd

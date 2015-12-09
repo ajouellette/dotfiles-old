@@ -25,6 +25,8 @@ Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
 " un/comment code
 Plugin 'scrooloose/nerdcommenter'
+" Java decompiler
+Plugin 'JavaDecompiler.vim'
 " file browser
 Plugin 'scrooloose/nerdtree'
 " distraction free writing
@@ -71,8 +73,8 @@ noremap ; :
 set ttyfast
 set lazyredraw
 
-set listchars=tab:⋮\ ,eol:¬,trail:■,extends:»,precedes:«
-set list
+"set listchars=tab:⋮\ ,eol:¬,trail:■,extends:»,precedes:«
+"set list
 
 " Set 5 lines to the cursor
 set so=5
@@ -138,7 +140,7 @@ syntax enable
 let base16colorspace=256
 set t_Co=256
 set background=dark
-colorscheme base16-ocean
+colorscheme solarized
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
