@@ -10,7 +10,7 @@ source <(dircolors -b <(cat "$HOME/.config/dircolors"/*.conf))
 export ELINKS_CONFDIR=~/.config/elinks
 export GIMP2_DIRECTORY=~/.config/gimp
 export INPUTRC=~/.config/readline/inputrc
-export DVDCSS_CACHE=~/.config/dvdcss
+export DVDCSS_CACHE=~/.cache/dvdcss
 export LESSHISTFILE=~/.cache/less/hist
 
 # colors for less
