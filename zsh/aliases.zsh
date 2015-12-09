@@ -51,6 +51,7 @@ alias up='uptime -p'
 
 alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # cd into a new dir
 mkcd () {
@@ -170,6 +171,7 @@ alias reboot='systemctl reboot'
 alias shutdown='systemctl poweroff'
 alias hibernate='systemctl hibernate'
 alias journal='journalctl -r'
+
 # find broken links
 broken-links() {
     sudo find . -type l -! -exec test -e {} \; -print

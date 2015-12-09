@@ -29,6 +29,8 @@ if [[ -z "$DISPLAY" && $XDG_VTNR -le 3 ]]; then
             sway;;
         3)
             startx ~/.config/x11/xinitrc xfce;;
+        4)
+            tmux -f ~/.config/tmux/tmux.conf;;
         *) ;;
     esac
 fi
