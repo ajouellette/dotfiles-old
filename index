@@ -20,6 +20,7 @@ mutt: ~/.config/mutt
 ncmpcpp: ~/.config/ncmpcpp
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
+readline: ~/.config/readline
 redshift: ~/.config
 root: /root
 scripts: ~/.local/bin
@@ -27,6 +28,7 @@ sway: ~/.config/sway
 sxhkd: ~/.config/sxhkd
 systemd: ~/.config/systemd
 termite: ~/.config/termite
+tmux: ~/.config/tmux
 vim: ~
 vimperator: ~
 zsh: ~/.config/zsh
