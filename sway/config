@@ -8,7 +8,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Super key: mod4, Alt: mod1
-set $mod Mod1
+set $mod Mod4
 
 # alternate way of moving around
 # use standard vim keys, instead of i3 version
@@ -18,7 +18,7 @@ set $left  h
 set $right l
 
 # terminal used
-set $term $TERMINAL
+set $term urxvt
 
 # number of pixels that windows are resized
 set $resize 5
@@ -129,10 +129,29 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exit
 #bindsym $mod+Shift+e exec ~/.bin/logout-menu.sh sway
 
+# wallpaper
+output * background ~/Pictures/wallpapers/ocean-dark.jpg fill
+
+# swaybar
+bar {
+    mode dock
+    position top
+    strip_workspace_numbers no
+    
+    colors {
+        background #343d46
+        statusline #eff1f5
+        separator #323232
+        focused_workspace #a3be8c #65737e #eff1f5
+        active_workspace #4f5b66 #5f676a #eff1f5
+        inactive_workspace #4f5b66 #4f5b66 #a7adba
+        urgent_workspace #bf616a #65737e #eff1f5
+    }
+}
 
 ####################
 # Autostart Apps
 ####################
-exec xrdb ~/.Xresources
+exec xrdb ~/.config/x11/Xresources -I$HOME
 exec pulseaudio --start
 
