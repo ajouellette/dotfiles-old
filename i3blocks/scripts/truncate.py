@@ -1,6 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 max_length = 60
+
 def truncate(string):
     if len(string) < max_length:
         spaces = int((max_length - len(string)) / 2)
@@ -10,7 +11,10 @@ def truncate(string):
         end = string[-int(max_length / 2):]
         return start + "..." + end + " "
 
-while True:
-    string = input()
-    print(truncate(string))
+def main():
+    while True:
+        string = input()
+        print(truncate(string))
 
+if __name__ == "__main__":
+    main()
