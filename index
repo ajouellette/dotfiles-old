@@ -18,6 +18,7 @@ irssi: ~/.irssi
 mpd: ~/.config/mpd
 mutt: ~/.config/mutt
 ncmpcpp: ~/.config/ncmpcpp
+nvim: ~/.config/nvim
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
 readline: ~/.config/readline
