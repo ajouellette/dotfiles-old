@@ -27,6 +27,7 @@ sln() {
 
 alias du='du -h'
 alias df='df -h'
+alias lsblk='lsblk --output "NAME,TYPE,LABEL,SIZE,FSTYPE,MOUNTPOINT"'
 
 # pretty print path
 alias path='echo -e ${PATH//:/\\n}'
@@ -52,6 +53,11 @@ alias up='uptime -p'
 alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
+
+# use hub (extra commands for GitHub) if installed
+if [ -z $(which hub | grep "not found") ]; then
+    alias git='hub'
+fi
 
 # cd into a new dir
 mkcd () {
@@ -152,7 +158,7 @@ remove-orphans() {
         Pacman -Rns $(pacman -Qdtq)
     fi
 }
-alias clean='remove-orphans; clean-cache; sudo pacman-optimize'
+alias clean='sudo pacdiff; remove-orphans; clean-cache; sudo pacman-optimize'
 alias remove='Pacman -Rns'
 # sort installed packages by size
 pacsort() {
