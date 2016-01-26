@@ -11,7 +11,7 @@ To automate using systemd put the following in ```/usr/lib/systemd/system-sleep/
 ```
  #!/bin/bash
  case $1/$2 in
-     pre/*) 
+     pre/*)
          exit 0;;
      post/*)
          echo '0 on' > /proc/acpi/ibm/led;;
@@ -54,16 +54,31 @@ WantedBy=sleep.target
 - boot options:
     - Intel graphics power saving options (might cause problems)
 
+### SSD configuration
+- Use the noop scheduler for SSDs and cfq for rotational disks:
+```
+# set noop scheduler for non-rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
+# set cfq scheduler for rotating disks
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
+```
+- Mount options:
+```
+UUID=xxx    /   ext4    defaults,noatime    0   1
+```
+- Trim: enable `fstrim.timer`
+- Use profile-sync-daemon to keep browser profiles in RAM
+
 ### Improve performance
 **Don't use swap:**
 
 Create file `/etc/sysctl.d/fs.conf` with the following contents:
-    
+
     vm.swappiness=5
     vm.vfs_cache_pressue=50
 
 **To measure boot time:**
-    
+
     systemd-analyze
     systemd-analyze blame
     systemd-analyze critical-chain
@@ -75,11 +90,11 @@ lz4 is much better than gzip, cat is even faster.
 
 
 ### Security
-**Use full disk encryption**: dm-crypt
+**Use full disk encryption**: dm-crypt on LVM
 
 **Set up a firewall**: ufw
 
-**SSH**
+**SSH**: use public keys
 
 ### Fancy login screen on tty
 See [this](https://wiki.archlinux.org/index.php/Configure_virtual_console_colors) wiki page and [this](https://bbs.archlinux.org/viewtopic.php?pid=386429#p386429) forum post.
@@ -99,6 +114,7 @@ Use zsh instead of bash. Enable completions and spell-corrections.
 
 ## Programs used
 - **vim** *(the one true text editor)*
+- **neovim** *(the 21st century incarnation of the one true editor)*
 - **zsh** *(the shell that I use)*
     - zsh-completions
     - zsh-syntax-highlighting
@@ -106,6 +122,19 @@ Use zsh instead of bash. Enable completions and spell-corrections.
 - **pacmatic** *(pacman wrapper to avoid problems)*
 - **cava** *(music visualizer)*
 - **rtv** *(terminal reddit viewer)*
+- **mutt** *(best email client)*
+    - urlview *(launch url's in browser)*
+    - sidebar patch *(easy folder switching)*
+    - elinks *(for html emails and browsing in the terminal)*
+- **termite** *(great terminal emulator)*
+- **irssi** *(terminal IRC client)*
+- **mpd** + **ncmpcpp** *(music player)*
+    - playerctl *(music player controller, although not for mpd)*
+
+### Wayland stuff
+- **sway** *(i3 compatible wm for wayland)*
+
+### Xorg display stuff
 - **compton** *(a display compositor)*
 - **i3-gaps** *(window manager)*
     - i3status
@@ -116,11 +145,4 @@ Use zsh instead of bash. Enable completions and spell-corrections.
     - j4-dmenu-desktop *(looks for .desktop files)*
     - i3lock (xss-lock can be used to lock on suspend) *(screen locker)*
     - i3style *(easy theme switching)*
-- **mutt** *(best email client)*
-    - urlview *(launch url's in browser)*
-    - sidebar patch *(easy folder switching)*
-    - elinks *(for html emails and browsing in the terminal)*
-- **termite** *(great terminal emulator)*
-- **irssi** *(terminal IRC client)*
-- **mpd** + **ncmpcpp** *(music player)*
-    - playerctl *(music player controller, although not for mpd)*
+
