@@ -11,14 +11,12 @@ general {
     colors = true
     interval = 3
 
-    color_bad = "#cf6a4c"
+    color_bad =      "#cf6a4c"
     color_degraded = "#f9ee98"
-    color_good = "#8f9d6a"
-
-    separator = " | "
+    color_good =     "#8f9d6a"
 }
 
-order += "disk /"
+#order += "disk /"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 #order += "wireless _first_"
@@ -43,13 +41,13 @@ battery 0 {
     low_threshold = 15
     threshold_type = "percentage"
     format = "%status %percentage %remaining"
-    status_chr = "CHR"
-    status_bat = "BAT"
-    status_full = "FULL"
+    status_chr = ""
+    status_bat = ""
+    status_full = ""
 }
 
 tztime local {
-    format = "%a %d %b  %I:%M %p"
+    format = "  %a %d %b    %I:%M %p"
 }
 
 disk "/" {
@@ -59,19 +57,19 @@ disk "/" {
 }
 
 cpu_usage {
-    format = "CPU %usage"
+    format = " %usage"
 }
 
 volume master {
-    format = "VOL %volume"
-    format_muted = "MUT %volume"
+    format = " %volume"
+    format_muted = " (%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
 }
 
 cpu_temperature 0 {
-    format = "TEMP %degrees°C"
+    format = " %degrees°C"
     max_threshold = 65
 }
 
