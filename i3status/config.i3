@@ -7,16 +7,15 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        output_format = "i3bar"
+    output_format = "i3bar"
+    colors = true
+    interval = 3
 
-        colors = true
-        interval = 3
+    color_bad = "#cf6a4c"
+    color_degraded = "#f9ee98"
+    color_good = "#8f9d6a"
 
-        color_bad = "#cf6a4c"
-        color_degraded = "#f9ee98"
-        color_good = "#8f9d6a"
-
-        separator = "  "
+    separator = " | "
 }
 
 order += "disk /"
@@ -44,35 +43,35 @@ battery 0 {
         low_threshold = 15
         threshold_type = "percentage"
         format = "%status %percentage %remaining"
-        status_chr = ""
-        status_bat = ""
-        status_full = ""
+        status_chr = "CHR"
+        status_bat = "BAT"
+        status_full = "FULL"
 }
 
 tztime local {
-        format = "  %a %d %b    %I:%M %p"
+        format = "%a %d %b  %I:%M %p"
 }
 
 disk "/" {
-        format = " %used/%total"
+        format = "%used/%total"
         threshold_type = "percentage"
         low_threshold = 10
 }
 
 cpu_usage {
-    format = " %usage"
+    format = "CPU %usage"
 }
 
 volume master {
-    format = " %volume"
-    format_muted = " %volume"
+    format = "VOL %volume"
+    format_muted = "MUT %volume"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
 }
 
 cpu_temperature 0 {
-    format = " %degrees°C"
+    format = "TEMP %degrees°C"
     max_threshold = 65
 }
 

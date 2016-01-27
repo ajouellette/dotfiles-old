@@ -1,4 +1,4 @@
-# i3blocks config file
+# i3blocks config file for i3
 #
 # Please see man i3blocks for a complete reference!
 # The man page is also hosted at http://vivien.github.io/i3blocks
@@ -30,8 +30,6 @@ separator_block_width=15
 separator=false
 align=center
 
-# most icons used are from font-icons (AUR)
-
 # window title
 [window]
 command=xtitle -s | ~/.config/i3blocks/scripts/truncate.py
@@ -47,13 +45,6 @@ interval=persist
 #interval=once
 #signal=11
 
-# Updates
-#
-# number of packages that have available updates
-#[updates]
-#command=echo " $(checkupdates | wc -l)"
-#interval=36000
-
 # Email
 #
 # Displays number of new emails
@@ -65,10 +56,10 @@ min_width=M 10
 # Backlight
 #
 # Display percent backlight use
-#[backlight]
-#label=
-#interval=once
-#signal=12
+[backlight]
+label=
+interval=once
+signal=12
 
 # Disk usage
 #
@@ -124,12 +115,13 @@ signal=10
 # Date and time
 # clock icon \uF36E, calendar icon \uF073
 [date]
-label= 
+label=
 command=date '+%a %b %d'
 interval=3600
 
 [time]
-label= 
+label=
 command=date '+%I:%M %p'
 interval=30
 
+# vim: filetype=config
