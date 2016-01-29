@@ -37,3 +37,5 @@
 [merge]
     tool = vimdiff2
 
+[core]
+	excludesfile = ~/.gitignore_global

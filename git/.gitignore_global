@@ -1,0 +1,10 @@
+# python stuff
+__pycache__
+*.pyc
+
+# ycm conf
+.ycm_extra_conf.py*
+
+# other
+*.log
+
