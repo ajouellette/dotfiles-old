@@ -111,29 +111,20 @@ mut() {
 ##        Arch aliases             ##
 #####################################
 # pacman aliases and functions:
-# enable etckeeper when installing/upgrading
-Pacman() { sudo etckeeper pre-install && sudo pacman "$@" && sudo etckeeper post-install; }
-Pacaur() { sudo etckeeper pre-install && pacaur "$@" && sudo etckeeper post-install; }
-Pacmatic() { sudo etckeeper pre-install && sudo pacmatic "$@" && sudo etckeeper post-install; }
-
-alias install='Pacaur -S --needed'
+alias install='pacaur -S --needed'
 alias search="pacman -Ss"
 alias searchaur="pacaur -s"
 
 update() {
-    sudo etckeeper pre-install && \
     sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
     sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
     sudo pacmatic -Syuu && \
-    pacaur -u && \
-    sudo etckeeper post-install
+    pacaur -u
 }
 
 upgrade() {
-    sudo etckeeper pre-install && \
     sudo pacmatic -Syu && \
-    pacaur -u && \
-    sudo etckeeper post-install
+    pacaur -u
 }
 
 pacinfo() {
@@ -155,11 +146,11 @@ remove-orphans() {
     if [[ ! -n $(pacman -Qdt) ]]; then
         echo "No orphaned packages to remove."
     else
-        Pacman -Rns $(pacman -Qdtq)
+        sudo pacman -Rns $(pacman -Qdtq)
     fi
 }
 alias clean='sudo pacdiff; remove-orphans; clean-cache; sudo pacman-optimize'
-alias remove='Pacman -Rns'
+alias remove='sudo pacman -Rns'
 # sort installed packages by size
 pacsort() {
     expac -s "%-30n %m" | sort -hk 2 | awk '{print $1, $2/1024/1024}' | column -t | less
