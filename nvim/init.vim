@@ -21,8 +21,10 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'benekastah/neomake'
+Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'msanders/snipmate.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
@@ -309,6 +311,11 @@ let g:ycm_confirm_extra_conf=0
 " autoclose preview window
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
 
 """""""""""""""""""""""""""""
@@ -347,6 +354,14 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|pyc|pyo|zip|mp3|pdf|jpg|png|tar|gz)$',
   \ }
+"}}}
+
+"""""""""""""""""""""""""""""
+" => UltiSnips {{{
+"""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
