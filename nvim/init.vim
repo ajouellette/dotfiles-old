@@ -18,7 +18,10 @@ endfunction
 
 " Use vim-plug to manage plugins
 call plug#begin()
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
@@ -48,6 +51,9 @@ set history=50
 let mapleader=','
 noremap ; :
 
+set timeout ttimeout
+set timeoutlen=400 ttimeoutlen=10
+
 " reload vimrc when written
 augroup reload_vimrc " {
     autocmd!
@@ -60,6 +66,7 @@ augroup END " }
 """""""""""""""""""""""""""""
 " This probably wont work everwhere
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set noerrorbells
 set belloff="all"
@@ -193,6 +200,9 @@ set showcmd
 """""""""""""""""""""""""""""
 " => Terminal {{{
 """""""""""""""""""""""""""""
+" open a terminal
+nnoremap <Leader>t :vsplit +terminal<CR>
+
 " Easier normal mode
 tnoremap <ESC> <C-\><C-n>
 
@@ -362,6 +372,12 @@ let g:ctrlp_custom_ignore = {
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"}}}
+
+"""""""""""""""""""""""""""""
+" => Notes {{{
+"""""""""""""""""""""""""""""
+let g:notes_directories = ['~/Documents/Notes']
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
