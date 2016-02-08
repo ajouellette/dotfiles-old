@@ -10,7 +10,7 @@ dunst: ~/.config/dunst
 env: ~
 fontconfig: ~/.config/fontconfig
 fonts: ~/.local/share/fonts
-git: ~
+git: ~/.config/git
 i3: ~/.config/i3
 i3blocks: ~/.config/i3blocks
 i3status: ~/.config/i3status
