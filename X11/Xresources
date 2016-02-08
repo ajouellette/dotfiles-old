@@ -33,15 +33,16 @@ rofi.hide-scrollbar: true
 ! ----------------------------------------------------
 URxvt*geometry: 100x28
 URxvt*borderless: 1
+URxvt*internalBorder: 10
 URxvt*fadding: 0
 URxvt*transparent: false
 
 ! font configuration
-#define fontsize 10
+#define fontsize 9
 #define antial true
 
-#define dejavu    xft:DejaVu Sans Mono:size=10:antialias=antial
-#define dejaPower xft:DejaVu Sans Mono for Powerline:size=10:antialias=antial
+#define dejavu    xft:DejaVu Sans Mono:size=9:antialias=antial
+#define dejaPower xft:DejaVu Sans Mono for Powerline:size=9:antialias=antial
 
 #define droid    xft:Droid Sans Mono:size=fontsize:antialias=antial
 #define drdPower xft:Droid Sans Mono for Powerline:size=fontsize:antialias=antial
