@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Etckeeper Pre-install
+Depends = etckeeper
+When = PreTransaction
+Exec = /usr/bin/etckeeper pre-install
