@@ -1,5 +1,12 @@
+# no bell
+set bell-style none
+
+# Don't display control characters like ^C if I input them
+set echo-control-characters off
+
+set visible-stats on
 set colored-stats on
+
 set menu-complete-display-prefix on
 set show-all-if-ambiguous on
-set visible-stats on
 
