@@ -17,7 +17,7 @@ To automate using systemd put the following in ```/usr/lib/systemd/system-sleep/
          echo '0 on' > /proc/acpi/ibm/led;;
  esac
 ```
-### Hibernation problems ####
+### Hibernation problems
 For some reason hibernation on newer kernels is very unreliable. LTS kernel works.
 Possible solution: use shutdown mode instead of platform mode (does not always work??).
 
@@ -27,6 +27,20 @@ To make systemd use a specific mode for hibernate put
     HibernateMode=<mode>
 
 in `/etc/systemd/sleep.conf`.
+
+### Intel Graphics Configuration
+To prevent screen tearing, put this in `/etc/X11/xorg.conf.d/20-intel.conf`
+```
+Section "Device"
+	Identifier "Intel Graphics"
+	Driver "intel"
+
+	Option "AccelMethod" "sna"
+    Option "TearFree"    "true"
+    Option "DRI"         "3"
+
+EndSection
+```
 
 ## General notes
 
@@ -55,7 +69,7 @@ WantedBy=sleep.target
     - Intel graphics power saving options (might cause problems)
 
 ### SSD configuration
-- Use the noop scheduler for SSDs and cfq for rotational disks:
+- Use the noop scheduler for SSDs and cfq for rotational disks `/etc/udev/rules.d/scheduler.rules`:
 ```
 # set noop scheduler for non-rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
@@ -68,6 +82,7 @@ UUID=xxx    /   ext4    defaults,noatime    0   1
 ```
 - Trim: enable `fstrim.timer`
 - Use profile-sync-daemon to keep browser profiles in RAM
+- TODO: find out if some other filesystem is "better" (BTRFS?)
 
 ### Improve performance
 **Don't use swap:**
