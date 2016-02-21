@@ -21,6 +21,7 @@ ncmpcpp: ~/.config/ncmpcpp
 nvim: ~/.config/nvim
 pacaur: ~/.config/pacaur
 pacman: ~/.config/pacman
+ranger: ~/.config/ranger
 readline: ~/.config/readline
 redshift: ~/.config
 root: /root
