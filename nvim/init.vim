@@ -232,6 +232,17 @@ cnoremap <C-g>  <C-c>
 " no ex mode
 nnoremap Q <nop>
 
+" move current line up/down
+nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+
+" add a blank line above/below
+nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+
+xnoremap <  <gv
+xnoremap >  >gv
+
 " toggle wrapping
 nmap \w :setlocal wrap!<CR> :setlocal wrap?<CR>
 
@@ -249,6 +260,12 @@ autocmd BufWritePre     * :call TrimWhiteSpace()
 
 set splitbelow
 set splitright
+"}}}
+
+"""""""""""""""""""""""""""""
+" => Shortcuts {{{
+"""""""""""""""""""""""""""""
+nmap <Leader>so iSigned-off-by Aaron Ouellette <aouellette2016@gmail.com>
 "}}}
 
 """""""""""""""""""""""""""""
