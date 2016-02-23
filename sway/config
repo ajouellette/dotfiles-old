@@ -1,21 +1,14 @@
-# vim:filetype=i3
-#
 # config file for sway
 #
-# Sway is a work in progress implementation of i3 for wayland.
-# Note that some of these defaults may be unimplemented.
+# Sway is a work in progress implementation of i3 for Wayland.
+# Note that some settings may be unimplemented yet.
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# General settings {{{
+
 # Super key: mod4, Alt: mod1
 set $mod Mod4
-
-# alternate way of moving around
-# use standard vim keys, instead of i3 version
-set $up    k
-set $down  j
-set $left  h
-set $right l
 
 # terminal used
 set $term urxvt
@@ -23,58 +16,92 @@ set $term urxvt
 # number of pixels that windows are resized
 set $resize 5
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font for window titles
 #font pango: Fira Mono 10
 
 # gaps
 gaps outer 12
 gaps inner 15
 
-# use Mouse+$mod to drag windows to their wanted position
 floating_modifier $mod
+focus_follows_mouse no
+workspace_auto_back_and_forth true
+#}}}
+
+# Run programs {{{
 
 # start a terminal
 bindsym $mod+Return exec $term
 
-# close focused window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
+# start dmenu
 bindsym $mod+d exec dmenu_run.sh
+
+# take screenshot
+bindsym Print exec swaygrab "~/Picture/screenshot-$(date +%m-%d-%y-%T).png"
+
+#}}}
+
+# Backlight and audio {{{
 
 # backlight controls
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-# lock screen
-bindsym $mod+Ctrl+l exec swaylock
+# volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume.sh +
+bindsym XF86AudioLowerVolume exec --no-startup-id volume.sh -
+bindsym XF86AudioMute        exec --no-startup-id volume.sh !
 
-focus_follows_mouse no
+# microphone
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
 
-# change focus
-bindsym $mod+$left  focus left
-bindsym $mod+$down  focus down
-bindsym $mod+$up    focus up
-bindsym $mod+$right focus right
+# media control
+bindsym $mod+\ exec --no-startup-id music.sh toggle
+bindsym $mod+] exec --no-startup-id music.sh next
+bindsym $mod+[ exec --no-startup-id music.sh prev
 
-# alternatively, you can use the cursor keys:
+#}}}
+
+# Change focus {{{
+
+# vim keys
+bindsym $mod+h     focus left
+bindsym $mod+j     focus down
+bindsym $mod+k     focus up
+bindsym $mod+l     focus right
+
+# cursor keys
 bindsym $mod+Left  focus left
 bindsym $mod+Down  focus down
 bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
-# alternatively, you can use the cursor keys:
+# focus the parent / child
+bindsym $mod+a     focus parent
+bindsym $mod+b     focus child
+
+#}}}
+
+# Move windows {{{
+
+# vim keys
+bindsym $mod+Shift+h     move left
+bindsym $mod+Shift+j     move down
+bindsym $mod+Shift+k     move up
+bindsym $mod+Shift+l     move right
+
+# cursor keys:
 bindsym $mod+Shift+Left  move left
 bindsym $mod+Shift+Down  move down
 bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
+
+# }}}
+
+# Layout modes {{{
 
 # split horizontal / vertical
 bindsym $mod+g splith
@@ -91,18 +118,17 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#}}}
 
-# focus the parent / child
-bindsym $mod+a focus parent
-bindsym $mod+b focus child
-
-# scratchpad
+# Scratchpad {{{
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus       scratchpad show
 
-# Workspaces
+#}}}
+
+# Workspaces  {{{
+
+# Workspace names {{{
 set $ws1    "1 "
 set $ws2    "2 "
 set $ws3    "3 "
@@ -112,8 +138,9 @@ set $ws6    "6 "
 set $ws7    "7 "
 set $ws8    "8 "
 set $ws9    "9 "
+#}}}
 
-# switch to workspace
+# Switching workspaces {{{
 bindsym $mod+comma  workspace prev
 bindsym $mod+period workspace next
 bindsym $mod+1      workspace $ws1
@@ -125,8 +152,9 @@ bindsym $mod+6      workspace $ws6
 bindsym $mod+7      workspace $ws7
 bindsym $mod+8      workspace $ws8
 bindsym $mod+9      workspace $ws9
+#}}}
 
-# move focused container to workspace
+# Moving containers to workspaces {{{
 bindsym $mod+Shift+comma  move container to workspace prev
 bindsym $mod+Shift+period move container to workspace next
 bindsym $mod+Shift+1      move container to workspace $ws1
@@ -138,26 +166,47 @@ bindsym $mod+Shift+6      move container to workspace $ws6
 bindsym $mod+Shift+7      move container to workspace $ws7
 bindsym $mod+Shift+8      move container to workspace $ws8
 bindsym $mod+Shift+9      move container to workspace $ws9
+#}}}
+
+#}}}
+
+# WM control {{{
+
+# lock screen
+bindsym $mod+Ctrl+l exec swaylock
+
+# kill focused window
+bindsym $mod+Shift+q kill
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
+
+# restart sway
 bindsym $mod+Shift+r restart
-# exit sway (logs you out of your wayland session)
+
+# exit sway
 bindsym $mod+Shift+e exit
 #bindsym $mod+Shift+e exec ~/.bin/logout-menu.sh sway
+
+#}}}
+
+# Output settings {{{
 
 # wallpaper
 output * background ~/Pictures/wallpapers/ocean-dark.jpg fill
 
-# input devices
+#}}}
+
+# Input devices {{{
 input 2:7:SynPS/2_Synaptics_TouchPad {
     tap enabled
     dwt enabled
     pointer_accel -0.5
 }
 
-# swaybar
+#}}}
+
+# Swaybar {{{
 bar {
     status_command i3status -c ~/.config/i3status/config.sway
     mode dock
@@ -177,9 +226,15 @@ bar {
     }
 }
 
-####################
-# Autostart Apps
-####################
+#}}}
+
+# Autostart Programs {{{
+
+# merge Xresources
 exec xrdb ~/.config/x11/Xresources -I$HOME
+# start pulse
 exec pulseaudio --start
 
+#}}}
+
+# vim:filetype=i3:foldmethod=marker:foldlevel=0
