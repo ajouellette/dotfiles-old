@@ -1,4 +1,3 @@
-X11: ~/.config/x11
 apps: ~/.local/share/applications
 bash: ~
 compton: ~/.config
@@ -16,4 +15,5 @@ scripts: ~/.local/bin
 tmux: ~/.config/tmux
 vim: ~
 vimperator: ~
+x11: ~/.config/x11
 zsh: ~/.config/zsh

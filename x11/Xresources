@@ -1,8 +1,8 @@
 ! ----------------------------------------------------
 ! --> Colors
 ! ----------------------------------------------------
-!#include ".colors/solarized/solarized-dark"
-#include ".config/x11/colors/base16/base16-ocean.dark.256.xresources"
+#include ".config/x11/colors/solarized/solarized-dark"
+!#include ".config/x11/colors/base16/base16-ocean.dark.256.xresources"
 
 ! ----------------------------------------------------
 ! --> fonts

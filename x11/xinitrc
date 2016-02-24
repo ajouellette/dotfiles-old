@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# ~/.xinitrc
+# xinitrc
 #
 # Executed by startx (run your window manager from here)
 
@@ -32,12 +32,12 @@ xset dpms 0 0 180 &
 session=${1:-i3}
 
 case $session in
-    bspwm)
-        source ~/.config/x11/xbspwm.sh;;
     i3)
         source ~/.config/x11/xi3.sh;;
     xfce)
         startxfce4;;
+    kde)
+        startkde;;
     # no known session, try to run command
     *)
         exec $1;;
