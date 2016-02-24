@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 display_help() {
     echo "Usage: [re|un]stow.sh <package1> [<package2> <package3> ...]"
@@ -6,8 +6,8 @@ display_help() {
     echo "    unstow.sh: removes symlinks"
     echo "    restow.sh: removes and then re-creates symlinks"
     echo
-    echo "    Stow determines what directories the symlinks go in"
-    echo "    by parsing the file \"index\""
+    echo "    Stow determines what directories the symlinks go in by pasrsing the file \"index\"."
+    echo "    The default directory is $XDG_CONFIG_HOME/package."
 }
 
 main() {
@@ -27,11 +27,11 @@ main() {
             array=( `grep "^$package:" index` )
 
             if [ -z "$array" ]; then
-                echo "Error: \"$package\" not found in index"
-                return 1
+                dir="$XDG_CONFIG_HOME/$package"
+            else
+                dir=${array[1]}
             fi
 
-            dir=${array[1]}
             eval "mkdir -p $dir"
             eval "stow --verbose=1 -t $dir $flag $package"
         else
