@@ -27,7 +27,11 @@ main() {
             array=( `grep "^$package:" index` )
 
             if [ -z "$array" ]; then
-                dir="$XDG_CONFIG_HOME/$package"
+                if [ -n "$XDG_CONFIG_HOME"]; then
+                    dir="$XDG_CONFIG_HOME/$package"
+                else
+                    dir="$HOME/.config/$package"
+                fi
             else
                 dir=${array[1]}
             fi
