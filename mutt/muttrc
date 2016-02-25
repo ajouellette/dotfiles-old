@@ -67,6 +67,13 @@ unignore from: to: cc: bcc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: bcc: date: subject:  # and in this order
 
+# GPG settings ----------------------------------
+#################################################
+set crypt_use_gpgme
+set crypt_replysign
+set crypt_replyencrypt
+set crypt_replysignencrypted
+
 # Pager -----------------------------------------
 #################################################
 set pager_context=5
