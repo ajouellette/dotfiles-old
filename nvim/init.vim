@@ -11,18 +11,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall
 endif
 
-" function to build YCM
-function! BuildYCM(info)
-    " info is a dictionary with 3 fields
-    " - name:   name of the plugin
-    " - status: 'installed', 'updated', or 'unchanged'
-    " - force:  set on PlugInstall! or PlugUpdate!
-    if a:info.status == 'installed' || a:info.force
-        !sed -i s/env\ python/env\ python2/ install.py
-        !./install.py --system-boost --system-libclang --clang-completer
-    endif
-endfunction
-
 " Use vim-plug to manage plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
@@ -32,7 +20,7 @@ Plug 'xolox/vim-misc'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --system-boost --system-libclang --clang-completer' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
