@@ -3,10 +3,10 @@ These are some system wide configuration files. They will not work on every syst
 
 ## Files included:
 - `issue` - display Arch logo on tty login screen
-- `vconsole.conf` - tty font and colors
-- `pacman.conf` - pacman settings
+- `mkinitcpio.conf` - settings for mkinitcpio
 - `pacman.d/`
     - `hooks/` - pacman hooks
         - `pacdiff.hook` - deal with .pacnew files when upgrading packages
-- `mkinitcpio.conf` - settings for mkinitcpio
-
+- `pacman.conf` - pacman settings
+- `sysctl.d` - kernel settings
+- `vconsole.conf` - tty font and colors
