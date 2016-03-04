@@ -2,11 +2,11 @@
     user = aouelete
 
 [user]
-	name = Aaron Ouellette
-	email = aouellette2016@gmail.com
+    name = Aaron Ouellette
+    email = aouellette2016@gmail.com
 
 [push]
-	default = simple
+    default = simple
 
 [color]
     ui = auto
@@ -32,11 +32,11 @@
     smtpServerPort = 587
 
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 
 [merge]
     tool = vimdiff2
 
 [pager]
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+    diff = diff-so-fancy | less --tabs=1,5 -R
+    show = diff-so-fancy | less --tabs=1,5 -R
