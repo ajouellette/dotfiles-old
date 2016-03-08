@@ -11,7 +11,7 @@
 set $mod Mod4
 
 # terminal used
-set $term urxvt
+set $term termite
 
 # number of pixels that windows are resized
 set $resize 5
@@ -25,7 +25,7 @@ gaps inner 15
 
 floating_modifier $mod
 focus_follows_mouse no
-workspace_auto_back_and_forth true
+workspace_auto_back_and_forth yes
 #}}}
 
 # Run programs {{{
@@ -37,7 +37,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+d exec dmenu_run.sh
 
 # take screenshot
-bindsym Print exec swaygrab "~/Picture/screenshot-$(date +%m-%d-%y-%T).png"
+bindsym Print exec swaygrab "~/Pictures/screenshot-$(date +%m-%d-%y-%T).png"
 
 #}}}
 
@@ -56,9 +56,9 @@ bindsym XF86AudioMute        exec --no-startup-id volume.sh !
 bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
 
 # media control
-bindsym $mod+\ exec --no-startup-id music.sh toggle
-bindsym $mod+] exec --no-startup-id music.sh next
-bindsym $mod+[ exec --no-startup-id music.sh prev
+bindsym $mod+backslash    exec --no-startup-id music.sh toggle
+bindsym $mod+bracketright exec --no-startup-id music.sh next
+bindsym $mod+bracketleft  exec --no-startup-id music.sh prev
 
 #}}}
 
@@ -201,7 +201,6 @@ output * background ~/Pictures/wallpapers/ocean-dark.jpg fill
 input 2:7:SynPS/2_Synaptics_TouchPad {
     tap enabled
     dwt enabled
-    pointer_accel -0.5
 }
 
 #}}}
