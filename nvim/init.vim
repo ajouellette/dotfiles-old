@@ -267,20 +267,14 @@ nmap <Leader>so iSigned-off-by Aaron Ouellette <aouellette2016@gmail.com>
 " => Filetypes {{{
 """""""""""""""""""""""""""""
 " TECS files
-autocmd BufNewFile,BufRead *.jack :set filetype=jack
-autocmd BufNewFile,BufRead *.vm   :set filetype=vm
-
+autocmd BufNewFile,BufRead *.jack :setlocal filetype=jack
+autocmd BufNewFile,BufRead *.vm   :setlocal filetype=vm
 " z80 assembly
 autocmd BufNewFile,BufRead *.z80 :set filetype=z80
-
 " markdown
-autocmd BufNewFile,BufRead *.md :setlocal filetype=markdown nolist
-
-" text files
-autocmd BufNewFile,BufRead *.txt :setlocal nolist colorcolumn=
-
+autocmd BufNewFile,BufRead *.md :setlocal filetype=markdown
 " mutt files
-autocmd BufNewFile,BufRead *mutt-* :setlocal filetype=mail nonumber norelativenumber nolist colorcolumn=
+autocmd BufNewFile,BufRead *mutt-* :setlocal filetype=mail
 
 "}}}
 
