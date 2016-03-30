@@ -32,11 +32,10 @@ in `/etc/systemd/sleep.conf`.
 To prevent screen tearing, put this in `/etc/X11/xorg.conf.d/20-intel.conf`
 ```
 Section "Device"
-	Identifier "Intel Graphics"
-	Driver "intel"
+    Identifier "Intel Graphics"
+    Driver "intel"
 
-	Option "AccelMethod" "sna"
-    Option "TearFree"    "true"
+    Option "AccelMethod" "sna"
     Option "DRI"         "3"
 
 EndSection
@@ -44,7 +43,7 @@ EndSection
 
 ## General notes
 
-### Lock screen on suspend
+### Lock screen on suspend (for i3 or sway)
 Put the following in `/etc/systemd/system/suspend@.service` and enable suspend@*user*.service.
 ```
 [Unit]
@@ -69,7 +68,7 @@ WantedBy=sleep.target
     - Intel graphics power saving options (might cause problems)
 
 ### SSD configuration
-- Use the noop scheduler for SSDs and cfq for rotational disks `/etc/udev/rules.d/scheduler.rules`:
+- Use the noop (or deadline?) scheduler for SSDs and cfq for rotational disks `/etc/udev/rules.d/scheduler.rules`:
 ```
 # set noop scheduler for non-rotating disks
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="noop"
@@ -105,11 +104,12 @@ lz4 is much better than gzip, cat is even faster.
 
 
 ### Security
-**Use full disk encryption**: dm-crypt on LVM
-
 **Set up a firewall**: ufw
 
-**SSH**: use public keys
+**SSH**: use keys, disable root login
+
+**TODO:**
+- **Use full disk encryption**: dm-crypt on LVM
 
 ### Fancy login screen on tty
 See [this](https://wiki.archlinux.org/index.php/Configure_virtual_console_colors) wiki page and [this](https://bbs.archlinux.org/viewtopic.php?pid=386429#p386429) forum post.
