@@ -17,15 +17,16 @@ set $term termite
 set $resize 5
 
 # Font for window titles
-#font pango: Fira Mono 10
+font pango: Fira Mono 10
 
 # gaps
-gaps outer 12
-gaps inner 15
+gaps outer 10
+gaps inner 14
 
 floating_modifier $mod
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
+
 #}}}
 
 # Run programs {{{
@@ -173,7 +174,7 @@ bindsym $mod+Shift+9      move container to workspace $ws9
 # WM control {{{
 
 # lock screen
-bindsym $mod+Ctrl+l exec swaylock
+bindsym $mod+Ctrl+l exec i3lock.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -186,7 +187,6 @@ bindsym $mod+Shift+r restart
 
 # exit sway
 bindsym $mod+Shift+e exit
-#bindsym $mod+Shift+e exec ~/.bin/logout-menu.sh sway
 
 #}}}
 
