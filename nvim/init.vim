@@ -14,6 +14,7 @@ endif
 " Use vim-plug to manage plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
@@ -44,10 +45,12 @@ call plug#end()
 set history=50
 
 let mapleader=','
+let maplocalleader=','
+
 noremap ; :
 
 set timeout ttimeout
-set timeoutlen=400 ttimeoutlen=10
+set timeoutlen=500 ttimeoutlen=50
 
 " reload vimrc when written
 augroup reload_vimrc " {
