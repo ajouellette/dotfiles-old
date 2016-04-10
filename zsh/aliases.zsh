@@ -1,5 +1,7 @@
 # zsh aliases
 
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc; source $ZDOTDIR/.zshrc"
+
 alias c='clear'
 alias x='exit'
 
