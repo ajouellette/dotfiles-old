@@ -1,0 +1,36 @@
+directory: ~/Music
+library: ~/Music/library.blb
+
+original_date: yes
+
+import:
+    move: yes
+
+plugins: fromfilename bpm lastgenre mpdstats scrub edit fetchart embedart duplicates replaygain
+
+lastgenre:
+    auto: yes
+    force: yes
+    canonical: yes
+    min_weight: 30
+
+mpdstats:
+    host: localhost
+    port: 6600
+    rating: yes
+
+fetchart:
+    cautious: true
+
+embedart:
+    auto: yes
+    compare_theshold: 60
+
+duplicates:
+    album: yes
+    merge: yes
+
+replaygain:
+    auto: no
+    backend: gstreamer
+
