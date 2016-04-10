@@ -3,6 +3,12 @@ library: ~/Music/library.blb
 
 original_date: yes
 
+match:
+    preferred:
+        countries: ['US', 'GB|UK']
+        media: ['CD', 'Vinyl']
+        original_year: yes
+
 import:
     move: yes
 
