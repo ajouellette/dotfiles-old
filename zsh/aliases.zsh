@@ -40,8 +40,8 @@ alias -g ....='../../..'
 # runs vim as user instead of as root (safer)
 alias svim='sudoedit'
 # a minimal vim configuration
-if [ -f ~/.vim/vimrc.min ]; then
-    alias vi='vim -u ~/.vim/vimrc.min'
+if [ -f ~/.config/nvim/minimal.vim ]; then
+    alias vi='nvim -u ~/.config/nvim/minimal.vim'
 fi
 
 alias bc='bc -q -l'
