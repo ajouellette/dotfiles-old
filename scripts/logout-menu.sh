@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 # a logout menu using rofi
 
-wm=${1:-i3}
+# try to autodetect WM
+if [ -n "$SWAYSOCK" ]; then
+    wm='sway'
+elif [ -n "$I3SOCK" ]; then
+    wm='i3'
+else
+    wm=${1:-i3}
+fi
+
 CMD=`echo -e "Suspend\nLogout\nReboot\nHibernate\nShutdown" | rofi -dmenu -p "Logout Menu:" -lines 6`
 
 case $wm in
@@ -10,7 +18,7 @@ case $wm in
     bspwm)
         logout="bspc quit";;
     sway)
-        logout="sway-msg exit";;
+        logout="swaymsg exit";;
     *)
         logout="";;
 esac
@@ -32,3 +40,5 @@ case $CMD in
     Suspend)
         systemctl suspend;;
 esac
+
+

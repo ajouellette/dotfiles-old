@@ -37,13 +37,13 @@ for account in ${accounts[@]}; do
     password=${passwords[$i]}
 
     feed=$(curl -u $account:$password --silent https://mail.google.com/mail/feed/atom)
-    
+
     if [ -n "$feed" ]; then
         new=$(echo $feed | grep -o "<entry>" | wc -l)
     else
         new=0
     fi
-    
+
     results[i]=$new
     total=$(($total + $new))
 
