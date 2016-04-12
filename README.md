@@ -28,7 +28,7 @@ Script usage:
 ./restow <pack1> [<pack2> ...]  remove and then recreate symlinks for specified packages
 ```
 
-This script will read the file ```index``` to determine which files go where. 
+This script will read the file ```index``` to determine which files go where.
 
 File format for ```index```:
 
@@ -39,4 +39,40 @@ One package per line, does not have to be in alphabetical order.
 <package2>: <directory>
 ...
 ```
+
+### Apps included and their dependencies
+
+#### NeoVim
+* python-neovim and python2-neovim for python plugins
+* xsel for integration with the X clipboard
+
+Plugins listed in the init.vim file must be present for it to work.
+* YouCompleteMe also needs clang and boost to work.
+
+#### i3
+* i3blocks for status bar
+* i3lock and xautolock for screen lock
+* compton for transpareency and other effects
+* dunst - notification daemon
+* xcape - to remap CapsLock to Esc and Ctrl
+
+#### mutt
+* sidebar patch
+* urlview for opening urls in a browser
+* gnupg for encrypting/signing emails
+
+#### Git
+* diff-so-fancy for fancy diffs
+
+#### Sway
+* i3status for status bar
+* light - backlight control that does not depend on X
+
+
+### Inspiration
+Here are some other dotfile repositories that I got some ideas from (also some interesting setups or utilities):
+
+* [xero/dotfiles](https://github.com/xero/dotfiles)
+* [dylanaraps/fetch](https://github.com/dylanaraps/fetch)
+*
 

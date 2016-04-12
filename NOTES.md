@@ -3,6 +3,9 @@ These are some notes detailing the configuration of my Arch Linux system, just i
 
 ## Thinkpad E440 specific notes
 
+### Updating BIOS
+See the wiki page.
+
 ### Blinking power light on resume
 fix by running ```# echo '0 on' > /proc/acpi/ibm/led```.
 
@@ -18,10 +21,10 @@ To automate using systemd put the following in ```/usr/lib/systemd/system-sleep/
  esac
 ```
 ### Hibernation problems
-For some reason hibernation on newer kernels is very unreliable. LTS kernel works.
+For some reason hibernation on newer kernels (4.3 tested) is very unreliable. LTS kernel works.
 Possible solution: use shutdown mode instead of platform mode (does not always work??).
 
-To make systemd use a specific mode for hibernate put
+To make systemd use a specific mode for hibernate, put
 
     [Sleep]
     HibernateMode=<mode>
@@ -38,6 +41,15 @@ Section "Device"
     Option "AccelMethod" "sna"
     Option "DRI"         "3"
 
+EndSection
+```
+
+Or, use the modesetting driver (better solution, maybe?). Uninstall `xf86-video-intel` and put the following
+in `/etc/X11/xorg.conf.d/20-intel.conf`
+```
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "modesetting"
 EndSection
 ```
 
@@ -148,6 +160,7 @@ Use zsh instead of bash. Enable completions and spell-corrections.
 
 ### Wayland stuff
 - **sway** *(i3 compatible wm for wayland)*
+- **light** *(backlight control)*
 
 ### Xorg display stuff
 - **compton** *(a display compositor)*
