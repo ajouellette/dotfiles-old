@@ -35,9 +35,9 @@ alias lsblk='lsblk --output "NAME,TYPE,LABEL,SIZE,FSTYPE,MOUNTPOINT"'
 alias path='echo -e ${PATH//:/\\n}'
 
 # go back
-alias -g ..='..'
 alias -g ...='../..'
 alias -g ....='../../..'
+alias -g .....='../../../..'
 
 # runs vim as user instead of as root (safer)
 alias svim='sudoedit'
@@ -63,7 +63,8 @@ fi
 
 # cd into a new dir
 mkcd () {
-    mkdir "$1" && cd "$1"
+    dir="$1"; shift
+    mkdir "$dir" "$@" && cd "$dir"
 }
 
 # extract archives
@@ -100,14 +101,8 @@ alias rfortune='fortune | cowsay -f $(find /usr/share/cows -type f | shuf -n 1)'
 # print top 10 most used commands
 alias top10="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 
-# if mutt is already running, launch read-only
-mut() {
-    if [ -n "$(pgrep mutt)" ]; then
-        mutt -R
-    else
-        mutt
-    fi
-}
+alias open='xdg-open'
+
 
 #####################################
 ##        Arch aliases             ##
