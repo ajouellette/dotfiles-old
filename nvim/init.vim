@@ -21,7 +21,7 @@ Plug 'xolox/vim-misc'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 install.py --system-boost --system-libclang --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
@@ -320,6 +320,8 @@ let g:airline#extension#wordcount#filetypes="\vhelp|markdown|rst|org|text|mail"
 " seed identifier database with keywords from vim syntax files
 let g:ycm_seed_identifiers_with_syntax=1
 
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+
 " location of global extra conf files (c and c++)
 autocmd BufRead,BufNewFile *.c,*.h :let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.c.py"
 autocmd BufRead,BufNewFile *.cpp,*hpp :let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.cpp.py"
@@ -387,6 +389,35 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " => Notes {{{
 """""""""""""""""""""""""""""
 let g:notes_directories = ['~/Documents/Notes']
+"}}}
+
+"""""""""""""""""""""""""""""
+" => VimTex {{{
+"""""""""""""""""""""""""""""
+" use nvim remote
+let g:vimtex_latexmk_progname = 'nvr'
+
+let g:vimtex_fold_enabled = 1
+
+" pdf viewer settings
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+" semantic completions
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+      \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+      \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+      \ 're!\\hyperref\[[^]]*',
+      \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+      \ 're!\\(include(only)?|input){[^}]*',
+      \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+      \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+      \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+      \ ]
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
