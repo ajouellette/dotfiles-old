@@ -52,3 +52,6 @@
 [submodule "vim/.vim/bundle/goyo.vim"]
 	path = vim/.vim/bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = git://github.com/tmux-plugins/tpm
