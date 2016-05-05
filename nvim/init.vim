@@ -14,12 +14,14 @@ endif
 " Use vim-plug to manage plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
+Plug 'equalsraf/neovim-gui-shim'
 Plug 'lervag/vimtex'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rsi'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'benekastah/neomake'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'SirVer/ultisnips'
@@ -35,6 +37,7 @@ Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/base16-vim'
 call plug#end()
 "}}}
 
@@ -62,9 +65,9 @@ augroup END " }
 """""""""""""""""""""""""""""
 " => VIM user interface {{{
 """""""""""""""""""""""""""""
-" This probably wont work everwhere
+" true color and cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set noerrorbells
 set belloff="all"
@@ -77,7 +80,6 @@ set number
 
 " highlight current line
 set cursorline
-" highlight 80th column
 set colorcolumn=80
 
 " Searching
@@ -118,7 +120,7 @@ set foldmethod=indent  " fold based on indent level
 syntax enable
 
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 " }}}
 
 """""""""""""""""""""""""""""
@@ -168,9 +170,6 @@ nmap k gk
 map <Up> gk
 map <Down> gj
 
-" show tabline only if there are at least two tabs
-set showtabline=1
-
 " Specify the behavior when switching between buffers
 set switchbuf=useopen,usetab,newtab
 
@@ -191,7 +190,7 @@ set laststatus=2
 set noshowmode
 
 set ruler
-set showtabline=2
+set showtabline=1
 set showcmd
 " }}}
 
@@ -217,16 +216,6 @@ nnoremap <A-l> <C-w>l
 """""""""""""""""""""""""""""
 " => Misc {{{
 """""""""""""""""""""""""""""
-" command line mode more like a command line
-cnoremap <C-a>  <Home>
-cnoremap <M-b>  <S-Left>
-cnoremap <M-f>  <S-Right>
-cnoremap <M-d>  <S-right><Delete>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><Delete>
-cnoremap <C-g>  <C-c>
-
 " no ex mode
 nnoremap Q <nop>
 
@@ -261,12 +250,6 @@ set splitright
 "}}}
 
 """""""""""""""""""""""""""""
-" => Shortcuts {{{
-"""""""""""""""""""""""""""""
-nmap <Leader>so iSigned-off-by Aaron Ouellette <aouellette2016@gmail.com>
-"}}}
-
-"""""""""""""""""""""""""""""
 " => Filetypes {{{
 """""""""""""""""""""""""""""
 " TECS files
@@ -284,11 +267,12 @@ autocmd BufNewFile,BufRead *mutt-* :setlocal filetype=mail
 """""""""""""""""""""""""""""
 " => Spellchecking {{{
 """""""""""""""""""""""""""""
-set spellsuggest=best,10
+set spellsuggest=best,5
 
 " use spell checking for mail and markdown
 autocmd FileType mail     :setlocal spell spelllang=en_us
 autocmd FileType markdown :setlocal spell spelllang=en_us
+autocmd FileType notes    :setlocal spell spelllang=en_us
 
 " toggle spell
 nmap \s :setlocal spell!<CR> :setlocal spell?<CR>
@@ -353,12 +337,6 @@ map <C-f> :NERDTreeToggle<CR>
 " }}}
 
 """""""""""""""""""""""""""""
-" => Neomake {{{
-"""""""""""""""""""""""""""""
-let g:neomake_open_list=2
-"}}}
-
-"""""""""""""""""""""""""""""
 " => CtrlP {{{
 """""""""""""""""""""""""""""
 let g:ctrlp_map='<c-p>'
@@ -388,12 +366,15 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 """""""""""""""""""""""""""""
 " => Notes {{{
 """""""""""""""""""""""""""""
-let g:notes_directories = ['~/Documents/Notes']
+let g:notes_directories = ['~/Dropbox/Notes']
 "}}}
 
 """""""""""""""""""""""""""""
 " => VimTex {{{
 """""""""""""""""""""""""""""
+" disable vim-polyglot latex support
+let g:polyglot_disabled = ['latex']
+
 " use nvim remote
 let g:vimtex_latexmk_progname = 'nvr'
 
