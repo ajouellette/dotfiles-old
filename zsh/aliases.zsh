@@ -27,6 +27,9 @@ sln() {
     ln -s $2 $1
 }
 
+# renaming files
+alias mmv='zmv -iW'
+
 alias du='du -h'
 alias df='df -h'
 alias lsblk='lsblk --output "NAME,TYPE,LABEL,SIZE,FSTYPE,MOUNTPOINT"'
@@ -52,7 +55,6 @@ alias calc='python -qi -c "from math import *"'
 alias kernel='uname -rs'
 alias up='uptime -p'
 
-alias ncmpcpp='ncmpcpp -c ~/.config/ncmpcpp/config'
 alias mutt='mutt -F ~/.config/mutt/muttrc'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
@@ -63,7 +65,7 @@ fi
 
 # cd into a new dir
 mkcd () {
-    dir="$1"; shift
+    local dir="$1"; shift
     mkdir "$dir" "$@" && cd "$dir"
 }
 
@@ -115,14 +117,11 @@ alias searchaur="pacaur -s"
 update() {
     sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
     sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
-    sudo pacmatic -Syuu && \
-    pacaur -u
+    sudo pacman -Fy && \
+    pacaur -Syu
 }
 
-upgrade() {
-    sudo pacmatic -Syu && \
-    pacaur -u
-}
+alias upgrade='pacaur -Syu'
 
 pacinfo() {
     pacman -Qi "$1" &> /dev/null

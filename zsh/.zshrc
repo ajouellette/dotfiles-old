@@ -12,6 +12,8 @@ autoload -U select-word-style && select-word-style bash
 # edit command line in $EDITOR
 autoload -U edit-command-line && zle -N edit-command-line
 
+autoload zmv
+
 #}}}
 
 # Settings {{{
@@ -92,6 +94,14 @@ export GPG_TTY
 
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# neovim socket (needs neovim-remote)
+export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
+
+# start tmux
+if [ -z "$TMUX" ]; then
+    tmux
+fi
 
 #}}}
 
