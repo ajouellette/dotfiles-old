@@ -163,12 +163,11 @@ set hidden
 " moving between buffers
 nnoremap <C-K> :bnext<CR>
 nnoremap <C-J> :bprev<CR>
+nnoremap <C-B> :CtrlPBuffer<CR>
 
-" Treat long lines as break lines (useful when moving around in them)
-nmap j gj
-nmap k gk
-map <Up> gk
-map <Down> gj
+" Move by visual lines, but only when count is 0
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " Specify the behavior when switching between buffers
 set switchbuf=useopen,usetab,newtab
