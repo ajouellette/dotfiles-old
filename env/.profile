@@ -19,6 +19,10 @@ export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export WEECHAT_HOME="$XDG_CONFIG_HOME/weechat"
+
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export ATOM_HOME="$XDG_DATA_HOME/atom"
 
 export DVDCSS_CACHE="$XDG_CACHE_HOME"/dvdcss
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/hist

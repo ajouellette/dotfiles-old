@@ -1,9 +1,9 @@
 # ~/.pam_environment
 
-BROWSER=firefox
-EDITOR=vim
-VISUAL=vim
+TERMINAL=konsole
+EDITOR=nvim
+VISUAL=nvim
 PAGER=less
 LESS=-R
-TERMINAL=termite
+BROWSER=firefox
 
