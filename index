@@ -13,7 +13,7 @@ redshift: ~/.config
 root: /root
 scripts: ~/.local/bin
 tmux: ~/.config/tmux
-vim: ~
 vimperator: ~
+weechat: ~/.config/weechat
 x11: ~/.config/x11
 zsh: ~/.config/zsh
