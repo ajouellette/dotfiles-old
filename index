@@ -5,7 +5,6 @@ conky: ~
 dircolors: ~/.config/dircolors
 env: ~
 fonts: ~/.local/share/fonts
-irssi: ~/.irssi
 mutt: ~/.config/mutt
 ncmpcpp: ~/.config/ncmpcpp
 readline: ~/.config/readline
@@ -13,7 +12,6 @@ redshift: ~/.config
 root: /root
 scripts: ~/.local/bin
 tmux: ~/.config/tmux
-vimperator: ~
 weechat: ~/.config/weechat
 x11: ~/.config/x11
 zsh: ~/.config/zsh
