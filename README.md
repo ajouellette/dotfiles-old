@@ -2,14 +2,13 @@
 Configuration files for my Arch Linux system
 
 ### Screenshots
-Base16-ocean theme:
 
 #### i3
-![screenshot](screenshots/scrot-i3.png)
-#### vim
-![vim](screenshots/scrot-vim.png)
-#### irssi
-![irssi](screenshots/scrot-irssi.png)
+![i3](screenshots/i3.png)
+#### sway
+![sway](screenshots/sway.png)
+#### neovim
+![neovim](screenshots/neovim.png)
 
 ### Installation
 
@@ -74,5 +73,5 @@ Here are some other dotfile repositories that I got some ideas from (also some i
 
 * [xero/dotfiles](https://github.com/xero/dotfiles)
 * [dylanaraps/fetch](https://github.com/dylanaraps/fetch)
-*
+* others ...
 
