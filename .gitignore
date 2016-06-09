@@ -6,6 +6,7 @@ mutt/certificates
 weechat/logs
 weechat/weechat.log
 weechat/sec.conf
+wwechat/scripts/plugins.xml.gz
 
 *.pyc
 *.old
