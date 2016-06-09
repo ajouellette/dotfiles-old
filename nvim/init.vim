@@ -24,6 +24,7 @@ Plug 'xolox/vim-misc'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'neomake/neomake'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Raimondi/delimitMate'
@@ -168,6 +169,8 @@ nnoremap <C-B> :CtrlPBuffer<CR>
 " Move by visual lines, but only when count is 0
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+map <Up> gk
+map <Down> gj
 
 " Specify the behavior when switching between buffers
 set switchbuf=useopen,usetab,newtab
@@ -428,6 +431,10 @@ let g:ycm_semantic_triggers.tex = [
       \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
       \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
       \ ]
+"}}}
+
+" Neomake {{{
+autocmd! BufWritePost * Neomake
 "}}}
 
 " vim:foldmethod=marker:foldlevel=0
