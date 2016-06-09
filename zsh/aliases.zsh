@@ -118,7 +118,7 @@ update() {
     sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
     sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
     sudo pacman -Fy && \
-    pacaur -Syu
+    pacaur -Syyu
 }
 
 alias upgrade='pacaur -Syu'
