@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Irssi
+Name=Weechat
 Comment=Console-based IRC client
-Exec=irssi
+Exec=weechat
 Terminal=true
 Categories=Network;
 StartupNotify=true
