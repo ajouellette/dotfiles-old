@@ -33,7 +33,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'aouelete/sway-vim-syntax'
 " Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
