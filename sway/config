@@ -121,6 +121,54 @@ bindsym $mod+Shift+space floating toggle
 
 #}}}
 
+# Binding modes {{{
+
+set $mode_resize Resize: direction - grow, shift+direction - shrink
+set $mode_ignore Ignore: ignore all keypresses
+
+# Resize mode {{{
+# normal - grow, shift+opposite - shrink
+mode $mode_resize {
+    # vim keys
+    bindsym h resize grow left $resize px or $resize ppt
+    bindsym k resize grow up $resize px or $resize ppt
+    bindsym j resize shrink down $resize px or $resize ppt
+    bindsym l resize grow right $resize px or $resize ppt
+
+    bindsym Shift+l resize shrink left $resize px or $resize ppt
+    bindsym Shift+j resize shrink up $resize px or $resize ppt
+    bindsym Shift+k resize shrink down $resize px or $resize ppt
+    bindsym Shift+h resize shrink right $resize px or $resize ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize grow left $resize px or $resize ppt
+    bindsym Up resize grow up $resize px or $resize ppt
+    bindsym Down resize grow down $resize px or $resize ppt
+    bindsym Right resize grow right $rsize px or $resize ppt
+
+    bindsym Shift+Right resize shrink left $resize px or $resize ppt
+    bindsym Shift+Down resize shrink up $resize px or $resize ppt
+    bindsym Shift+Up resize shrink down $resize px or $resize ppt
+    bindsym Shift+Left resize shrink right $resize px or $resize ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode $mode_resize
+#}}}
+
+# Ignore mode {{{
+# ignores all keypresses
+mode "$mode_ignore" {
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+i mode "$mode_ignore"
+#}}}
+
+#}}}
+
 # Scratchpad {{{
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus       scratchpad show
@@ -197,14 +245,6 @@ output * background ~/Pictures/wallpapers/ocean-dark.jpg fill
 
 #}}}
 
-# Input devices {{{
-input 2:7:SynPS/2_Synaptics_TouchPad {
-    tap enabled
-    dwt enabled
-}
-
-#}}}
-
 # Swaybar {{{
 bar {
     status_command i3status -c ~/.config/i3status/config.sway
@@ -227,6 +267,13 @@ bar {
 
 #}}}
 
+# Include extra files {{{
+
+include ~/.config/sway/config.d/`hostname`/*
+include ~/.config/sway/config.d/*
+
+#}}}
+
 # Autostart Programs {{{
 
 # merge Xresources
@@ -236,4 +283,4 @@ exec pulseaudio --start
 
 #}}}
 
-# vim:filetype=i3:foldmethod=marker:foldlevel=0
+# vim:filetype=sway:foldmethod=marker:foldlevel=0

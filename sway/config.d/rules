@@ -1,0 +1,5 @@
+# Window specific rules
+
+for_window [class="z80-sdl"] floating enable
+
+# vim:filetype=sway:foldmethod=marker:foldlevel=0

@@ -1,0 +1,11 @@
+
+# Input devices {{{
+
+input 2:7:SynPs/2_Synaptics_TouchPad {
+    tap enabled
+    dwt enabled
+}
+
+#}}}
+
+# vim:filetype=sway:foldmethod=marker:foldlevel=0
