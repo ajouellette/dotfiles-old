@@ -6,7 +6,6 @@ These are some system wide configuration files. They will not work on every syst
 - `mkinitcpio.conf` - settings for mkinitcpio
 - `pacman.d/`
     - `hooks/` - pacman hooks
-        - `pacdiff.hook` - deal with .pacnew files when upgrading packages
 - `pacman.conf` - pacman settings
 - `sysctl.d` - kernel settings
 - `vconsole.conf` - tty font and colors
