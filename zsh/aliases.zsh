@@ -6,7 +6,7 @@ alias c='clear'
 alias x='exit'
 
 # ls aliases
-alias ls='ls -h --color=auto'
+alias ls='ls -hv --group-directories-first --color=auto'
 alias la='ls -A'
 alias ll='ls -lAF'
 
