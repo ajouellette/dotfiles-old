@@ -123,39 +123,30 @@ bindsym $mod+Shift+space floating toggle
 
 # Binding modes {{{
 
-set $mode_resize Resize: direction - grow, shift+direction - shrink
-set $mode_ignore Ignore: ignore all keypresses
+set $mode_resize Resize
+set $mode_ignore Ignore
 
 # Resize mode {{{
-# normal - grow, shift+opposite - shrink
-mode $mode_resize {
+# left/right - shrink/grow container's width
+# up/down - shrink/grow container's height
+mode "$mode_resize" {
     # vim keys
-    bindsym h resize grow left $resize px or $resize ppt
-    bindsym k resize grow up $resize px or $resize ppt
-    bindsym j resize shrink down $resize px or $resize ppt
-    bindsym l resize grow right $resize px or $resize ppt
-
-    bindsym Shift+l resize shrink left $resize px or $resize ppt
-    bindsym Shift+j resize shrink up $resize px or $resize ppt
-    bindsym Shift+k resize shrink down $resize px or $resize ppt
-    bindsym Shift+h resize shrink right $resize px or $resize ppt
+    bindsym h resize shrink width $resize px or $resize ppt
+    bindsym k resize shrink height $resize px or $resize ppt
+    bindsym j resize grow height $resize px or $resize ppt
+    bindsym l resize grow width $resize px or $resize ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize grow left $resize px or $resize ppt
-    bindsym Up resize grow up $resize px or $resize ppt
-    bindsym Down resize grow down $resize px or $resize ppt
-    bindsym Right resize grow right $rsize px or $resize ppt
-
-    bindsym Shift+Right resize shrink left $resize px or $resize ppt
-    bindsym Shift+Down resize shrink up $resize px or $resize ppt
-    bindsym Shift+Up resize shrink down $resize px or $resize ppt
-    bindsym Shift+Left resize shrink right $resize px or $resize ppt
+    bindsym Left resize shrink width $resize px or $resize ppt
+    bindsym Up resize shrink height $resize px or $resize ppt
+    bindsym Down resize grow height $resize px or $resize ppt
+    bindsym Right resize grow width $rsize px or $resize ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode $mode_resize
+bindsym $mod+r mode "$mode_resize"
 #}}}
 
 # Ignore mode {{{
