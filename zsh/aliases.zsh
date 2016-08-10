@@ -106,60 +106,58 @@ alias top10="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias open='xdg-open'
 
 
-#####################################
-##        Arch aliases             ##
-#####################################
-# pacman aliases and functions:
-alias install='pacaur -S --needed'
-alias search="pacman -Ss"
-alias searchaur="pacaur -s"
+# Arch aliases
+if [ -n "$(grep "Arch Linux" /etc/os-release)" ]; then
+    # pacman aliases and functions:
+    alias install='pacaur -S --needed'
+    alias search="pacman -Ss"
+    alias searchaur="pacaur -s"
 
-update() {
-    sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
-    sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
-    sudo pacman -Fy && \
-    pacaur -Syyu
-}
+    update() {
+        sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
+        sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
+        sudo pacman -Fy && \
+        pacaur -Syyu
+    }
 
-alias upgrade='pacaur -Syu'
+    alias upgrade='pacaur -Syu'
 
-pacinfo() {
-    pacman -Qi "$1" &> /dev/null
-    if [ "$?" -eq 1 ]
-    then
-        pacaur -Si "$1"
-    else
-        pacman -Qi "$1"
-    fi
-}
-# clean package cache
-clean-cache() {
-    paccache -r
-    paccache -ruk0
-}
-# remove orphaned packages
-remove-orphans() {
-    if [[ ! -n $(pacman -Qdt) ]]; then
-        echo "No orphaned packages to remove."
-    else
-        sudo pacman -Rns $(pacman -Qdtq)
-    fi
-}
-alias clean='sudo pacdiff; remove-orphans; clean-cache; sudo pacman-optimize'
-alias remove='sudo pacman -Rns'
-# sort installed packages by size
-pacsort() {
-    expac -s "%-30n %m" | sort -hk 2 | awk '{print $1, $2/1024/1024}' | column -t | less
-}
-# list all explicitely installed packages, not in base or base-devel
-lsinstalled() {
-    expac -HM "%011m\t%-20n\t%10d" $( comm -23 <(pacman -Qqen|sort) <(pacman -Qqg base base-devel|sort) ) | sort -n | less
-}
+    pacinfo() {
+        pacman -Qi "$1" &> /dev/null
+        if [ "$?" -eq 1 ]
+        then
+            pacaur -Si "$1"
+        else
+            pacman -Qi "$1"
+        fi
+    }
+    # clean package cache
+    clean-cache() {
+        paccache -r
+        paccache -ruk0
+    }
+    # remove orphaned packages
+    remove-orphans() {
+        if [[ ! -n $(pacman -Qdt) ]]; then
+            echo "No orphaned packages to remove."
+        else
+            sudo pacman -Rns $(pacman -Qdtq)
+        fi
+    }
+    alias clean='sudo pacdiff; remove-orphans; clean-cache; sudo pacman-optimize'
+    alias remove='sudo pacman -Rns'
+    # sort installed packages by size
+    pacsort() {
+        expac -s "%-30n %m" | sort -hk 2 | awk '{print $1, $2/1024/1024}' | column -t | less
+    }
+    # list all explicitely installed packages, not in base or base-devel
+    lsinstalled() {
+        expac -HM "%011m\t%-20n\t%10d" $( comm -23 <(pacman -Qqe|sort) <(pacman -Qqg base base-devel|sort) ) | sort -n | less
+    }
+fi
 
 
-####################
-#  System          #
-####################
+#  System
 alias reboot='systemctl reboot'
 alias shutdown='systemctl poweroff'
 alias hibernate='systemctl hibernate'
