@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
 display_help() {
-    echo "Usage: [re|un]stow.sh <package1> [<package2> <package3> ...]"
-    echo "    stow.sh:   creates symlinks to dotfiles for specified programs"
-    echo "    unstow.sh: removes symlinks"
-    echo "    restow.sh: removes and then re-creates symlinks"
-    echo
-    echo "    Stow determines what directories the symlinks go in by pasrsing the file \"index\"."
-    echo "    The default directory is $XDG_CONFIG_HOME/package."
+    cat << EOF
+Usage: ./[re|un]stow.sh <package1> [<package2> <package3> ...]
+
+    stow.sh:   creates symlinks to dotfiles for specified programs
+    unstow.sh: removes symlinks
+    restow.sh: removes and then re-creates symlinks
+
+    Stow determines what directories the symlinks go in by parsing the file "index".
+    The default directory is $XDG_CONFIG_HOME/package.
+EOF
+    exit 1
 }
 
 main() {
     case "$1" in
-        -h|--help) display_help; return 1;;
-        "")        display_help; return 1;;
+        -h|--help|"") display_help;;
     esac
     case "$0" in
         *restow*) flag=--restow;;
@@ -45,6 +48,4 @@ main() {
     done
 }
 
-
 main "$@"
-
