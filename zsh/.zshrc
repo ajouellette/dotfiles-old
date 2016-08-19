@@ -98,6 +98,9 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 # neovim socket (needs neovim-remote)
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 
+# pip completion
+eval "`pip completion --zsh`"
+
 # start tmux
 if [ -z "$TMUX" ]; then
     tmux
