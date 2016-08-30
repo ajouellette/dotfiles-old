@@ -133,8 +133,8 @@ if [ -n "$(grep "Arch Linux" /etc/os-release)" ]; then
     }
     # clean package cache
     clean-cache() {
-        paccache -r
-        paccache -ruk0
+        paccache -r -c /var/cache/aur/pkg -c /var/cache/pacman/pkg   # work around bug FS#47024
+        paccache -ruk0 -c /var/cache/aur/pkg -c /var/cache/pacman/pkg
     }
     # remove orphaned packages
     remove-orphans() {
