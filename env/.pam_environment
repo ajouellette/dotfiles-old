@@ -1,9 +1,8 @@
 # ~/.pam_environment
 
-TERMINAL=konsole
 EDITOR=nvim
 VISUAL=nvim
 PAGER=less
-LESS=-R
+LESS=-RSMi
 BROWSER=firefox
 
