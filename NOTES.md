@@ -139,6 +139,19 @@ Add `Defaults insults` to `/etc/sudoers`.
 
 Use zsh instead of bash. Enable completions and spell-corrections.
 
+**AUR:**
+
+Install pacaur manually.
+
+Make cache folder for AUR packages:
+```
+sudo mkdir -p /var/cache/aur/pkg
+sudo chown -R root:users /var/cache/aur
+sudo chmod -R 771 /var/cache/aur
+```
+
+Add `PKGDEST=/var/cache/aur/pkg` to `~/.config/pacman/makepkg.conf`.
+
 ## Programs used
 - **vim** *(the one true text editor)*
 - **neovim** *(the 21st century incarnation of the one true editor)*
