@@ -1,0 +1,13 @@
+refresh-on-startup yes
+browser firefox
+datetime-format "%b %d %R"
+confirm-exit yes
+
+
+color  article           default default
+color  background        default default
+color  info              white   color52
+color  listfocus         default default reverse
+color  listfocus_unread  default default reverse
+color  listnormal        default default
+color  listnormal_unread default default
