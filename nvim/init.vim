@@ -71,7 +71,7 @@ augroup END " }
 """""""""""""""""""""""""""""
 " true color and cursor shape
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 
 set noerrorbells
 set belloff="all"
