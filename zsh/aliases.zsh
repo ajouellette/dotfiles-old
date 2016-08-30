@@ -59,7 +59,7 @@ alias mutt='mutt -F ~/.config/mutt/muttrc'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 
 # use hub (extra commands for GitHub) if installed
-if [ -z $(which hub | grep "not found") ]; then
+if [[ -z $(which hub | grep "not found") ]]; then
     alias git='hub'
 fi
 
