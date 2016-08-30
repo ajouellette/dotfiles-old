@@ -12,7 +12,7 @@ match:
 import:
     move: yes
 
-plugins: fromfilename bpm lastgenre mpdstats scrub edit fetchart embedart duplicates replaygain
+plugins: fromfilename bpm lastgenre scrub edit fetchart embedart duplicates replaygain
 
 lastgenre:
     auto: yes
