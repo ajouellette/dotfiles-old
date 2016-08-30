@@ -6,6 +6,7 @@ These are some system wide configuration files. They will not work on every syst
 - `mkinitcpio.conf` - settings for mkinitcpio
 - `pacman.d/`
     - `hooks/` - pacman hooks
+        - `systemd-boot.hook` - update systemd-boot after systemd upgrade
 - `pacman.conf` - pacman settings
 - `sysctl.d` - kernel settings
 - `vconsole.conf` - tty font and colors

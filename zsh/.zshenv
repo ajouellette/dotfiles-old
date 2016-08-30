@@ -10,8 +10,6 @@ if [[ $TERM == xterm ]]; then
     export TERM=xterm-256color
 fi
 
-# make programs use proper config/cache dirs
-export XDG_CONFIG_HOME="$HOME"/.config
-export XDG_CACHE_HOME="$HOME"/.cache
-export XDG_DATA_HOME="$HOME"/.local/share
+# source ~/.profile
+emulate sh -c 'source ~/.profile'
 
