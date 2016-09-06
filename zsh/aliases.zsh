@@ -52,6 +52,8 @@ fi
 alias bc='bc -q -l'
 alias calc='python -qi -c "from math import *"'
 
+alias wrpi='mpv --no-video http://icecast1.wrpi.org:8000/mp3-256.mp3.m3u'
+
 alias kernel='uname -rs'
 alias up='uptime -p'
 

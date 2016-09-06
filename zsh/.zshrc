@@ -72,7 +72,6 @@ preexec() {
 
 # system info and logo
 #screenfetch -t
-
 # cow and quotes
 #fortune | cowthink -f small -W 50
 
