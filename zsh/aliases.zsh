@@ -6,7 +6,7 @@ alias c='clear'
 alias x='exit'
 
 # ls aliases
-alias ls='ls -hv --group-directories-first --color=auto'
+alias ls='ls -hv --group-directories-first --color=always'
 alias la='ls -A'
 alias ll='ls -lAF'
 
@@ -48,8 +48,8 @@ alias svim='sudoedit'
 if [ -f ~/.config/nvim/minimal.vim ]; then
     alias vi='nvim -u ~/.config/nvim/minimal.vim'
 fi
+alias vim='nvim'
 
-alias bc='bc -q -l'
 alias calc='python -qi -c "from math import *"'
 
 alias wrpi='mpv --no-video http://icecast1.wrpi.org:8000/mp3-256.mp3.m3u'
@@ -107,28 +107,33 @@ alias top10="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 
 alias open='xdg-open'
 
+# wine 32/64 bit
+alias wine32='WINEARCH=win32 WINEPREFIX=~/win32 wine'
+alias wine64='WINEARCH=win64 WINEPREFIX=~/win64 wine'
+
+alias matlab='matlab -nodesktop -nosplash'
 
 # Arch aliases
 if [ -n "$(grep "Arch Linux" /etc/os-release)" ]; then
     # pacman aliases and functions:
-    alias install='pacaur -S --needed'
+    alias install='aurman -S --needed'
     alias search="pacman -Ss"
-    alias searchaur="pacaur -s"
+    alias searchaur="aurman -Ss --aur"
 
     update() {
         sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
         sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
         sudo pacman -Fy && \
-        pacaur -Syyu
+        aurman -Syyu
     }
 
-    alias upgrade='pacaur -Syu'
+    alias upgrade='aurman -Syu'
 
     pacinfo() {
         pacman -Qi "$1" &> /dev/null
         if [ "$?" -eq 1 ]
         then
-            pacaur -Si "$1"
+            aurman -Si "$1"
         else
             pacman -Qi "$1"
         fi
@@ -146,7 +151,7 @@ if [ -n "$(grep "Arch Linux" /etc/os-release)" ]; then
             sudo pacman -Rns $(pacman -Qdtq)
         fi
     }
-    alias clean='sudo pacdiff; remove-orphans; clean-cache; sudo pacman-optimize'
+    alias clean='sudo pacdiff; remove-orphans; clean-cache'
     alias remove='sudo pacman -Rns'
     # sort installed packages by size
     pacsort() {

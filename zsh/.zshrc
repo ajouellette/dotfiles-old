@@ -70,11 +70,6 @@ preexec() {
 
 # Startup programs {{{
 
-# system info and logo
-#screenfetch -t
-# cow and quotes
-#fortune | cowthink -f small -W 50
-
 # GPG agent and SSH support
 # Start the gpg-agent if not already running
 if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
@@ -98,7 +93,7 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export NVIM_LISTEN_ADDRESS="/tmp/nvimsocket"
 
 # pip completion
-eval "`pip completion --zsh`"
+#eval "`pip completion --zsh`"
 
 # start tmux
 if [ -z "$TMUX" ]; then
