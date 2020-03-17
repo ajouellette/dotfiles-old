@@ -17,6 +17,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'lervag/vimtex'
+Plug 'KeitaNakamura/tex-conceal.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-rsi'
@@ -104,6 +105,8 @@ set whichwrap+=<,>
 
 " use X11 clipboard
 set clipboard+=unnamedplus
+
+set mouse=a
 "}}}
 
 """""""""""""""""""""""""""""
@@ -221,6 +224,9 @@ nnoremap <A-l> <C-w>l
 """""""""""""""""""""""""""""
 " => Misc {{{
 """""""""""""""""""""""""""""
+" let g:python_host_prog = '/usr/bin/python2'
+" let g:python3_host_prog = '/usr/bin/python3'
+
 " no ex mode
 nnoremap Q <nop>
 
@@ -308,6 +314,9 @@ set spellsuggest=best,5
 autocmd FileType mail     :setlocal spell spelllang=en_us
 autocmd FileType markdown :setlocal spell spelllang=en_us
 autocmd FileType notes    :setlocal spell spelllang=en_us
+autocmd FileType tex      :setlocal spell spelllang=en_us
+
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " toggle spell
 nmap \s :setlocal spell!<CR> :setlocal spell?<CR>
@@ -342,8 +351,8 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 " location of global extra conf files (c and c++)
-autocmd BufRead,BufNewFile *.c,*.h :let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.c.py"
-autocmd BufRead,BufNewFile *.cpp,*hpp :let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.cpp.py"
+autocmd BufRead,BufNewFile *.c,*.h :let g:ycm_global_ycm_extra_conf = "~/.config/nvim/.ycm_extra_conf.c.py"
+autocmd BufRead,BufNewFile *.cpp,*hpp :let g:ycm_global_ycm_extra_conf = "~/.config/nvim/.ycm_extra_conf.cpp.py"
 
 " disable confirmation of conf files
 let g:ycm_confirm_extra_conf=0
@@ -396,6 +405,8 @@ let g:ctrlp_custom_ignore = {
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
 "}}}
 
 """""""""""""""""""""""""""""
@@ -407,6 +418,11 @@ let g:notes_directories = ['~/Dropbox/Notes']
 """""""""""""""""""""""""""""
 " => VimTex {{{
 """""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+set conceallevel=1
+let g:tex_conceal='abdmg'
+"let g:vimtex_quickfix_mode=0
+
 " disable vim-polyglot latex support
 let g:polyglot_disabled = ['latex']
 
@@ -416,9 +432,9 @@ let g:vimtex_latexmk_progname = 'nvr'
 let g:vimtex_fold_enabled = 1
 
 " pdf viewer settings
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_general_viewer = 'evince'
+"let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
 
 " semantic completions
 if !exists('g:ycm_semantic_triggers')
