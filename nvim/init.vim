@@ -14,7 +14,6 @@ endif
 " Use vim-plug to manage plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'equalsraf/neovim-gui-shim'
 Plug 'lervag/vimtex'
 Plug 'KeitaNakamura/tex-conceal.vim'
@@ -34,7 +33,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'aouelete/sway-vim-syntax'
