@@ -9,7 +9,7 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
 [ "$XDG_DATA_HOME" ] || export XDG_DATA_HOME="$HOME/.local/share"
 
 # dircolors
-source <(dircolors -b <(cat "$XDG_CONFIG_HOME"/dircolors/*.conf))
+#source <(dircolors -b <(cat "$XDG_CONFIG_HOME"/dircolors/*.conf))
 
 # make applications respect those dirs
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
@@ -38,10 +38,3 @@ export LESS_TERMCAP_so=$(printf '\e[1;44;1m')
 
 # path
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/devel/go/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
-export PATH="$HOME/.npm_modules/bin:$PATH"
-
-# go path
-export GOPATH="$HOME/devel/go"
-
