@@ -116,24 +116,24 @@ alias matlab='matlab -nodesktop -nosplash'
 # Arch aliases
 if [ -n "$(grep "Arch Linux" /etc/os-release)" ]; then
     # pacman aliases and functions:
-    alias install='aurman -S --needed'
+    alias install='yay -S --needed'
     alias search="pacman -Ss"
-    alias searchaur="aurman -Ss --aur"
+    alias searchaur="yay -Ss --aur"
 
     update() {
         sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak && \
         sudo reflector -l 30 -c "United States" -c "Canada" -f 10 -p http --sort rate --verbose --save /etc/pacman.d/mirrorlist && \
         sudo pacman -Fy && \
-        aurman -Syyu
+        yay -Syyu
     }
 
-    alias upgrade='aurman -Syu'
+    alias upgrade='yay -Syu'
 
     pacinfo() {
         pacman -Qi "$1" &> /dev/null
         if [ "$?" -eq 1 ]
         then
-            aurman -Si "$1"
+            yay -Si "$1"
         else
             pacman -Qi "$1"
         fi
