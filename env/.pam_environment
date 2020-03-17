@@ -5,4 +5,4 @@ VISUAL=nvim
 PAGER=less
 LESS=-RSMi
 BROWSER=firefox
-
+STEAM_RUNTIME=0
